@@ -756,6 +756,15 @@
   .fit__list.fit__list--single li:nth-child(5) { border-block-start: 0; }
 }
 
+/* The Ziplyft tick: a white check in a plum disc, as in its yes/no frame.
+   Centred on the first line of the item rather than on its baseline. */
+.fit__list--discs li { align-items: center; }
+.fit__list--discs .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
+.fit__list--discs .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
+
+/* A note under a photograph runs the photograph's full width. */
+#main .fine--wide { max-width: none; }
+
 /* On navy, plum is 1.35:1 and disappears: the marks take the band's cyan. */
 .band--deep .fit__list li { color: var(--on-dark-soft); }
 .band--deep .fit__tick { color: var(--cyan-300); }

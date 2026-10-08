@@ -68,15 +68,15 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=14">
-<link rel="stylesheet" href="css/tokens.css?v=14">
-<link rel="stylesheet" href="css/base.css?v=14">
-<link rel="stylesheet" href="css/components.css?v=14">
-<link rel="stylesheet" href="css/sections.css?v=14">
-<link rel="stylesheet" href="css/type.css?v=14">
-<link rel="stylesheet" href="css/motion.css?v=14">
+<link rel="stylesheet" href="css/fonts.css?v=15">
+<link rel="stylesheet" href="css/tokens.css?v=15">
+<link rel="stylesheet" href="css/base.css?v=15">
+<link rel="stylesheet" href="css/components.css?v=15">
+<link rel="stylesheet" href="css/sections.css?v=15">
+<link rel="stylesheet" href="css/type.css?v=15">
+<link rel="stylesheet" href="css/motion.css?v=15">
 
-<script src="js/main.js?v=14" defer></script>
+<script src="js/main.js?v=15" defer></script>
 </head>
 <body>
 
@@ -282,22 +282,24 @@
         </div>
         <div class="fit full">
           <h3 class="fit__lead">The examination may assess</h3>
-          <ul class="fit__list fit__list--single">
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Upper and lower eyelid position</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Eyelid looseness and support</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Whether the eyelashes touch the eye</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Corneal scratches or inflammation</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Tear-film and ocular-surface health</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Changes in eyelid position during blinking</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Previous eye surgery, injury, or scarring</span></li>
+          <ul class="fit__list fit__list--single fit__list--discs">
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Upper and lower eyelid position</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Eyelid looseness and support</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Whether the eyelashes touch the eye</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Corneal scratches or inflammation</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Tear-film and ocular-surface health</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Changes in eyelid position during blinking</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Previous eye surgery, injury, or scarring</span></li>
           </ul>
         </div>
-        <p class="fine">This examination also helps distinguish entropion from trichiasis, dry eye disease, blepharitis, and other conditions that may produce similar symptoms.</p>
       </div>
-      <figure class="frame frame--portrait" data-reveal>
-        <img src="images/dr-silk-patient.webp" width="940" height="954" loading="lazy"
-             alt="Dr. Wesam Silk shaking hands with a smiling patient in an exam room.">
-      </figure>
+      <div class="stack" data-reveal>
+        <figure class="frame frame--portrait full">
+          <img src="images/dr-silk-patient.webp" width="940" height="954" loading="lazy"
+               alt="Dr. Wesam Silk shaking hands with a smiling patient in an exam room.">
+        </figure>
+        <p class="fine fine--wide">This examination also helps distinguish entropion from trichiasis, dry eye disease, blepharitis, and other conditions that may produce similar symptoms.</p>
+      </div>
     </div>
   </section>
 
