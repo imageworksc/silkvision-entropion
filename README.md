@@ -27,6 +27,10 @@ Page-specific components live at the end of `css/components.css`
 - FAQ uses `<details name="faq">` and is mirrored in FAQPage JSON-LD.
 - FAQ moved before the closing call (the closing band ends the page).
 - Base64 images extracted to `images/`.
+- Second pass: symptoms, causes, relief measures and the at-a-glance facts
+  are cards; the evaluation and consultation lists are header-bar panels;
+  surgery criteria are cards on navy; recovery is one feature card;
+  Dr. Silk has the profile card; the comparison table has filled headers.
 - No gradients, no inline CSS.
 
 ## Pending from the practice

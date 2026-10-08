@@ -830,3 +830,191 @@
 
 /* The service area under the closing call: reference, not the call. */
 .closing__area { max-width: 74ch; }
+
+/* ==========================================================================
+   The entropion set, second pass — cards, panels, the filled table
+   The draft read flat: every list was the same ruled line. Lists whose
+   items stand on their own (symptoms, causes, relief measures, the six
+   facts) are now cards; the two "what we look at / what we explain" lists
+   are panels with a header bar, the yes/no frame's construction.
+   Cards here are not links, so none of them moves on hover.
+   ========================================================================== */
+
+.cards {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+}
+@media (min-width: 48rem) {
+  .cards--3, .cards--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 64rem) {
+  .cards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cards--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cards--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-sm);
+}
+/* On a white band the card takes the paper, so it still reads as a card. */
+.band:not(.band--paper):not(.band--tint):not(.band--deep) .card { background: var(--paper); box-shadow: none; }
+#main .card p { color: var(--text); font-weight: 500; line-height: 1.45; }
+
+.card__ico {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: var(--r-pill);
+  background: var(--plum-100);
+  color: var(--plum-600);
+}
+.card__ico .ico { inline-size: 1.5rem; block-size: 1.5rem; }
+
+/* Numbered cards: the number is a counter, so the list stays an <ol>. */
+.cards--num { counter-reset: card; }
+.cards--num .card { counter-increment: card; border-block-start: 3px solid var(--plum-500); }
+.card__num::before {
+  content: counter(card, decimal-leading-zero);
+  font-family: var(--font);
+  font-size: var(--t-h3);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  color: var(--plum-600);
+}
+
+/* --------------------------------------------------------------------------
+   Callout — the symptoms' one-line summary, set beside the heading
+   -------------------------------------------------------------------------- */
+
+.callout {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  max-width: none;
+  padding: var(--s-5) var(--s-6);
+  border-radius: var(--r-lg);
+  background: var(--plum-700);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.callout .bare { color: var(--plum-100); }
+
+/* --------------------------------------------------------------------------
+   Banner on a light band — the caveat card. Plum rule on the start edge.
+   -------------------------------------------------------------------------- */
+
+.banner { border-inline-start: 4px solid var(--plum-500); }
+@media (min-width: 64rem) { .banner.full { grid-template-columns: auto 1fr; } }
+#main .banner__text p { color: var(--text); font-size: var(--t-lead); line-height: 1.5; }
+.band--paper .banner, .band--tint .banner { background: var(--white); }
+
+/* --------------------------------------------------------------------------
+   Panel — a white frame with a coloured header bar and ticked rows
+   -------------------------------------------------------------------------- */
+
+.panel {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.panel__head {
+  padding: var(--s-4) var(--s-5);
+  background: var(--fill-action);
+  color: var(--white);
+  font-size: var(--t-body);
+}
+.panel--navy .panel__head { background: var(--ink-600); }
+.panel li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-3) var(--s-5);
+  color: var(--text);
+}
+.panel li + li { border-block-start: 1px solid var(--hairline); }
+.panel li:nth-child(odd) { background: rgb(166 38 166 / .04); }
+.panel--navy li:nth-child(odd) { background: rgb(0 73 123 / .04); }
+.panel .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
+.panel .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
+.panel--navy .tick { background: var(--ink-600); }
+#main .panel__head { color: var(--white); }
+
+/* --------------------------------------------------------------------------
+   Criteria — five conditions as cards on the navy band
+   -------------------------------------------------------------------------- */
+
+.criteria { display: grid; gap: var(--s-3); }
+.criteria li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  border-radius: var(--r-md);
+  background: rgb(255 255 255 / .05);
+  border: 1px solid var(--hairline-dark);
+  color: var(--white);
+}
+.criteria .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
+.criteria .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
+.surgery-frame > img { object-position: 50% 40%; }
+
+/* --------------------------------------------------------------------------
+   Feature card — recovery, as one white card with two columns inside
+   -------------------------------------------------------------------------- */
+
+.feature-card {
+  display: grid;
+  gap: var(--s-6);
+  padding: var(--s-6) var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+@media (min-width: 60rem) {
+  .feature-card { grid-template-columns: .8fr 1.2fr; gap: var(--s-9); padding: var(--s-9); }
+}
+
+/* --------------------------------------------------------------------------
+   Physician — the profile card with two parts, and the prose under it
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 80rem) { .profile--two { grid-template-columns: auto 1fr; } }
+@media (min-width: 60rem) {
+  .prose--cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-7); }
+  .prose--cols p { max-width: none; }
+}
+
+/* --------------------------------------------------------------------------
+   The comparison, filled — header bars and tinted columns back on
+   -------------------------------------------------------------------------- */
+
+.compare-wrap { overflow: hidden; border-radius: var(--r-lg); box-shadow: var(--shadow-md); background: var(--white); }
+#compare .compare--filled thead th:nth-child(2) { background: var(--fill-action); color: var(--white); border-block-end: 0; font-size: var(--t-body); }
+#compare .compare--filled thead th:nth-child(3) { background: var(--ink-600); color: var(--white); border-block-end: 0; font-size: var(--t-body); }
+#compare .compare--filled thead th { padding-block: var(--s-4); }
+#compare .compare--filled tbody th { padding-inline-start: var(--s-5); }
+#compare .compare--filled tbody td:nth-of-type(1) { background: rgb(166 38 166 / .07); }
+#compare .compare--filled tbody td:nth-of-type(2) { background: rgb(0 73 123 / .05); }
+#compare .compare--filled tbody tr:first-child td { font-size: var(--t-lead); }
+@media (max-width: 47.99rem) {
+  #compare .compare--filled tr { column-gap: 0; }
+  #compare .compare--filled th, #compare .compare--filled td { padding-inline: var(--s-4); }
+  #compare .compare--filled thead th { text-align: center; }
+  #compare .compare--filled tbody th[scope="row"] { background: var(--paper); padding-block: var(--s-3); }
+  #compare .compare--filled tbody td { padding-block: var(--s-3); }
+}

@@ -66,15 +66,15 @@
 <link rel="preload" as="image" fetchpriority="high" href="images/surgical-suite.webp">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=1">
-<link rel="stylesheet" href="css/tokens.css?v=1">
-<link rel="stylesheet" href="css/base.css?v=1">
-<link rel="stylesheet" href="css/components.css?v=1">
-<link rel="stylesheet" href="css/sections.css?v=1">
-<link rel="stylesheet" href="css/type.css?v=1">
-<link rel="stylesheet" href="css/motion.css?v=1">
+<link rel="stylesheet" href="css/fonts.css?v=2">
+<link rel="stylesheet" href="css/tokens.css?v=2">
+<link rel="stylesheet" href="css/base.css?v=2">
+<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/sections.css?v=2">
+<link rel="stylesheet" href="css/type.css?v=2">
+<link rel="stylesheet" href="css/motion.css?v=2">
 
-<script src="js/main.js?v=1" defer></script>
+<script src="js/main.js?v=2" defer></script>
 </head>
 <body>
 
@@ -107,6 +107,15 @@
   <symbol id="i-time" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.8V12l3.4 2"/></symbol>
   <!-- The entropion page's own symbols. -->
   <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.4 4.3L2.9 17.6a1.8 1.8 0 001.6 2.7h15a1.8 1.8 0 001.6-2.7L13.6 4.3a1.8 1.8 0 00-3.2 0z"/><path d="M12 9.4v4.4M12 17.1h.01"/></symbol>
+  <symbol id="i-lash" viewBox="0 0 24 24"><path d="M3 10.5s3.6 4.5 9 4.5 9-4.5 9-4.5"/><path d="M6 13.4l-1.6 2.4M9.4 14.7l-.7 2.8M14.6 14.7l.7 2.8M18 13.4l1.6 2.4"/></symbol>
+  <symbol id="i-grit" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M4 3.5l2 2M8.5 2.5l.6 2.2M19.5 3.8l-1.8 1.7"/></symbol>
+  <symbol id="i-red" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M4.8 11.2l1.6.8-1 1 1.4.6M19.2 11.2l-1.6.8 1 1-1.4.6"/></symbol>
+  <symbol id="i-tear" viewBox="0 0 24 24"><path d="M2.6 10S6.6 4.2 12 4.2 21.4 10 21.4 10 17.4 15.8 12 15.8 2.6 10 2.6 10z"/><circle cx="12" cy="10" r="3.4"/><circle cx="12" cy="10" r="1"/><path d="M7 16.4c1 1.3 1.5 2.1 1.5 2.7a1.5 1.5 0 01-3 0c0-.6.5-1.4 1.5-2.7z"/></symbol>
+  <symbol id="i-pain" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M18.5 2.5l-2 3h3l-2 3"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M5.4 18.6l1.5-1.5M17.1 6.9l1.5-1.5"/></symbol>
+  <symbol id="i-blur" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z" stroke-dasharray="2.6 2.4"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-tube" viewBox="0 0 24 24"><path d="M4 8.5h10.5l3.5 2v3l-3.5 2H4a1 1 0 01-1-1v-5a1 1 0 011-1z"/><path d="M18 12h3M7.5 8.5v7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><rect x="3.6" y="3.6" width="16.8" height="16.8" rx="3"/><path d="M12 8v8M8 12h8"/></symbol>
 </defs>
 </svg>
 
@@ -189,26 +198,26 @@
     </div>
   </section>
 
-  <!-- ===== SYMPTOMS ======================================================== -->
+  <!-- ===== SYMPTOMS — eight cards, each sign with its mark ================ -->
   <section class="band band--paper" aria-labelledby="symptoms-title">
     <div class="wrap stack stack--loose">
-      <div class="stack head" data-reveal>
-        <h2 id="symptoms-title">Common symptoms</h2>
-        <p class="lead lead--wide">Symptoms may worsen when blinking, squeezing the eyelids, or spending time in wind or dry conditions.</p>
+      <div class="split split--middle full">
+        <div class="stack head" data-reveal>
+          <h2 id="symptoms-title">Common symptoms</h2>
+          <p class="lead">Symptoms may worsen when blinking, squeezing the eyelids, or spending time in wind or dry conditions.</p>
+        </div>
+        <p class="callout" data-reveal><svg class="ico bare" aria-hidden="true"><use href="#i-lash"/></svg><span>Eyelashes rubbing against the eye</span></p>
       </div>
-      <div class="fit full" data-reveal>
-        <h3 class="fit__lead">Eyelashes rubbing against the eye</h3>
-        <ul class="fit__list">
-          <li><span class="fit__dot" aria-hidden="true"></span><span>A scratching or gritty sensation</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Redness and irritation</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Excessive tearing</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Eye pain or soreness</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Light sensitivity</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Mucus or discharge</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Blurred vision caused by tearing or inflammation</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Recurrent corneal irritation</span></li>
-        </ul>
-      </div>
+      <ul class="cards cards--4 full stagger">
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-grit"/></svg></span><p>A scratching or gritty sensation</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-red"/></svg></span><p>Redness and irritation</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-tear"/></svg></span><p>Excessive tearing</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-pain"/></svg></span><p>Eye pain or soreness</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><p>Light sensitivity</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-drops"/></svg></span><p>Mucus or discharge</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-blur"/></svg></span><p>Blurred vision caused by tearing or inflammation</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></span><p>Recurrent corneal irritation</p></li>
+      </ul>
     </div>
   </section>
 
@@ -247,26 +256,31 @@
     </div>
   </section>
 
-  <!-- ===== CAUSES ========================================================== -->
+  <!-- ===== CAUSES — six numbered cards ==================================== -->
   <section class="band" aria-labelledby="causes-title">
     <div class="wrap stack stack--loose">
       <div class="stack head" data-reveal>
         <h2 id="causes-title">What causes entropion?</h2>
         <p class="lead lead--wide"><strong class="hl">The most common cause is age-related weakening and stretching of the tissues that support the eyelid.</strong> Other potential causes include:</p>
       </div>
-      <ul class="fit__list fit__list--rows3 full" data-reveal>
-        <li><span class="fit__dot" aria-hidden="true"></span><span>Loose or stretched lower eyelid tissue</span></li>
-        <li><span class="fit__dot" aria-hidden="true"></span><span>Muscle imbalance around the eye</span></li>
-        <li><span class="fit__dot" aria-hidden="true"></span><span>Scarring from injury, inflammation, or prior surgery</span></li>
-        <li><span class="fit__dot" aria-hidden="true"></span><span>Chronic eye irritation or infection</span></li>
-        <li><span class="fit__dot" aria-hidden="true"></span><span>Certain neurological or muscular conditions</span></li>
-        <li><span class="fit__dot" aria-hidden="true"></span><span>Congenital eyelid abnormalities, which are less common</span></li>
-      </ul>
-      <p class="measure" data-reveal>Identifying the cause matters because the appropriate treatment depends on the eyelid’s anatomy, stability, and effect on the eye.</p>
+      <ol class="cards cards--3 cards--num full stagger">
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Loose or stretched lower eyelid tissue</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Muscle imbalance around the eye</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Scarring from injury, inflammation, or prior surgery</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Chronic eye irritation or infection</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Certain neurological or muscular conditions</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Congenital eyelid abnormalities, which are less common</p></li>
+      </ol>
+      <div class="banner full" data-reveal>
+        <svg class="ico bare bare--lg" aria-hidden="true"><use href="#i-eye"/></svg>
+        <div class="stack banner__text">
+          <p>Identifying the cause matters because the appropriate treatment depends on the eyelid’s anatomy, stability, and effect on the eye.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== EVALUATION — copy beside the photograph ========================= -->
+  <!-- ===== EVALUATION — a panel of what is checked, beside the photograph == -->
   <section class="band band--tint" aria-labelledby="eval-title">
     <div class="wrap split split--middle split--wide-gutter">
       <div class="stack" data-reveal>
@@ -274,46 +288,49 @@
           <h2 id="eval-title">How Dr. Silk evaluates entropion</h2>
           <p class="lead lead--wide">During an eyelid evaluation, Dr.&nbsp;Silk examines both the eyelid and the ocular surface.</p>
         </div>
-        <div class="fit full">
-          <h3 class="fit__lead">The examination may assess</h3>
-          <ul class="fit__list fit__list--single">
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Upper and lower eyelid position</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Eyelid looseness and support</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Whether the eyelashes touch the eye</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Corneal scratches or inflammation</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Tear-film and ocular-surface health</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Changes in eyelid position during blinking</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Previous eye surgery, injury, or scarring</span></li>
+        <div class="panel panel--navy full">
+          <h3 class="panel__head" id="assess-title">The examination may assess</h3>
+          <ul aria-labelledby="assess-title">
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Upper and lower eyelid position</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Eyelid looseness and support</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Whether the eyelashes touch the eye</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Corneal scratches or inflammation</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Tear-film and ocular-surface health</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Changes in eyelid position during blinking</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Previous eye surgery, injury, or scarring</li>
           </ul>
         </div>
-        <p class="fine">This examination also helps distinguish entropion from trichiasis, dry eye disease, blepharitis, and other conditions that may produce similar symptoms.</p>
       </div>
-      <figure class="frame frame--portrait" data-reveal>
-        <img src="images/dr-silk-patient.webp" width="940" height="954" loading="lazy"
-             alt="Dr. Wesam Silk shaking hands with a smiling patient in an exam room.">
-      </figure>
+      <div class="stack" data-reveal>
+        <figure class="frame frame--portrait full">
+          <img src="images/dr-silk-patient.webp" width="940" height="954" loading="lazy"
+               alt="Dr. Wesam Silk shaking hands with a smiling patient in an exam room.">
+        </figure>
+        <p class="note">This examination also helps distinguish entropion from trichiasis, dry eye disease, blepharitis, and other conditions that may produce similar symptoms.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ===== TREATMENT OPTIONS =============================================== -->
+  <!-- ===== TREATMENT OPTIONS — five cards and the caveat under them ======== -->
   <section class="band" aria-labelledby="treat-title">
-    <div class="wrap split split--wide-gutter">
+    <div class="wrap stack stack--loose">
       <div class="stack head" data-reveal>
         <h2 id="treat-title">Entropion treatment options</h2>
-        <p class="lead">Treatment is based on the cause, severity, symptoms, and condition of the cornea.</p>
+        <p class="lead lead--wide">Treatment is based on the cause, severity, symptoms, and condition of the cornea.</p>
       </div>
-      <div class="stack" data-reveal>
-        <div class="fit full">
-          <h3 class="fit__lead">Temporary symptom relief</h3>
-          <ul class="fit__list fit__list--single">
-            <li><span class="fit__dot" aria-hidden="true"></span><span>Lubricating eye drops</span></li>
-            <li><span class="fit__dot" aria-hidden="true"></span><span>Eye ointment</span></li>
-            <li><span class="fit__dot" aria-hidden="true"></span><span>Protection of the corneal surface</span></li>
-            <li><span class="fit__dot" aria-hidden="true"></span><span>Treatment of associated inflammation or infection</span></li>
-            <li><span class="fit__dot" aria-hidden="true"></span><span>Temporary eyelid-positioning measures in selected cases</span></li>
-          </ul>
+      <h3 class="kicker" data-reveal>Temporary symptom relief</h3>
+      <ul class="cards cards--5 full stagger">
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-drops"/></svg></span><p>Lubricating eye drops</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-tube"/></svg></span><p>Eye ointment</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span><p>Protection of the corneal surface</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></span><p>Treatment of associated inflammation or infection</p></li>
+        <li class="card" data-reveal><span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-lash"/></svg></span><p>Temporary eyelid-positioning measures in selected cases</p></li>
+      </ul>
+      <div class="banner banner--note full" data-reveal>
+        <svg class="ico bare bare--lg" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div class="stack banner__text">
+          <p>These measures may protect the eye or reduce discomfort, but they generally do not permanently correct an eyelid that is turning inward because of weakened or stretched tissue.</p>
         </div>
-        <p class="note">These measures may protect the eye or reduce discomfort, but they generally do not permanently correct an eyelid that is turning inward because of weakened or stretched tissue.</p>
       </div>
     </div>
   </section>
@@ -327,39 +344,46 @@
             <h2 id="surgery-title">When entropion surgery may be recommended</h2>
             <p class="lead lead--wide">Entropion surgery may be recommended when:</p>
           </div>
-          <ul class="fit__list fit__list--single full">
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>The eyelid continues to turn inward</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Eyelashes repeatedly rub against the eye</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Lubrication does not adequately control symptoms</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Corneal irritation or damage is present</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>The condition interferes with daily comfort or vision</span></li>
+          <ul class="criteria full">
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>The eyelid continues to turn inward</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Eyelashes repeatedly rub against the eye</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Lubrication does not adequately control symptoms</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Corneal irritation or damage is present</span></li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>The condition interferes with daily comfort or vision</span></li>
           </ul>
         </div>
-        <div class="prose surgery-close" data-reveal>
-          <p class="first">The purpose of <strong class="hl">entropion repair</strong> is to return the eyelid to a more stable position so the lashes and eyelid margin no longer rub against the eye.</p>
-          <p>Depending on the underlying cause, treatment may involve tightening, repositioning, or reinforcing the tissues that support the eyelid.</p>
-          <figure class="frame frame--wide">
+        <div class="stack" data-reveal>
+          <figure class="frame frame--photo full surgery-frame">
             <img src="images/surgical-suite.webp" width="1100" height="1297" loading="lazy"
                  alt="Silk Vision surgical suite with an operating microscope, procedure chair, and overhead surgical light.">
           </figure>
+          <div class="prose">
+            <p class="first">The purpose of <strong class="hl">entropion repair</strong> is to return the eyelid to a more stable position so the lashes and eyelid margin no longer rub against the eye.</p>
+            <p>Depending on the underlying cause, treatment may involve tightening, repositioning, or reinforcing the tissues that support the eyelid.</p>
+          </div>
         </div>
       </div>
-
-      <aside class="glance full" aria-labelledby="glance-title" data-reveal>
-        <h3 class="kicker" id="glance-title">Entropion at a glance</h3>
-        <ul class="fit__list fit__list--rows3">
-          <li><span class="fit__dot" aria-hidden="true"></span><span>The eyelid turns inward toward the eye.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Eyelashes or eyelid tissue may rub against the cornea.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>The lower eyelid is most commonly affected.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Symptoms may include irritation, tearing, redness, pain, or blurred vision.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Lubricating drops may provide temporary relief.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Entropion repair may be recommended to correct the eyelid position.</span></li>
-        </ul>
-      </aside>
     </div>
   </section>
 
-  <!-- ===== WHAT TO EXPECT — copy beside the portrait ======================= -->
+  <!-- ===== AT A GLANCE — six statements as numbered cards ================== -->
+  <section class="band band--paper band--slim" aria-labelledby="glance-title">
+    <div class="wrap stack stack--loose">
+      <div class="stack head" data-reveal>
+        <h2 id="glance-title" class="glance-title">Entropion at a glance</h2>
+      </div>
+      <ol class="cards cards--3 cards--num full stagger">
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>The eyelid turns inward toward the eye.</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Eyelashes or eyelid tissue may rub against the cornea.</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>The lower eyelid is most commonly affected.</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Symptoms may include irritation, tearing, redness, pain, or blurred vision.</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Lubricating drops may provide temporary relief.</p></li>
+        <li class="card" data-reveal><span class="card__num" aria-hidden="true"></span><p>Entropion repair may be recommended to correct the eyelid position.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== WHAT TO EXPECT — a plum panel beside the portrait =============== -->
   <section class="band" id="expect" aria-labelledby="expect-title">
     <div class="wrap split split--middle split--wide-gutter">
       <div class="stack" data-reveal>
@@ -367,64 +391,72 @@
           <h2 id="expect-title">What to expect from entropion repair</h2>
           <p class="lead lead--wide">Entropion repair is a functional eyelid procedure intended to protect the eye and restore a healthier eyelid position.</p>
         </div>
-        <div class="fit full">
-          <h3 class="fit__lead">During your consultation, Dr. Silk will explain</h3>
-          <ul class="fit__list fit__list--single">
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Why the eyelid is turning inward</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Whether the cornea is being affected</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Which treatment options are appropriate</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Whether surgery is recommended</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>What the procedure may involve</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Expected recovery and follow-up care</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Risks or medical considerations specific to you</span></li>
+        <div class="panel full">
+          <h3 class="panel__head" id="explain-title">During your consultation, Dr. Silk will explain</h3>
+          <ul aria-labelledby="explain-title">
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Why the eyelid is turning inward</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Whether the cornea is being affected</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Which treatment options are appropriate</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Whether surgery is recommended</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>What the procedure may involve</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Expected recovery and follow-up care</li>
+            <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>Risks or medical considerations specific to you</li>
           </ul>
         </div>
-        <p class="fine">There is no single procedure that is right for every patient. The surgical approach should match the cause and anatomy of the eyelid problem.</p>
       </div>
-      <figure class="frame frame--portrait" data-reveal>
-        <img src="images/consultation.webp" width="817" height="1001" loading="lazy"
-             alt="A patient seated in an exam room during a consultation, with a clinician beside her.">
-      </figure>
+      <div class="stack" data-reveal>
+        <figure class="frame frame--portrait full">
+          <img src="images/consultation.webp" width="817" height="1001" loading="lazy"
+               alt="A patient seated in an exam room during a consultation, with a clinician beside her.">
+        </figure>
+        <p class="note">There is no single procedure that is right for every patient. The surgical approach should match the cause and anatomy of the eyelid problem.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ===== RECOVERY ======================================================== -->
-  <section class="band band--paper band--slim" aria-labelledby="recovery-title">
-    <div class="wrap split split--wide-gutter">
-      <div class="stack head" data-reveal>
-        <h2 id="recovery-title">Recovery after entropion surgery.</h2>
-      </div>
-      <div class="stack" data-reveal>
-        <div class="prose">
-          <p class="first">Recovery varies based on the procedure and the patient’s overall health.</p>
-          <p>Temporary swelling, bruising, tightness, tenderness, or mild discomfort may occur around the eyelid. Patients receive specific instructions concerning medication, eye protection, activity limits, incision care, and follow-up visits.</p>
-          <p>Dr.&nbsp;Silk will explain what to expect based on the repair recommended for you.</p>
+  <!-- ===== RECOVERY — one feature card ===================================== -->
+  <section class="band band--tint" aria-labelledby="recovery-title">
+    <div class="wrap">
+      <div class="feature-card full" data-reveal>
+        <div class="stack head">
+          <h2 id="recovery-title">Recovery after entropion surgery.</h2>
         </div>
-        <div class="recovery-links full">
-          <p class="recovery-links__ask">Ready to discuss your recovery?</p>
-          <div class="cluster">
-            <a class="btn btn--solid" href="https://www.mypatientvisit.com/onlinescheduling/#/scheduler/schedule?practiceid=b46123f5-99ee-4f66-969c-fe650949c344">Schedule an evaluation
-              <svg class="ico ico--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="#expect"><span class="lbl-full">See what to expect from surgery</span><span class="lbl-short">What to expect</span>
-              <svg class="ico ico--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <div class="stack">
+          <div class="prose">
+            <p class="first">Recovery varies based on the procedure and the patient’s overall health.</p>
+            <p>Temporary swelling, bruising, tightness, tenderness, or mild discomfort may occur around the eyelid. Patients receive specific instructions concerning medication, eye protection, activity limits, incision care, and follow-up visits.</p>
+            <p>Dr.&nbsp;Silk will explain what to expect based on the repair recommended for you.</p>
+          </div>
+          <div class="recovery-links full">
+            <p class="recovery-links__ask">Ready to discuss your recovery?</p>
+            <div class="cluster">
+              <a class="btn btn--solid" href="https://www.mypatientvisit.com/onlinescheduling/#/scheduler/schedule?practiceid=b46123f5-99ee-4f66-969c-fe650949c344">Schedule an evaluation
+                <svg class="ico ico--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost" href="#expect"><span class="lbl-full">See what to expect from surgery</span><span class="lbl-short">What to expect</span>
+                <svg class="ico ico--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== WHY CHOOSE DR. SILK ============================================= -->
+  <!-- ===== WHY CHOOSE DR. SILK — the profile card ========================== -->
   <section class="band band--deep" aria-labelledby="silk-title">
-    <div class="wrap split split--wide-gutter">
-      <div class="stack" data-reveal>
+    <div class="wrap stack stack--loose">
+      <div class="stack head" data-reveal>
+        <h2 id="silk-title">Why choose Dr. Silk?</h2>
+      </div>
+      <div class="profile profile--two full" data-reveal>
         <img class="profile__photo" src="images/dr-silk-400.jpg"
              srcset="images/dr-silk-200.jpg 200w, images/dr-silk-400.jpg 400w" sizes="10rem"
              width="400" height="400" loading="lazy" alt="Wesam Silk, M.D.">
-        <div class="stack head">
-          <h2 id="silk-title">Why choose Dr. Silk?</h2>
+        <div class="profile__who">
+          <h3>Dr. Wesam Silk</h3>
+          <p>Board-certified ophthalmologist and fellowship-trained cornea specialist</p>
         </div>
       </div>
-      <div class="prose" data-reveal>
+      <div class="prose prose--cols full" data-reveal>
         <p class="first"><strong class="hl">Dr.&nbsp;Wesam Silk is a board-certified ophthalmologist and fellowship-trained cornea specialist.</strong></p>
         <p>His experience evaluating the cornea and ocular surface is particularly relevant for patients with entropion because treatment must address both the eyelid position and any damage or irritation affecting the eye.</p>
         <p>At Silk Vision &amp; Surgical Center, your evaluation is based on the cause of the condition, the health of your eye, and the treatment most likely to restore comfort and protect vision.</p>
@@ -440,7 +472,7 @@
         <p class="lead lead--wide">Entropion and ectropion are opposite eyelid-position problems.</p>
       </div>
       <div class="compare-wrap full" data-reveal>
-        <table class="compare">
+        <table class="compare compare--filled">
           <caption class="sr-only">Entropion compared with ectropion.</caption>
           <thead><tr>
             <th scope="col"><span class="sr-only">Compare</span></th>
