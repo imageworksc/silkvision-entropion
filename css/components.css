@@ -712,41 +712,13 @@
 /* --------------------------------------------------------------------------
    The diagram, on glass
    On the frame's solid navy the illustration read as a heavy block. It now
-   sits on a frosted card: two flat brand circles behind it, the card's
-   backdrop blur softening them into colour. The diagram's labels were
-   white, drawn into the image, so this page uses a copy recoloured to the
-   brand navy (entropion-diagram-light.webp).
+   sits on a light frosted card lifted by its shadow alone. The diagram's
+   labels were white, drawn into the image, so this page uses a copy
+   recoloured to the brand navy (entropion-diagram-light.webp).
 
    An exception to the guide's no-glass rule, made at the client's request
    and kept to this one object.
    -------------------------------------------------------------------------- */
-
-.glass-stage {
-  position: relative;
-  isolation: isolate;
-  padding: var(--s-5);
-}
-.glass-stage::before,
-.glass-stage::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  border-radius: var(--r-pill);
-}
-.glass-stage::before {
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  inline-size: 55%;
-  aspect-ratio: 1;
-  background: var(--pale-200);
-}
-.glass-stage::after {
-  inset-block-end: 0;
-  inset-inline-start: 0;
-  inline-size: 40%;
-  aspect-ratio: 1;
-  background: var(--plum-100);
-}
 
 .glass {
   border-radius: var(--r-lg);
