@@ -680,12 +680,11 @@
    The surgeon line — a thin navy strip straight under the hero, the draft's
    trust band kept quiet: small type, slim padding, name and credential on
    one line divided by a bar. Not a band (it makes no claim of its own), so
-   it carries no band padding and no heading. Deepest navy, so it reads as
-   the hero's lower edge rather than as another section.
+   it carries no band padding and no heading. The dark bands' navy.
    -------------------------------------------------------------------------- */
 
 .trust-band {
-  background: var(--ink-900);
+  background: var(--fill-deep);
   color: var(--on-dark-soft);
 }
 #main .trust {
