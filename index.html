@@ -68,15 +68,15 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=16">
-<link rel="stylesheet" href="css/tokens.css?v=16">
-<link rel="stylesheet" href="css/base.css?v=16">
-<link rel="stylesheet" href="css/components.css?v=16">
-<link rel="stylesheet" href="css/sections.css?v=16">
-<link rel="stylesheet" href="css/type.css?v=16">
-<link rel="stylesheet" href="css/motion.css?v=16">
+<link rel="stylesheet" href="css/fonts.css?v=17">
+<link rel="stylesheet" href="css/tokens.css?v=17">
+<link rel="stylesheet" href="css/base.css?v=17">
+<link rel="stylesheet" href="css/components.css?v=17">
+<link rel="stylesheet" href="css/sections.css?v=17">
+<link rel="stylesheet" href="css/type.css?v=17">
+<link rel="stylesheet" href="css/motion.css?v=17">
 
-<script src="js/main.js?v=16" defer></script>
+<script src="js/main.js?v=17" defer></script>
 </head>
 <body>
 
@@ -326,44 +326,47 @@
     </div>
   </section>
 
-  <!-- ===== WHEN SURGERY MAY BE RECOMMENDED ================================= -->
-  <section class="band band--deep" aria-labelledby="surgery-title">
-    <div class="wrap stack stack--loose">
-      <div class="split split--wide-gutter full">
-        <div class="stack" data-reveal>
-          <div class="stack head">
-            <h2 id="surgery-title">When entropion surgery may be recommended</h2>
-            <p class="lead lead--wide">Entropion surgery may be recommended when:</p>
-          </div>
-          <ul class="fit__list fit__list--single full">
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>The eyelid continues to turn inward</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Eyelashes repeatedly rub against the eye</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Lubrication does not adequately control symptoms</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>Corneal irritation or damage is present</span></li>
-            <li><svg class="ico fit__tick" aria-hidden="true"><use href="#i-check"/></svg><span>The condition interferes with daily comfort or vision</span></li>
-          </ul>
+  <!-- ===== WHEN SURGERY MAY BE RECOMMENDED — the suite beside the reasons == -->
+  <section class="band band--paper" aria-labelledby="surgery-title">
+    <div class="wrap split split--middle split--wide-gutter">
+      <figure class="frame frame--portrait surgery-frame" data-reveal>
+        <img src="images/surgical-suite.webp" width="1100" height="1297" loading="lazy"
+             alt="Silk Vision surgical suite with an operating microscope, procedure chair, and overhead surgical light.">
+      </figure>
+      <div class="stack" data-reveal>
+        <div class="stack head">
+          <h2 id="surgery-title">When entropion surgery may be recommended</h2>
+          <p class="lead lead--wide">Entropion surgery may be recommended when:</p>
         </div>
-        <div class="prose surgery-close" data-reveal>
-          <p class="first">The purpose of <strong class="hl">entropion repair</strong> is to return the eyelid to a more stable position so the lashes and eyelid margin no longer rub against the eye.</p>
+        <ul class="fit__list fit__list--single fit__list--discs full">
+          <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>The eyelid continues to turn inward</span></li>
+          <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Eyelashes repeatedly rub against the eye</span></li>
+          <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Lubrication does not adequately control symptoms</span></li>
+          <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>Corneal irritation or damage is present</span></li>
+          <li><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><span>The condition interferes with daily comfort or vision</span></li>
+        </ul>
+        <div class="prose surgery-why">
+          <p>The purpose of <strong class="hl">entropion repair</strong> is to return the eyelid to a more stable position so the lashes and eyelid margin no longer rub against the eye.</p>
           <p>Depending on the underlying cause, treatment may involve tightening, repositioning, or reinforcing the tissues that support the eyelid.</p>
-          <figure class="frame frame--wide">
-            <img src="images/surgical-suite.webp" width="1100" height="1297" loading="lazy"
-                 alt="Silk Vision surgical suite with an operating microscope, procedure chair, and overhead surgical light.">
-          </figure>
         </div>
       </div>
+    </div>
+  </section>
 
-      <aside class="glance full" aria-labelledby="glance-title" data-reveal>
-        <h3 class="kicker" id="glance-title">Entropion at a glance</h3>
-        <ul class="fit__list fit__list--rows3">
-          <li><span class="fit__dot" aria-hidden="true"></span><span>The eyelid turns inward toward the eye.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Eyelashes or eyelid tissue may rub against the cornea.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>The lower eyelid is most commonly affected.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Symptoms may include irritation, tearing, redness, pain, or blurred vision.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Lubricating drops may provide temporary relief.</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Entropion repair may be recommended to correct the eyelid position.</span></li>
-        </ul>
-      </aside>
+  <!-- ===== AT A GLANCE — six statements, numbered, on navy ================ -->
+  <section class="band band--deep band--slim" aria-labelledby="glance-title">
+    <div class="wrap stack stack--loose">
+      <div class="stack head" data-reveal>
+        <h2 id="glance-title">Entropion at a glance</h2>
+      </div>
+      <ol class="glance full stagger">
+        <li data-reveal><span class="glance__num" aria-hidden="true">01</span><p>The eyelid turns inward toward the eye.</p></li>
+        <li data-reveal><span class="glance__num" aria-hidden="true">02</span><p>Eyelashes or eyelid tissue may rub against the cornea.</p></li>
+        <li data-reveal><span class="glance__num" aria-hidden="true">03</span><p>The lower eyelid is most commonly affected.</p></li>
+        <li data-reveal><span class="glance__num" aria-hidden="true">04</span><p>Symptoms may include irritation, tearing, redness, pain, or blurred vision.</p></li>
+        <li data-reveal><span class="glance__num" aria-hidden="true">05</span><p>Lubricating drops may provide temporary relief.</p></li>
+        <li data-reveal><span class="glance__num" aria-hidden="true">06</span><p>Entropion repair may be recommended to correct the eyelid position.</p></li>
+      </ol>
     </div>
   </section>
 

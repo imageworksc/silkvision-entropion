@@ -824,20 +824,46 @@
 }
 
 /* --------------------------------------------------------------------------
-   Surgery — the room the repair happens in, under the reasoning
+   Surgery — the suite shown whole beside the reasons. The photograph is
+   portrait, so it takes the portrait frame rather than a wide crop that
+   left a wall and a light. The two paragraphs that explain the repair sit
+   under the list, closed off by a plum rule.
    -------------------------------------------------------------------------- */
 
-.surgery-close .frame { margin-block-start: var(--s-4); }
-.surgery-close .frame > img { object-position: 50% 40%; }
+.surgery-frame > img { object-position: 50% 45%; }
+.surgery-why {
+  padding-inline-start: var(--s-5);
+  border-inline-start: 3px solid var(--plum-500);
+}
 
-/* At a glance — six statements on the navy, under one label. */
+/* --------------------------------------------------------------------------
+   At a glance — six numbered statements on the navy band, three across
+   from 64rem, each under its own hairline.
+   -------------------------------------------------------------------------- */
+
 .glance {
   display: grid;
-  gap: var(--s-4);
-  padding-block-start: var(--s-7);
+  gap: var(--s-5) var(--s-7);
+  counter-reset: none;
+}
+@media (min-width: 48rem) { .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .glance { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.glance li {
+  display: grid;
+  gap: var(--s-2);
+  align-content: start;
+  padding-block-start: var(--s-4);
   border-block-start: 1px solid var(--hairline-dark);
 }
-.band--deep .glance .kicker { color: var(--sky-muted); }
+.glance__num {
+  font-family: var(--font);
+  font-size: var(--t-h3);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  color: var(--sky-muted);
+}
+#main .glance p { color: var(--on-dark-soft); }
 
 /* --------------------------------------------------------------------------
    Recovery — the question, then its two answers
