@@ -1,0 +1,832 @@
+/* ==========================================================================
+   Components — buttons, icons, nav, table, progress, and the ZipLyft set
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Icons
+   Original line drawings, 24×24, 1.8 stroke in currentColor, so every icon
+   takes the colour of whatever it sits in.
+   -------------------------------------------------------------------------- */
+
+.ico {
+  inline-size: 1.375em;
+  block-size: 1.375em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Brand marks are the exception to everything above. They arrive as filled
+   shapes from the companies that own them and are reproduced as issued, so
+   the fill goes back on and the stroke off — restyling a logo into this
+   page's 1.8 stroke would be redrawing somebody else's trademark. */
+.ico--brand { fill: currentColor; stroke: none; }
+
+/* --------------------------------------------------------------------------
+   Buttons
+   --r-md, not --r-pill. A fully rounded button is the default of every page
+   builder and every generated layout, and at 64px tall it was reading as one.
+   10px is off the pill and still soft, and it is the radius the icon wells
+   already use, so the two agree.
+
+   The pill radius is still right for a circle — the tick badge, the seal —
+   and for the nav underline's caps. It is not right for a rectangle.
+   -------------------------------------------------------------------------- */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  min-block-size: 3.5rem;
+  min-inline-size: var(--tap);
+  padding-inline: var(--s-7);
+  border: 2px solid transparent;
+  border-radius: var(--r-md);
+  font: inherit;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: .01em;
+  /* Not 1. Most buttons here are one line and min-block-size sets their
+     height anyway, but "Learn about cataract surgery" wraps in a card on a
+     phone, and at a leading of 1 the two lines touch. */
+  line-height: 1.25;
+  text-wrap: balance;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--t-fast) var(--ease),
+              background-color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+.btn--lg { min-block-size: 4rem; padding-inline: var(--s-8); font-size: var(--t-body); }
+
+.btn:hover { transform: translateY(-3px); }
+.btn:active { transform: translateY(-1px); }
+
+/* Flat: no plum glow, at rest or on hover. */
+.btn--solid {
+  background: var(--fill-action);
+  color: var(--white);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--hairline);
+  color: var(--heading);
+}
+.btn--ghost:hover { border-color: var(--blue-400); background: var(--pale-100); }
+
+.band--deep .btn--ghost,
+.hero .btn--ghost { border-color: rgb(255 255 255 / .45); color: var(--white); }
+.band--deep .btn--ghost:hover,
+.hero .btn--ghost:hover { background: rgb(255 255 255 / .12); border-color: var(--white); }
+
+/* The arrow slides on hover — the one micro-interaction every CTA shares. */
+.btn .ico--arrow { transition: transform var(--t-mid) var(--ease-spring); }
+.btn:hover .ico--arrow { transform: translateX(.3rem); }
+
+/* --------------------------------------------------------------------------
+   Feature rows — an icon, a claim, a hairline
+   -------------------------------------------------------------------------- */
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  margin-inline: calc(var(--s-4) * -1);
+  border-radius: var(--r-md);
+}
+.feature + .feature { margin-block-start: var(--s-2); }
+.feature p { font-size: var(--t-sm); color: var(--text-soft); margin-block-start: var(--s-1); }
+.feature h3 { font-size: var(--t-body); color: var(--heading); }
+
+/* --------------------------------------------------------------------------
+   Header and navigation
+   -------------------------------------------------------------------------- */
+
+.topbar {
+  background: var(--ink-900);
+  color: var(--on-dark-soft);
+  font-size: var(--t-sm);
+}
+.topbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: var(--tap);
+  color: var(--on-dark-soft);
+  font-weight: 600;
+  transition: color var(--t-fast) var(--ease);
+}
+.topbar a:hover { color: var(--cyan-300); }
+@media (max-width: 47.99rem) { .topbar { display: none; } }
+
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 100;
+  background: rgb(255 255 255 / .86);
+  backdrop-filter: blur(14px);
+  border-block-end: 1px solid var(--hairline);
+  transition: box-shadow var(--t-mid) var(--ease),
+              background-color var(--t-mid) var(--ease);
+}
+.site-header[data-stuck="true"] { box-shadow: var(--shadow-md); background: rgb(255 255 255 / .96); }
+
+.site-header > .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  padding-block: var(--s-4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+}
+.brand img { inline-size: 11.5rem; block-size: auto; transition: transform var(--t-mid) var(--ease); }
+.brand:hover img { transform: scale(1.03); }
+
+.nav { display: flex; align-items: center; gap: var(--s-5); }
+.nav a:not(.btn) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--heading);
+}
+/* The underline grows from the centre. */
+.nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  inset-block-end: .75rem;
+  inset-inline: 0;
+  block-size: 2px;
+  border-radius: var(--r-pill);
+  background: var(--fill-accent);
+  transform: scaleX(0);
+  transition: transform var(--t-mid) var(--ease);
+}
+.nav a:not(.btn):hover::after { transform: scaleX(1); }
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: var(--tap);
+  min-inline-size: var(--tap);
+  padding-inline: var(--s-4);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--heading);
+  font: inherit;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+.nav-toggle:hover { background: var(--pale-100); }
+
+/* The trigger shows which state it is in. One mark and one word at a time,
+   swapped off aria-expanded — so the attribute that already carried this for
+   a screen reader now drives the visible half too, and the two can never
+   disagree. */
+.nav-toggle .ico--close,
+.nav-toggle .nav-toggle__open { display: none; }
+.nav-toggle[aria-expanded="true"] .ico--menu,
+.nav-toggle[aria-expanded="true"] .nav-toggle__shut { display: none; }
+.nav-toggle[aria-expanded="true"] .ico--close,
+.nav-toggle[aria-expanded="true"] .nav-toggle__open { display: inline-flex; }
+
+@media (max-width: 61.99rem) {
+  .nav-toggle { display: inline-flex; }
+  .site-header { position: relative; }
+  .nav {
+    display: none;
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--s-4) var(--gutter) var(--s-6);
+    background: var(--white);
+    border-block-end: 1px solid var(--hairline);
+    box-shadow: var(--shadow-lg);
+  }
+  .nav[data-open="true"] { display: flex; animation: drop var(--t-mid) var(--ease); }
+  .nav a:not(.btn) { border-block-end: 1px solid var(--hairline); }
+  .nav a:not(.btn)::after { inset-block-end: .5rem; }
+  .nav .btn { margin-block-start: var(--s-4); }
+}
+
+/* --------------------------------------------------------------------------
+   Reading progress — a hairline that fills as the page is read
+   -------------------------------------------------------------------------- */
+
+.progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 3px;
+  z-index: 200;
+  background: var(--fill-accent);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Comparison table
+   -------------------------------------------------------------------------- */
+
+.compare-wrap {
+  /* position:relative is load-bearing. The Yes/No in each cell is .sr-only,
+     which is position:absolute; with no positioned ancestor it lays out
+     against the viewport at its static x and silently widens the page on a
+     phone. */
+  position: relative;
+}
+
+.compare {
+  inline-size: 100%;
+  border-collapse: collapse;
+  text-align: start;
+}
+.compare th, .compare td {
+  padding: var(--s-4) var(--s-5);
+  font-size: var(--t-sm);
+  font-weight: 400;
+  text-align: start;
+  vertical-align: middle;
+  border-block-end: 1px solid var(--hairline);
+}
+.compare thead th {
+  padding-block: var(--s-5);
+  color: var(--white);
+  font-weight: 700;
+  text-align: center;
+  line-height: var(--lh-head);
+}
+.compare thead th:first-child { background: var(--white); }
+.compare thead th:nth-child(2) { background: var(--fill-action); }
+.compare thead th:nth-child(3) { background: var(--ink-600); }
+
+.compare tbody th { color: var(--text); font-weight: 600; }
+.compare tbody td { text-align: center; color: var(--text-soft); }
+.compare tbody td:nth-of-type(1) { background: rgb(166 38 166 / .07); font-weight: 600; color: var(--plum-600); }
+.compare tbody td:nth-of-type(2) { background: rgb(0 73 123 / .05); }
+
+/* The hover has to be declared per cell, not on the row. The two data columns
+   paint their own tint, and a background on <tr> sits under those — so the
+   row hover was lighting the label column only and stopping dead at the first
+   tinted cell. Each column deepens its own colour instead. */
+.compare tbody th,
+.compare tbody td { transition: background-color var(--t-fast) var(--ease); }
+.compare tbody tr:hover th { background: var(--pale-100); }
+.compare tbody tr:hover td:nth-of-type(1) { background: rgb(166 38 166 / .13); }
+.compare tbody tr:hover td:nth-of-type(2) { background: rgb(0 73 123 / .1); }
+
+.tick {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 1.925rem;
+  block-size: 1.925rem;
+  border-radius: var(--r-pill);
+  background: var(--fill-action);
+  color: var(--white);
+}
+/* The second column's tick is navy, not plum. Plum is the OBS column's colour
+   and it carries the whole comparison — two plum ticks in a row would say the
+   two options are the same thing. */
+.compare td:nth-of-type(2) .tick { background: var(--ink-600); }
+
+/* ==========================================================================
+   The ZipLyft set
+   Everything below was added for this page. It reads off the same tokens as
+   everything above and introduces no colour, radius or duration of its own.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Facts — label over value, divided by hairlines. The hero's three facts,
+   generalised for the physician's credentials and the video's four claims.
+   -------------------------------------------------------------------------- */
+
+.facts {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  inline-size: 100%;
+}
+.facts > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-1) var(--s-5);
+  padding-block: var(--s-4);
+  border-block-start: 1px solid var(--hairline);
+}
+.facts > div:last-child { border-block-end: 1px solid var(--hairline); }
+.facts dt { font-size: var(--t-xs); letter-spacing: .02em; color: var(--text-soft); }
+.facts dd { margin: 0; font-size: var(--t-sm); font-weight: 600; color: var(--heading); }
+
+/* --------------------------------------------------------------------------
+   Frame — the box a photograph or a video sits in. --r-lg like a card,
+   --shadow-md like the table.
+   -------------------------------------------------------------------------- */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--ink-800);
+  box-shadow: var(--shadow-md);
+  isolation: isolate;
+}
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.frame--wide { aspect-ratio: 16 / 9; }
+.frame--photo { aspect-ratio: 4 / 3; }
+.frame--portrait { aspect-ratio: 4 / 5; }
+
+.band--deep .frame { box-shadow: none; border: 1px solid var(--hairline-dark); }
+
+/* The pause control. A looping video with no way to stop it fails WCAG
+   2.2.2 — and on a page for people about to have eye surgery, something
+   moving in the corner of the eye is not a neutral thing. */
+.vid-btn {
+  position: absolute;
+  inset-block-end: var(--s-3);
+  inset-inline-end: var(--s-3);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: var(--tap);
+  padding-inline: var(--s-4);
+  border: 1px solid rgb(255 255 255 / .4);
+  border-radius: var(--r-md);
+  background: var(--fill-scrim);
+  color: var(--white);
+  font: inherit;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.vid-btn .ico { inline-size: 1rem; block-size: 1rem; }
+.vid-btn:hover { background: var(--fill-action); border-color: var(--fill-action); }
+.vid-btn:active { opacity: .62; }
+.vid-btn .ico--play,
+.vid-btn[data-state="paused"] .ico--pause { display: none; }
+.vid-btn[data-state="paused"] .ico--play { display: block; }
+
+/* The big play button over a video that waits to be asked. It is the
+   trigger, so it says what it does in words as well as with the mark. */
+.play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--s-3);
+  inline-size: 100%;
+  border: 0;
+  background: rgb(1 34 58 / .35);
+  color: var(--white);
+  font: inherit;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--t-mid) var(--ease);
+}
+.play__disc {
+  display: grid;
+  place-items: center;
+  inline-size: 4.5rem;
+  block-size: 4.5rem;
+  border-radius: var(--r-pill);
+  background: var(--fill-action);
+  transition: transform var(--t-mid) var(--ease-spring);
+}
+.play__disc .ico { inline-size: 1.75rem; block-size: 1.75rem; fill: currentColor; translate: .1rem 0; }
+.play:hover { background: rgb(1 34 58 / .5); }
+.play:hover .play__disc { transform: scale(1.08); }
+.play:active .play__disc { transform: none; }
+.play[hidden] { display: none; }
+
+/* --------------------------------------------------------------------------
+   Before / after
+   A native range input laid over the photographs, invisible, so the
+   keyboard, the screen reader and the fingertip all get the real control
+   and nothing has to be re-implemented. Script writes one custom property;
+   the clip and the handle both read it.
+   -------------------------------------------------------------------------- */
+
+.ba {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 1200 / 630;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--ink-800);
+  box-shadow: var(--shadow-md);
+  touch-action: pan-y;
+}
+.ba img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.ba__after { clip-path: inset(0 0 0 var(--pos)); }
+
+.ba__tag {
+  position: absolute;
+  inset-block-start: var(--s-3);
+  z-index: 3;
+  padding: var(--s-1) var(--s-3);
+  border-radius: var(--r-sm);
+  background: var(--fill-scrim);
+  color: var(--white);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.ba__tag--before { inset-inline-start: var(--s-3); }
+.ba__tag--after { inset-inline-end: var(--s-3); }
+
+.ba__handle {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--pos);
+  z-index: 4;
+  inline-size: 2px;
+  translate: -1px 0;
+  background: var(--white);
+  pointer-events: none;
+}
+.ba__knob {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap);
+  block-size: var(--tap);
+  border-radius: var(--r-pill);
+  background: var(--fill-action);
+  color: var(--white);
+  box-shadow: 0 0 0 3px var(--white), var(--shadow-md);
+  transition: transform var(--t-mid) var(--ease-spring);
+}
+.ba__knob .ico { inline-size: 1.25rem; block-size: 1.25rem; }
+
+.ba__range {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+/* The input is invisible, so its focus ring would be too. The ring goes on
+   the frame instead, and the knob grows to say the control is live. */
+.ba:has(.ba__range:focus-visible) { outline: 3px solid var(--cyan-400); outline-offset: 3px; }
+.ba:hover .ba__knob,
+.ba:has(.ba__range:focus-visible) .ba__knob { transform: scale(1.1); }
+
+/* --------------------------------------------------------------------------
+   FAQ — <details name="faq">, so only one is open at a time without a line
+   of script, and every answer is in the document for search and for
+   find-in-page whether it is open or not.
+   -------------------------------------------------------------------------- */
+
+.faq { inline-size: 100%; border-block-start: 1px solid var(--hairline); }
+.faq details { border-block-end: 1px solid var(--hairline); }
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  min-block-size: var(--tap);
+  padding-block: var(--s-5);
+  font-size: var(--t-body);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--heading);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--t-fast) var(--ease);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--plum-600); }
+.faq summary:active { opacity: .62; }
+/* The chevron is the state: down while shut, up while open. */
+.faq summary .ico {
+  color: var(--plum-600);
+  transition: transform var(--t-mid) var(--ease);
+}
+.faq details[open] summary .ico { transform: rotate(180deg); }
+/* Closing: the chevron turns back as the row starts to shut (main.js). */
+.faq details.is-closing summary .ico { transform: none; }
+.faq details p {
+  padding-block-end: var(--s-5);
+  font-size: var(--t-sm);
+  color: var(--text-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Note — an aside that qualifies the copy next to it. A rule, not a box.
+   -------------------------------------------------------------------------- */
+
+.fine { font-size: var(--t-sm); color: var(--text-soft); }
+
+/* --------------------------------------------------------------------------
+   Sticky call bar — phones only, and only once the hero's own two buttons
+   have scrolled away. Two halves, the same two actions.
+   -------------------------------------------------------------------------- */
+
+.sticky-cta {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 150;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 -4px 16px rgb(1 53 89 / .18);
+  transform: translateY(100%);
+  transition: transform var(--t-mid) var(--ease);
+}
+.sticky-cta[data-shown="true"] { transform: none; }
+.sticky-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-block-size: 3.5rem;
+  padding-inline: var(--s-3);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+.sticky-cta a:active { opacity: .8; }
+.sticky-cta__book { background: var(--fill-action); }
+.sticky-cta__call { background: var(--ink-900); }
+.sticky-cta .ico { inline-size: 1.125rem; block-size: 1.125rem; }
+
+@media (max-width: 47.99rem) {
+  .sticky-cta { display: grid; }
+  body { padding-block-end: 3.5rem; }
+}
+
+/* Off screen it is also out of the tab order: visibility waits for the
+   slide to finish on the way out and is restored at once on the way in. */
+.sticky-cta { visibility: hidden; transition: transform var(--t-mid) var(--ease), visibility 0s linear var(--t-mid); }
+.sticky-cta[data-shown="true"] { visibility: visible; transition-delay: 0s; }
+
+/* --------------------------------------------------------------------------
+   Diagram — the eyelid, drawn
+   Every stroke comes from a token. Plum marks what is removed, as it marks
+   Ziplyft everywhere else on the page; the rest is the page's navy.
+   -------------------------------------------------------------------------- */
+
+.diagram {
+  display: grid;
+  gap: var(--s-5);
+  padding: var(--s-6) var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+}
+@media (min-width: 48rem) { .diagram { padding: var(--s-7); } }
+
+.diagram__art { inline-size: 100%; block-size: auto; overflow: visible; }
+/* :where() keeps this at zero specificity, so each part's own class below
+   can set its fill without a fight. */
+:where(.diagram__art) :where(path, circle) { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+.d-brow   { stroke: var(--grey-300); stroke-width: 7; }
+.d-eye    { stroke: var(--ink-700); stroke-width: 2.5; fill: var(--white); }
+.d-iris   { stroke: var(--ink-700); stroke-width: 2.5; fill: var(--pale-100); }
+.d-pupil  { stroke: var(--ink-700); stroke-width: 2.5; fill: var(--ink-700); }
+.d-lash   { stroke: var(--ink-700); stroke-width: 2; }
+.d-mark   { stroke: var(--plum-600); stroke-width: 2; stroke-dasharray: 6 5; fill: var(--plum-100); }
+.d-crease { stroke: var(--blue-500); stroke-width: 2.5; }
+
+.d-pin circle { fill: var(--plum-600); stroke: var(--white); stroke-width: 3; }
+.d-pin text {
+  fill: var(--white);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.diagram__key { display: grid; gap: var(--s-3); }
+.diagram__key li {
+  display: flex;
+  gap: var(--s-3);
+  align-items: flex-start;
+  font-size: var(--t-sm);
+  color: var(--text-soft);
+}
+.diagram__key strong { color: var(--heading); font-weight: 700; }
+.diagram__num {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  margin-block-start: .05rem;
+  border-radius: var(--r-pill);
+  background: var(--plum-600);
+  color: var(--white);
+  font-size: var(--t-xs);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   The entropion set
+   Added for this page. Reads off the shared tokens only, and introduces no
+   colour, radius or duration of its own.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   The surgeon line — opens the first band, where other pages put the facts
+   bar. Name in Poppins, the credential beside it, one hairline between.
+   -------------------------------------------------------------------------- */
+
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-1) var(--s-5);
+  max-width: none;
+}
+.trust__name {
+  font-family: var(--font);
+  font-weight: 600;
+  color: var(--heading);
+}
+.trust__desc { color: var(--text-soft); }
+@media (min-width: 34rem) {
+  .trust__desc { padding-inline-start: var(--s-5); border-inline-start: 1px solid var(--hairline); }
+}
+
+/* --------------------------------------------------------------------------
+   The diagram. It is an illustration with white labels drawn into it, so it
+   sits on the frame's own navy and is shown whole rather than cropped.
+   -------------------------------------------------------------------------- */
+
+.frame--diagram { background: var(--ink-700); }
+.frame--diagram > img { object-fit: contain; padding: var(--s-4); }
+
+/* --------------------------------------------------------------------------
+   Ruled lists — the .fit list, extended. A dot marks an item that is a fact
+   rather than a yes; the tick stays for the lists that answer "does it".
+   -------------------------------------------------------------------------- */
+
+.fit__dot {
+  flex: none;
+  inline-size: .5rem;
+  block-size: .5rem;
+  border-radius: var(--r-pill);
+  background: var(--plum-600);
+  transform: translateY(-.15em);
+}
+
+@media (min-width: 48rem) {
+  /* Six items: two columns of three, each opening on its own rule. */
+  .fit__list.fit__list--rows3 {
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--s-8);
+    border-block-start: 0;
+  }
+  .fit__list.fit__list--rows3 li:nth-child(1),
+  .fit__list.fit__list--rows3 li:nth-child(4) { border-block-start: 1px solid var(--hairline); }
+  .fit__list.fit__list--rows3 li:nth-child(5) { border-block-start: 0; }
+
+  /* One column, for a list that shares its band with a photograph. */
+  .fit__list.fit__list--single {
+    grid-template-rows: none;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    border-block-start: 1px solid var(--hairline);
+  }
+  .fit__list.fit__list--single li:nth-child(5) { border-block-start: 0; }
+}
+
+/* On navy, plum is 1.35:1 and disappears: the marks take the band's cyan. */
+.band--deep .fit__list li { color: var(--on-dark-soft); }
+.band--deep .fit__tick { color: var(--cyan-300); }
+.band--deep .fit__dot { background: var(--sky-muted); }
+
+/* --------------------------------------------------------------------------
+   Prompt care — the page's one caveat, on the plum band. A heading with its
+   mark, six signs across three columns, and the line that says why.
+   -------------------------------------------------------------------------- */
+
+.urgent { display: grid; gap: var(--s-5); }
+.urgent__head { display: flex; align-items: center; gap: var(--s-4); }
+.urgent__head h2 { font-size: var(--t-h3); }
+.urgent__list {
+  display: grid;
+  border-block-start: 1px solid var(--hairline);
+}
+.urgent__list li {
+  padding-block: var(--s-3);
+  border-block-end: 1px solid var(--hairline);
+  color: var(--white);
+}
+@media (min-width: 48rem) {
+  .urgent__list { grid-template-columns: repeat(3, 1fr); column-gap: var(--s-7); }
+}
+.urgent__foot { max-width: 72ch; }
+
+/* --------------------------------------------------------------------------
+   Note — an aside that qualifies the list above it. A rule, not a box.
+   -------------------------------------------------------------------------- */
+
+.note {
+  padding-inline-start: var(--s-5);
+  border-inline-start: 3px solid var(--plum-500);
+  color: var(--text-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Surgery — the room the repair happens in, under the reasoning
+   -------------------------------------------------------------------------- */
+
+.surgery-close .frame { margin-block-start: var(--s-4); }
+.surgery-close .frame > img { object-position: 50% 40%; }
+
+/* At a glance — six statements on the navy, under one label. */
+.glance {
+  display: grid;
+  gap: var(--s-4);
+  padding-block-start: var(--s-7);
+  border-block-start: 1px solid var(--hairline-dark);
+}
+.band--deep .glance .kicker { color: var(--sky-muted); }
+
+/* --------------------------------------------------------------------------
+   Recovery — the question, then its two answers
+   -------------------------------------------------------------------------- */
+
+.recovery-links {
+  display: grid;
+  gap: var(--s-4);
+  padding-block-start: var(--s-5);
+  border-block-start: 1px solid var(--hairline);
+}
+#main .recovery-links__ask { font-weight: 600; color: var(--heading); }
+
+/* --------------------------------------------------------------------------
+   The physician's portrait on its own, without the profile card around it.
+   -------------------------------------------------------------------------- */
+
+.band--deep .stack > .profile__photo { inline-size: 8rem; block-size: 8rem; }
+
+/* --------------------------------------------------------------------------
+   Entropion vs. ectropion — the two definitions open the table
+   -------------------------------------------------------------------------- */
+
+#main .compare__title {
+  font-family: var(--font);
+  font-weight: 600;
+  color: var(--heading);
+}
+#compare .compare tbody td:nth-of-type(1).compare__title { color: var(--plum-600); }
+#compare .compare tbody td:nth-of-type(2).compare__title { color: var(--ink-700); }
+.compare-note { max-width: none; color: var(--text-soft); }
+.compare-note a { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+/* The service area under the closing call: reference, not the call. */
+.closing__area { max-width: 74ch; }

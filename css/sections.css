@@ -1,0 +1,1013 @@
+/* ==========================================================================
+   Sections — the entropion page, on the Ziplyft starter
+   The page's own layouts. The closing band and the footer are carried over
+   unchanged from the office-based surgery page, so the two pages end the
+   same way.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero
+   The office-based surgery page's construction: the photograph as the
+   background, one flat navy scrim over all of it, the copy on top. The
+   scrim is the shared --fill-scrim (.78). Its worst case does not depend
+   on the photograph: over a pure-white pixel it leaves white type at 8.1:1
+   and the 80%-white intro at 5.9:1, the same figures as that page.
+
+   Slimmer than that page's hero: no minimum height, just the band's own
+   padding around four lines of copy and the buttons.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-block: var(--s-9);
+  /* The practice's own surgical suite, anchored on the microscope and the
+     light so the room still reads through the scrim as the band widens.
+     Local until the photo is on Cloudinary (see README, Pending). */
+  background: var(--ink-800) url('../images/surgical-suite.webp') 50% 38% / cover no-repeat;
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (min-width: 60rem) { .hero { padding-block: var(--s-10); } }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fill-scrim);
+}
+
+/* A step down from --t-h1 (32 → 62) and from 800 to 700: across the full
+   shell the 62px line read as a banner rather than a title, and 800 on top
+   of that made it the loudest thing on the page by some distance. */
+.hero h1 {
+  color: var(--white);
+  /* Two lines: capped in em so the break follows the size, and h1's
+     text-wrap: balance splits it evenly. */
+  max-width: 14em;
+  font-size: clamp(1.625rem, 2.4vw + .75rem, 2.75rem);   /* 26 → 44 */
+  font-weight: 700;
+}
+.hero .lead { color: var(--pale-200); max-width: none; }
+.hero-intro { color: var(--on-dark-soft); max-width: 62ch; }
+
+/* --------------------------------------------------------------------------
+   Facts bar — the hero's three facts and the service area, now the line
+   the first section opens on. Same markup as before (.hero-facts), moved
+   onto a light ground, so the colours re-point.
+   -------------------------------------------------------------------------- */
+
+.facts-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5) var(--s-8);
+  padding-block-end: var(--s-6);
+  border-block-end: 1px solid var(--hairline);
+}
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-6);
+  margin: 0;
+}
+.hero-facts dt { font-size: var(--t-xs); color: var(--text-soft); }
+.hero-facts dd { margin: 0; font-weight: 600; color: var(--heading); }
+@media (min-width: 34rem) {
+  .hero-facts > div + div {
+    border-inline-start: 1px solid var(--hairline);
+    padding-inline-start: var(--s-6);
+  }
+}
+#main .facts-bar__area { max-width: 52ch; color: var(--text-soft); }
+
+/* The first band after a slim hero starts closer to it. */
+.band--open { padding-block-start: var(--s-8); }
+/* Under the facts line, the two columns sit centred in what is left of the
+   band: as much air above them as the band leaves below. */
+.band--open .split { margin-block-start: calc(var(--band-y) - var(--s-7)); }
+
+/* --------------------------------------------------------------------------
+   Section heads — a heading and the paragraph under it
+   -------------------------------------------------------------------------- */
+
+.head { gap: var(--s-4); }
+.head .lead { max-width: 52ch; }
+
+/* Running copy in a column: paragraphs spaced, the first one a step up. */
+.prose { display: grid; gap: var(--s-4); }
+.prose p { color: var(--text-soft); }
+.prose strong { color: var(--heading); font-weight: 600; }
+/* The first paragraph takes the page's .lead treatment, not a size of its own. */
+.prose .first { font-size: var(--t-lead); line-height: 1.5; color: var(--text-soft); }
+
+/* --------------------------------------------------------------------------
+   How it works — the three steps under the video
+   -------------------------------------------------------------------------- */
+
+.steps3 {
+  display: grid;
+  gap: var(--s-2) var(--s-6);
+  counter-reset: st;
+  inline-size: 100%;
+  padding-block-start: var(--s-6);
+  border-block-start: 1px solid var(--hairline);
+}
+@media (min-width: 48rem) { .steps3 { grid-template-columns: repeat(3, 1fr); } }
+.steps3 .feature { counter-increment: st; }
+.steps3 .feature + .feature { margin-block-start: 0; }
+.steps3 .feature h3::before { content: counter(st) '. '; font-weight: 800; }
+
+.band--deep .feature p { color: var(--on-dark-soft); }
+/* The three marks drawn bare in white: no well behind them. */
+.steps3__ico { flex: none; inline-size: 1.75rem; block-size: 1.75rem; color: var(--white); stroke-width: 1.6; }
+
+/* --------------------------------------------------------------------------
+   Cost — the price the practice has yet to
+   approve, left as a visible gap so it cannot ship blank by accident.
+   -------------------------------------------------------------------------- */
+
+.price-slot {
+  flex: 1 1 22rem;
+  max-width: 40rem;
+  padding: var(--s-4) var(--s-5);
+  border: 2px dashed var(--grey-300);
+  border-radius: var(--r-md);
+  font-weight: 600;
+  color: var(--text-faint);
+}
+
+/* --------------------------------------------------------------------------
+   Video — the physician explains it himself
+   -------------------------------------------------------------------------- */
+
+.video-media { inline-size: 100%; max-inline-size: 26rem; }
+/* The video column is exactly the video's width and starts at the shell's
+   left edge; the copy takes the rest. As an even split the video sat at the
+   right of a half-width column, which left a gap on the left that no other
+   section has. */
+@media (min-width: 60rem) {
+  .video-split { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+   FAQ — the heading holds still while the questions scroll past it
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 60rem) {
+  .faq-split { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .faq-head { position: sticky; inset-block-start: calc(var(--s-11) + var(--s-2)); }
+}
+
+/* --------------------------------------------------------------------------
+   Closing call
+   -------------------------------------------------------------------------- */
+
+/* Both paragraphs take the page's description size (.lead), and are capped
+   so each sets in exactly two lines on a desktop screen: 72ch was the
+   narrowest that held two lines at every width measured, 74 leaves a margin
+   and stays inside the 75-character measure. Phones wrap them further, as
+   they must. */
+.closing .lead { max-width: 74ch; }
+
+/* --------------------------------------------------------------------------
+   Footer
+   One element, two bars: contact above, legal below.
+
+   The footer runs its own type scale, smaller than the page's. Body copy
+   upstairs holds a 16px floor because the reader is usually past sixty;
+   down here the content is contact details and legal, which is reference
+   material rather than reading, and at page sizes it shouted.
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  /* Darker than the dark bands, so the footer reads as the end of the page
+     rather than as one more band. */
+  background: var(--ink-900);
+  color: rgb(255 255 255 / .6);
+  font-size: .875rem;                /* 14px */
+  line-height: 1.6;
+  --heading: var(--white);
+  --hairline: rgb(255 255 255 / .1);
+}
+.site-footer a { color: rgb(255 255 255 / .72); }
+.site-footer a:hover { color: var(--white); }
+
+.footer-main {
+  display: grid;
+  gap: var(--s-7);
+  padding-block: var(--s-8) var(--s-7);
+}
+@media (min-width: 60rem) {
+  .footer-main {
+    grid-template-columns: minmax(10rem, .8fr) 3fr;
+    gap: var(--s-8);
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+.footer-brand img { inline-size: 9.5rem; block-size: auto; }
+
+.footer-offices {
+  display: grid;
+  gap: var(--s-6) var(--s-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(9.5rem, 100%), 1fr));
+}
+@media (min-width: 60rem) and (max-width: 74.99rem) {
+  .footer-offices { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 75rem) {
+  .footer-offices { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* A tracked label, not a heading with a rule under it. The border under
+   every column was four horizontal lines fighting the four addresses. */
+.office h3 {
+  font-size: .6875rem;               /* 11px */
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / .42);
+  margin-block-end: var(--s-2);
+}
+.office p { font-size: .875rem; color: rgb(255 255 255 / .78); }
+
+.office a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);        /* a standalone target, not a word in a sentence */
+  font-size: .8125rem;               /* 13px */
+  color: rgb(255 255 255 / .55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.office a:not(.btn):hover { color: var(--white); }
+
+/* Now the last line of the opening-hours block rather than a thing under the
+   logo: when you can reach them is the question the number answers.
+
+   Written as .office a.footer-phone, and placed after the rule it has to
+   beat. `.office a:not(.btn)` is (0,2,1); a lone class is (0,2,0) and loses,
+   which handed the number the office links' 13px, 55% white and underline.
+   It is the one thing in this footer somebody might need in a hurry, so it
+   keeps its own treatment. */
+.office a.footer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-block-size: var(--tap);
+  margin-block-start: var(--s-1);
+  font-size: .9375rem;               /* 15px */
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+}
+.footer-phone .ico { inline-size: 1rem; block-size: 1rem; color: rgb(255 255 255 / .45); }
+
+/* The legal bar, centred. It is the one block on the page with no reading
+   order to protect — a disclaimer, a copyright line and two links — so
+   ranging it left only made it look like the start of a column that never
+   arrived.
+
+   max-width:none is still the point of the disclaimer: p carries the 62ch
+   measure by default, which left it stopping halfway across. It stops at the
+   shell's gutters like everything else. */
+.footer-legal {
+  border-block-start: 1px solid var(--hairline);
+  padding-block: var(--s-5) var(--s-6);
+  text-align: center;
+}
+/* The bar stays full width — border, padding and centring are unchanged —
+   but the text inside it stops at 75ch. It was setting 97 characters to the
+   line, which is past the point where the eye reliably finds the start of
+   the next one. Full width was the ask; 97ch was a side effect of it. */
+.footer-disclaimer {
+  max-width: 75ch;
+  margin-inline: auto;
+  font-size: .75rem;                 /* 12px */
+  line-height: 1.65;
+  color: rgb(255 255 255 / .38);
+  text-wrap: pretty;
+}
+/* justify-content, not just text-align: these are flex items, and text-align
+   on the parent does not place them. */
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0 var(--s-5);
+  margin-block-start: var(--s-2);
+}
+.footer-meta p {
+  max-width: none;
+  font-size: .75rem;
+  color: rgb(255 255 255 / .38);
+}
+.footer-meta a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  font-size: .75rem;
+  color: rgb(255 255 255 / .5);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* On the navy bands the lead and the running copy both step up a tone.
+   --text-soft re-points to 62% white there, which is right for a label and
+   too faint for a paragraph somebody past sixty has to read. */
+.band--deep .lead { color: var(--pale-200); }
+.band--deep .prose p { color: var(--on-dark-soft); }
+.band--deep .prose .first { color: var(--white); }
+.band--deep p { color: var(--on-dark-soft); }
+
+/* ==========================================================================
+   The horizontal sections
+   Seven sections that used to sit in two columns — copy on one side, a list
+   or a panel on the other — now read across the page instead: the heading
+   and its description on top, and under them one horizontal object built
+   from the section's own content. None of them is decoration: each row is
+   the thing the section is about, laid out in the order it happens or the
+   order it matters.
+   ========================================================================== */
+
+.measure { max-width: var(--measure); }
+
+/* A small tracked label over a row — the table's group label, reused. */
+.kicker {
+  display: block;
+  font-family: var(--font);
+  font-size: var(--t-xs);
+  font-weight: 800;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--plum-600);
+}
+.band--deep .kicker { color: var(--cyan-300); }
+
+/* --------------------------------------------------------------------------
+   Benefits — what it does / what it leaves out
+   --------------------------------------------------------------------------
+   One white frame, two columns, the comparison table's header colours.
+   Both columns stretch to the frame's height (grid does that), and the
+   shorter list's rows grow to share it (1fr rows), so the two columns
+   close on the same line however many items each has.
+   -------------------------------------------------------------------------- */
+
+.band--tint { background: var(--pale-100); }
+
+.yesno {
+  display: grid;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+@media (min-width: 48rem) { .yesno { grid-template-columns: 1fr 1fr; } }
+
+.yesno__col { display: flex; flex-direction: column; }
+.yesno__col + .yesno__col { border-block-start: 1px solid var(--hairline); }
+@media (min-width: 48rem) {
+  .yesno__col + .yesno__col { border-block-start: 0; border-inline-start: 1px solid var(--hairline); }
+}
+
+.yesno h3 {
+  padding: var(--s-4) var(--s-5);
+  font-size: var(--t-body);
+  color: var(--white);
+}
+.yesno__col--yes h3 { background: var(--fill-action); }
+.yesno__col--no h3 { background: var(--ink-600); }
+
+.yesno ul {
+  flex: 1;
+  display: grid;
+  grid-auto-rows: 1fr;
+}
+.yesno li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-3) var(--s-5);
+  color: var(--text);
+}
+.yesno li + li { border-block-start: 1px solid var(--hairline); }
+.yesno__col--yes li { background: rgb(166 38 166 / .04); }
+.yesno .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
+.yesno .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
+/* No: a cross in a plain ring, in the navy of its column. */
+.yesno .tick--no {
+  background: var(--white);
+  color: var(--ink-600);
+  box-shadow: inset 0 0 0 1.5px var(--ink-600);
+}
+/* Phones: the columns stack, so there is nothing to match heights with.
+   Rows take their own height, a little tighter, with smaller marks. */
+@media (max-width: 47.99rem) {
+  .yesno ul { grid-auto-rows: auto; }
+  .yesno li { gap: var(--s-3); padding: var(--s-3) var(--s-4); align-items: flex-start; line-height: 1.45; }
+  .yesno h3 { padding: var(--s-3) var(--s-4); }
+  .yesno .tick { inline-size: 1.375rem; block-size: 1.375rem; margin-block-start: .1rem; }
+  .yesno .tick .ico { inline-size: .875rem; block-size: .875rem; }
+}
+
+/* --------------------------------------------------------------------------
+   Physician — a profile card
+   --------------------------------------------------------------------------
+   The card is the dark band's card: 5% white, the band's hairline. The
+   portrait sits in a white ring. From 64rem the card is one row —
+   portrait, who he is, his two figures — divided by hairlines.
+   -------------------------------------------------------------------------- */
+
+.profile {
+  display: grid;
+  gap: var(--s-5);
+  justify-items: start;
+  padding: var(--s-6) var(--s-5);
+  border-radius: var(--r-lg);
+  background: rgb(255 255 255 / .05);
+  border: 1px solid var(--hairline-dark);
+}
+.profile__photo {
+  inline-size: 8rem;
+  block-size: 8rem;
+  border-radius: var(--r-pill);
+  object-fit: cover;
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 9px rgb(255 255 255 / .12);
+}
+.profile__who { display: grid; gap: var(--s-2); }
+.profile__who h3 { font-size: var(--t-h3); color: var(--white); }
+.profile__who p { color: var(--on-dark-soft); }
+/* The same fade on the navy band: the band's cyan label at 60%. */
+.profile__who .kicker { color: rgb(108 197 240 / .6); font-weight: 600; }
+
+.profile__stats { display: flex; flex-wrap: wrap; gap: var(--s-5) var(--s-7); margin: 0; }
+.profile__stats > div { display: grid; gap: var(--s-1); }
+.profile__stats dd {
+  order: -1;
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--t-h3);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--white);
+}
+.profile__stats dt {
+  font-size: var(--t-copy);
+  line-height: var(--lh-copy);
+  color: var(--on-dark-soft);
+}
+
+@media (min-width: 48rem) {
+  .profile { grid-template-columns: auto 1fr; align-items: center; column-gap: var(--s-6); padding: var(--s-6) var(--s-7); }
+  .profile__photo { inline-size: 9.5rem; block-size: 9.5rem; min-inline-size: 9.5rem; }
+  .profile__stats { grid-column: 1 / -1; justify-self: stretch; flex-wrap: nowrap; gap: 0; padding-block-start: var(--s-5); border-block-start: 1px solid var(--hairline-dark); }
+  .profile__stats dt { white-space: nowrap; }
+  .profile__stats > div + div { margin-inline-start: var(--s-6); padding-inline-start: var(--s-6); border-inline-start: 1px solid var(--hairline-dark); }
+}
+@media (min-width: 80rem) {
+  .profile { grid-template-columns: auto 1fr auto; }
+  .profile__stats { grid-column: auto; padding-block-start: 0; border-block-start: 0; padding-inline-start: var(--s-6); border-inline-start: 1px solid var(--hairline-dark); }
+}
+
+/* --------------------------------------------------------------------------
+   Candidacy — the caution as a banner across the band
+   -------------------------------------------------------------------------- */
+
+.banner {
+  display: grid;
+  gap: var(--s-5);
+  justify-items: start;
+  padding: var(--s-6) var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-sm);
+}
+.banner__text { gap: var(--s-3); }
+.banner__text h3 { font-size: var(--t-h3); }
+.banner__text p { max-width: 72ch; color: var(--text-soft); }
+@media (min-width: 64rem) {
+  .banner {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: var(--s-7);
+    padding: var(--s-7);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Longevity — three statements across one rule
+   -------------------------------------------------------------------------- */
+
+/* The page's light blue with most of its saturation taken out — the
+   accent on the navy bands (≈ 7:1 on the navy), shared with the steps. */
+:root { --sky-muted: #93b6cf; }
+.band--deep .over-time .kicker { color: var(--sky-muted); }
+
+.over-time { display: grid; gap: var(--s-5); }
+.over-time li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+.over-time li > div { display: grid; gap: var(--s-1); }
+/* A step down from the section's h3: three short statements in a row,
+   not three headlines. */
+.over-time h3 { font-size: var(--t-body); font-weight: 500; line-height: 1.35; }
+@media (min-width: 48rem) {
+  .over-time { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .over-time li { padding-inline: var(--s-6); }
+  .over-time li:first-child { padding-inline-start: 0; }
+  .over-time li + li { border-inline-start: 1px solid var(--hairline); }
+}
+
+.closing .cluster { justify-content: center; }
+
+/* --------------------------------------------------------------------------
+   Comparison — the table, simplified
+   --------------------------------------------------------------------------
+   The table's frame, its filled header bars, the tinted columns and the
+   ticks in discs all came off. What tells the two options apart now is one
+   rule under each name, in its colour, and the colour of the words.
+   -------------------------------------------------------------------------- */
+
+#compare .compare thead th { background: transparent; padding-block: var(--s-3) var(--s-4); }
+#compare .compare thead th:nth-child(2) { color: var(--plum-600); border-block-end: 2px solid var(--plum-600); }
+#compare .compare thead th:nth-child(3) { color: var(--ink-700); border-block-end: 2px solid var(--ink-700); }
+#compare .compare thead th:first-child { border-block-end: 2px solid transparent; }
+#compare .compare tbody th,
+#compare .compare tbody td,
+#compare .compare tbody tr:hover th,
+#compare .compare tbody tr:hover td { background: transparent; }
+#compare .compare tbody th { padding-inline-start: 0; color: var(--heading); }
+
+#compare .tick { inline-size: auto; block-size: auto; background: transparent; color: var(--plum-600); }
+#compare .compare td:nth-of-type(2) .tick { background: transparent; color: var(--ink-700); }
+#compare .tick .ico { inline-size: 1.375rem; block-size: 1.375rem; stroke-width: 2.4; }
+/* Phones: three columns squeezed to fit broke words in half. Each
+   row stacks instead: its name across the top, the two answers side by
+   side under the two names they belong to. */
+@media (max-width: 47.99rem) {
+  #compare .compare, #compare .compare thead, #compare .compare tbody { display: block; }
+  #compare .compare tr { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s-5); }
+  #compare .compare thead th:first-child { display: none; }
+  #compare .compare th, #compare .compare td { padding-inline: 0; text-align: start; }
+  #compare .compare tbody th[scope="row"] { grid-column: 1 / -1; padding-block: var(--s-4) var(--s-1); border-block-end: 0; }
+  #compare .compare tbody td { padding-block: 0 var(--s-4); }
+  #compare .tick { justify-content: start; }
+}
+
+/* --------------------------------------------------------------------------
+   Which lift — two paths and the answer
+   --------------------------------------------------------------------------
+   Kept to type and hairlines: no icons, no frames. One rule over both
+   paths, a rule between them, and a rule over the answer beneath.
+   -------------------------------------------------------------------------- */
+
+.fork { display: grid; gap: var(--s-5); border-block-start: 1px solid var(--hairline); padding-block-start: var(--s-5); }
+.fork__path { display: grid; align-content: start; gap: var(--s-2); }
+.fork__path h3 { font-size: var(--t-body); line-height: 1.35; }
+.fork__path p { max-width: 46ch; }
+.fork__path--alt { padding-block-start: var(--s-5); border-block-start: 1px solid var(--hairline); }
+
+.fork__verdict {
+  display: grid;
+  justify-items: start;
+  gap: var(--s-4);
+  padding-block-start: var(--s-5);
+  border-block-start: 1px solid var(--hairline);
+}
+.fork__say { display: grid; gap: var(--s-1); }
+.fork__say h3 { font-size: var(--t-body); line-height: 1.35; color: var(--plum-600); }
+.fork__say p { max-width: 60ch; }
+
+@media (min-width: 48rem) {
+  .fork { grid-template-columns: 1fr 1fr; gap: 0; }
+  .fork__path { padding-inline-end: var(--s-7); }
+  .fork__path--alt { padding: 0 0 0 var(--s-7); border-block-start: 0; border-inline-start: 1px solid var(--hairline); }
+}
+
+/* --------------------------------------------------------------------------
+   Candidacy — seven reasons on hairlines
+   --------------------------------------------------------------------------
+   Was a white panel holding tick badges: a box inside the band, a circle
+   inside the box. Now the band is the only ground. The plum lead-in opens
+   the list, and each reason is one ruled line with
+   the tick drawn bare beside it.
+   -------------------------------------------------------------------------- */
+
+.fit { display: grid; gap: var(--s-5); }
+.fit__lead { color: var(--plum-600); }
+.fit__list { display: grid; margin: 0; padding: 0; list-style: none; border-block-start: 1px solid var(--hairline); }
+.fit__list li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-block: var(--s-4);
+  border-block-end: 1px solid var(--hairline);
+  color: var(--text-soft);   /* the lead paragraph's colour */
+}
+.fit__tick {
+  flex: none;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  color: var(--plum-600);
+  stroke-width: 2.2;
+  transform: translateY(.2em);
+}
+@media (min-width: 48rem) {
+  .fit__list {
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--s-8);
+    border-block-start: 0;
+  }
+  /* Each column opens on its own rule. */
+  .fit__list li:nth-child(1), .fit__list li:nth-child(5) { border-block-start: 1px solid var(--hairline); }
+}
+
+/* --------------------------------------------------------------------------
+   Bare icons — the set drawn on its own, no well, no ring, no fill. In the
+   redesigned sections an icon labels the line beside it; a box around it
+   only made each one a small button that did nothing.
+   -------------------------------------------------------------------------- */
+
+.bare {
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  flex: none;
+  color: var(--plum-600);
+  stroke-width: 1.6;
+}
+.bare--lg { inline-size: 3rem; block-size: 3rem; stroke-width: 1.4; }
+.band--deep .bare { color: var(--cyan-300); }
+
+/* ==========================================================================
+   Highlight — the marker stroke from the entropion page
+   ==========================================================================
+   One phrase per paragraph, the claim the paragraph exists to make, set a
+   weight up over a lilac stroke across the lower half of the letters.
+
+   The entropion page draws the stroke with linear-gradient(transparent 60%,
+   lilac 60%). Here the fill is one colour at both ends — linear-gradient(c, c)
+   is only the syntax CSS requires for a sized block of colour; it paints a
+   flat bar with no ramp, which is what decision 14 rules out. The bar is
+   sized to the lower 45% of the line box and anchored at the bottom, and
+   box-decoration-break repeats it on every line the phrase wraps to.
+
+   The text is the brand navy, not the heading blue. Blue words with a line
+   under them read as a link, and somebody would click them.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --hl-mark: rgb(220 180 220 / .62);       /* the entropion page's lilac */
+  --hl-mark-dark: rgb(200 140 200 / .5);  /* its value on a dark band */
+}
+
+strong.hl {
+  font-weight: 600;
+  color: var(--ink-700);
+  padding-inline: .08em;
+  background: linear-gradient(var(--hl-mark), var(--hl-mark)) 0 88% / 100% .5em no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+:is(.band--deep, .hero, .band--plum) strong.hl {
+  color: var(--white);
+  background-image: linear-gradient(var(--hl-mark-dark), var(--hl-mark-dark));
+}
+
+/* ==========================================================================
+   Plum band — the entropion page's trust-band colour, for slim bands
+   ==========================================================================
+   --plum-700 is #5C005C, the same value as that page's --purple-dark. A
+   dark ground, so it takes the same contract as .band--deep: the semantic
+   tokens re-point once and every child follows. Measured against it: white
+   15.6:1, 80% white 10.8:1, the 62% labels 5.2:1.
+   -------------------------------------------------------------------------- */
+
+.band--plum {
+  background: var(--plum-700);
+  color: var(--on-dark-soft);
+  --text: var(--on-dark-soft);
+  --text-soft: var(--on-dark-soft);
+  --text-faint: var(--on-dark-faint);
+  --heading: var(--white);
+  --hairline: var(--hairline-dark);
+}
+.band--plum :is(h1, h2, h3, h4) { color: var(--white); }
+.band--plum .lead { color: var(--plum-100); }
+.band--plum .kicker { color: var(--plum-100); }
+.band--plum .bare { color: var(--plum-100); }
+.band--plum :where(a, button, [tabindex]):focus-visible { outline-color: var(--white); }
+
+/* The solid button would be plum on plum. Inverted: white, plum label. */
+.btn--invert { background: var(--white); color: var(--plum-700); }
+.btn--invert:hover { background: var(--plum-100); }
+
+/* The caveat, on the band itself rather than on a white panel inside it. */
+.band--plum .banner {
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.band--plum .banner__text p { color: var(--on-dark-soft); }
+
+/* Longevity on plum: the row's hairlines take the band's light rule. */
+.band--plum .over-time li + li { border-inline-start-color: var(--hairline-dark); }
+
+/* --------------------------------------------------------------------------
+   The procedure — a step bar on the navy band
+   --------------------------------------------------------------------------
+   Five tabs on one rule, then one panel. The lit tab's rule turns a muted
+   light blue, well over the 3:1 a graphic needs on the navy, where plum
+   would be 1.35:1 and disappear. Titles are Inter at the copy size; the
+   step numbers are the table's tracked label.
+   -------------------------------------------------------------------------- */
+
+.stepper { display: grid; gap: var(--s-6); }
+
+.stepper__tabs {
+  display: grid;
+  border-block-start: 1px solid var(--hairline-dark);
+}
+@media (min-width: 48rem) {
+  .stepper__tabs { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+/* Desktop: each title on one line, and the five spaced by their own
+   width — equal gaps between them rather than equal columns, which left
+   "Compress, remove & seal" 16px from step 4. */
+@media (min-width: 80rem) {
+  .stepper__tabs { display: flex; justify-content: space-between; gap: var(--s-6); }
+  .stepper__tab { padding-inline-end: 0; }
+  .stepper__tab::before { inset-inline-end: 0; }
+}
+
+.stepper__tab {
+  position: relative;
+  display: grid;
+  gap: var(--s-1);
+  align-content: start;
+  min-block-size: var(--tap);
+  padding: var(--s-4) var(--s-4) var(--s-4) 0;
+  border: 0;
+  background: none;
+  color: var(--on-dark-faint);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: color var(--t-fast) var(--ease);
+}
+/* The rule segment over each tab; the lit one fills with cyan. */
+.stepper__tab::before {
+  content: '';
+  position: absolute;
+  inset-block-start: -1px;
+  inset-inline: 0 var(--s-3);
+  block-size: 3px;
+  border-radius: var(--r-pill);
+  background: transparent;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-mid) var(--ease), background-color var(--t-fast) var(--ease);
+}
+/* A greyed, quieter cyan for the numbers and the lit rule: the page's
+   light blue with most of its saturation taken out (≈ 7:1 on the navy). */
+.stepper { --step-accent: var(--sky-muted); }
+.stepper__num {
+  font-family: var(--font);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-wide);
+  color: var(--step-accent);
+}
+/* Inter at medium weight, one line each on a desktop row of five. */
+.stepper__title {
+  font-family: var(--font-body);
+  font-size: var(--t-copy);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: var(--ls-copy);
+}
+@media (min-width: 80rem) { .stepper__title { white-space: nowrap; } }
+.stepper__tab:hover { color: var(--on-dark-soft); }
+.stepper__tab[aria-selected="true"] { color: var(--white); }
+.stepper__tab[aria-selected="true"]::before { background: var(--step-accent); transform: none; }
+.stepper__tab:active { opacity: .62; }
+
+.stepper__panel {
+  display: flex;
+  align-items: center;
+  min-block-size: 4.5rem;   /* two lines; the band does not jump between steps */
+}
+.stepper__panel p { max-width: 70ch; color: var(--on-dark-soft); }
+/* Script marks the inactive panels hidden; without it every panel shows. */
+.stepper__panel[hidden] { display: none; }
+[data-anim="on"] .stepper__panel:not([hidden]) { animation: rise var(--t-mid) var(--ease); }
+
+/* On a phone the tabs stack; each is still a tab, the panel follows. */
+@media (max-width: 47.99rem) {
+  .stepper__tab { padding-inline-start: var(--s-4); border-block-end: 1px solid var(--hairline-dark); }
+  .stepper__tab::before { inset: 0 auto 0 0; inline-size: 3px; block-size: auto; transform: scaleY(0); transform-origin: top; }
+  .stepper__tab[aria-selected="true"]::before { transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Recovery — four stages across one rule
+   --------------------------------------------------------------------------
+   Below 64rem: a numbered list down the page. From 64rem: five columns, the
+   numbers sitting on one horizontal hairline that runs behind them, the
+   title and the line under each. No photograph, no cards.
+   -------------------------------------------------------------------------- */
+
+.stages { display: grid; gap: var(--s-5); counter-reset: none; }
+.stages li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  column-gap: var(--s-4);
+  align-items: start;
+  align-content: start;
+}
+.stages li > div { display: grid; gap: var(--s-1); align-content: start; }
+.stages__num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: var(--r-pill);
+  box-shadow: inset 0 0 0 1.5px var(--hairline);
+  background: var(--white);
+  font-family: var(--font);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--heading);
+  transition: background-color var(--t-mid) var(--ease), color var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
+}
+/* Stage titles set like the comparison's group titles ("Closing the
+   eyelid"): the small tracked capitals, the brand blue at 60%. */
+.stages h3 {
+  font-size: var(--t-xs);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: rgb(0 88 148 / .6);
+  margin-block-start: .7rem;
+}
+.stages p { color: var(--text-soft); }
+
+/* The stage being read: the first until the pointer or keyboard arrives. */
+.stages:not(:hover):not(:focus-within) li:first-child .stages__num,
+.stages li:is(:hover, :focus) .stages__num {
+  background: var(--plum-600);
+  box-shadow: none;
+  color: var(--white);
+}
+.stages li:focus { outline: none; }
+.stages li:focus-visible { outline: 3px solid var(--cyan-400); outline-offset: 6px; border-radius: var(--r-sm); }
+
+@media (min-width: 64rem) {
+  .stages { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-6); }
+  .stages li { grid-template-columns: none; row-gap: var(--s-3); }
+  .stages h3 { margin-block-start: 0; }
+  /* The rule the numbers sit on: from each number's centre to the next. */
+  .stages li + li::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 1.25rem;
+    /* From the previous number's right edge to this one's left edge. */
+    inset-inline-start: calc(2.5rem - 100% - var(--s-6));
+    inline-size: calc(100% + var(--s-6) - 2.5rem);
+    block-size: 1px;
+    background: var(--hairline);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Cost — an answer sheet
+   -------------------------------------------------------------------------- */
+
+.price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4) var(--s-6);
+}
+
+/* --------------------------------------------------------------------------
+   Section titles — two lines when long
+   --------------------------------------------------------------------------
+   From 48rem a section title is held to 60% of the content width. One that
+   is longer than that breaks — and text-wrap: balance splits it into two
+   even lines rather than a long line and a stub. Short titles are
+   untouched. Titles set in a column of their own already sit inside it.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  #main h2 {
+    max-inline-size: calc((min(100vw, var(--shell)) - var(--gutter) * 2) * .6);
+    text-wrap: balance;
+  }
+}
+
+/* Phones: the four facts all stack, label over value. Side by side, the
+   two longer pairs wrapped and the two shorter did not, so the list
+   changed shape halfway down. */
+@media (max-width: 47.99rem) {
+  .facts > div { flex-direction: column; align-items: start; gap: var(--s-1); padding-block: var(--s-3); }
+}
+
+/* --------------------------------------------------------------------------
+   Before & after — four cases, one at a time
+   -------------------------------------------------------------------------- */
+
+.carousel { display: grid; gap: var(--s-5); }
+/* Without script every slide shows, stacked. With it, the four share one
+   grid cell and crossfade: nothing leaves the layout, so nothing jumps. */
+.carousel__track { display: grid; gap: var(--s-4); }
+.carousel[data-ready] .carousel__track { gap: 0; }
+.carousel[data-ready] .carousel__slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(.985);
+  transition: opacity .6s var(--ease-soft), transform .6s var(--ease-soft), visibility 0s linear .6s;
+}
+.carousel[data-ready] .carousel__slide.is-current {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .6s var(--ease-soft), transform .6s var(--ease-soft), visibility 0s;
+}
+
+.carousel__nav { display: flex; align-items: center; justify-content: center; gap: var(--s-1); }
+/* Each dot is a 44px target holding a small mark; the current one widens. */
+.carousel__dot {
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.carousel__dot::before {
+  content: '';
+  inline-size: .5rem;
+  block-size: .5rem;
+  border-radius: var(--r-pill);
+  background: rgb(1 53 89 / .2);
+  transition: inline-size var(--t-mid) var(--ease), background-color var(--t-mid) var(--ease);
+}
+.carousel__dot:hover::before { background: rgb(106 0 106 / .4); }
+.carousel__dot[aria-current="true"]::before { inline-size: 1.5rem; background: var(--plum-600); }
+.carousel:not([data-ready]) .carousel__nav { display: none; }
+
+/* --------------------------------------------------------------------------
+   Phones — full-width buttons keep their label on one line
+   --------------------------------------------------------------------------
+   At the desktop's 48px a side, "Schedule a consultation" and "Compare your
+   options with Dr. Silk" broke in two inside a 350px button, and the broken
+   label took the whole width and shoved the arrow against the edge. */
+
+/* One line, always: less padding, no wrapping, and the four labels that
+   cannot fit a 320px phone at 16px swap to a shorter wording. */
+.lbl-short { display: none; }
+@media (max-width: 47.99rem) {
+  .btn { padding-inline: var(--s-4); gap: var(--s-2); white-space: nowrap; letter-spacing: 0; }
+  .lbl-full { display: none; }
+  .lbl-short { display: inline; }
+  .sticky-cta { grid-template-columns: 3fr 2fr; }
+  .sticky-cta a { white-space: nowrap; }
+}
+
+/* ==========================================================================
+   Large screens — the page grows with the screen past 1920
+   ==========================================================================
+   Every measure on the page is in rem, so letting the root size follow the
+   viewport past 120rem scales the whole layout as one: a 4K or 5K screen at
+   1x sees the 1920 page, larger and sharper, instead of a 1248px column
+   floating in a field of white. max() keeps a reader's own larger default. */
+
+@media (min-width: 120rem) {
+  html { font-size: max(100%, 100vw / 120); }
+}
+
