@@ -678,15 +678,14 @@
 
 /* --------------------------------------------------------------------------
    The surgeon line — opens the first band, where other pages put the facts
-   bar. Name in Poppins, the credential beside it, one hairline between.
+   bar. Name in Poppins, the credential under it: side by side the line ran
+   past 60% of the layout.
    -------------------------------------------------------------------------- */
 
 .trust {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--s-1) var(--s-5);
-  max-width: none;
+  flex-direction: column;
+  gap: var(--s-1);
 }
 .trust__name {
   font-family: var(--font);
@@ -694,9 +693,6 @@
   color: var(--heading);
 }
 .trust__desc { color: var(--text-soft); }
-@media (min-width: 34rem) {
-  .trust__desc { padding-inline-start: var(--s-5); border-inline-start: 1px solid var(--hairline); }
-}
 
 /* --------------------------------------------------------------------------
    The diagram. It is an illustration with white labels drawn into it, so it

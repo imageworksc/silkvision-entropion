@@ -1011,3 +1011,21 @@ strong.hl {
   html { font-size: max(100%, 100vw / 120); }
 }
 
+
+/* --------------------------------------------------------------------------
+   Text width — no line of reading text wider than 60% of the layout
+   --------------------------------------------------------------------------
+   The same cap the section titles take above, applied to every text block
+   in #main from one place: paragraphs, the one-sentence leads that were
+   set to max-width:none, the hero's intro, the closing lines and the
+   caveat's list. The 62ch measure still wins where it is the narrower.
+   Short .lead paragraphs keep their own tighter 34ch/52ch caps.
+   -------------------------------------------------------------------------- */
+
+:root { --text-max: calc((min(100vw, var(--shell)) - var(--gutter) * 2) * .6); }
+
+@media (min-width: 48rem) {
+  #main :is(p:not(.lead), .lead--wide, .hero .lead, .closing .lead, .banner__list) {
+    max-width: min(var(--measure), var(--text-max));
+  }
+}
