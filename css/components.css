@@ -766,23 +766,37 @@
    items divided by thin rules rather than a second list on its own.
    -------------------------------------------------------------------------- */
 
-/* The rule sits before each item and the list is pulled back by one
-   item's gutter with that strip clipped, so the rule that would open
-   each new line falls outside it — no stray rule at either end of a line. */
+/* Even rows, each sign on one line, a hairline between the columns: two
+   columns from 48rem, three from 80rem (two rows of three); on phones a
+   plain column. Short labels, not reading text, so the list may run wider
+   than a paragraph would. */
 .banner__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2) 0;
-  margin-inline-start: calc(-1 * (var(--s-4) + 1px));
-  clip-path: inset(0 0 0 calc(var(--s-4) + 1px));
+  display: grid;
+  gap: var(--s-2) var(--s-5);
 }
 #main .banner__list li {
-  padding-inline-start: var(--s-4);
-  margin-inline-end: var(--s-4);
-  border-inline-start: 1px solid var(--hairline-dark);
   color: var(--white);
   font-weight: 600;
+  white-space: nowrap;
 }
+@media (min-width: 48rem) and (max-width: 79.99rem) {
+  .banner__list { grid-template-columns: repeat(2, max-content); }
+  #main .banner__list li:nth-child(2n) {
+    padding-inline-start: var(--s-5);
+    border-inline-start: 1px solid var(--hairline-dark);
+  }
+}
+@media (min-width: 80rem) {
+  .banner__list { grid-template-columns: repeat(3, max-content); }
+  #main .banner__list li:not(:nth-child(3n + 1)) {
+    padding-inline-start: var(--s-5);
+    border-inline-start: 1px solid var(--hairline-dark);
+  }
+}
+/* The banner's middle column may shrink; the button keeps its number on
+   one line. */
+@media (min-width: 64rem) { .band--plum .banner { grid-template-columns: auto minmax(0, 1fr) auto; } }
+.band--plum .banner .btn { white-space: nowrap; }
 
 /* --------------------------------------------------------------------------
    Note — an aside that qualifies the list above it. A rule, not a box.
