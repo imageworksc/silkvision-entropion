@@ -710,26 +710,14 @@
 #main .trust__desc { color: var(--on-dark-soft); font-weight: 400; }
 
 /* --------------------------------------------------------------------------
-   The diagram, on glass
-   On the frame's solid navy the illustration read as a heavy block. It now
-   sits on a light frosted card lifted by its shadow alone. The diagram's
-   labels were white, drawn into the image, so this page uses a copy
-   recoloured to the brand navy (entropion-diagram-light.webp).
-
-   An exception to the guide's no-glass rule, made at the client's request
-   and kept to this one object.
+   The diagram, on the page itself
+   On the frame's solid navy the illustration read as a heavy block, so it
+   now stands on the white band with no frame at all. Its labels were white,
+   drawn into the image, so this page uses a copy recoloured to the brand
+   navy and set a little heavier (entropion-diagram-light.webp).
    -------------------------------------------------------------------------- */
 
-.glass {
-  border-radius: var(--r-lg);
-  padding: var(--s-4);
-  background: rgb(255 255 255 / .55);
-  border: 1px solid rgb(255 255 255 / .8);
-  box-shadow: var(--shadow-md);
-  -webkit-backdrop-filter: blur(24px) saturate(1.2);
-  backdrop-filter: blur(24px) saturate(1.2);
-}
-.glass img { inline-size: 100%; block-size: auto; }
+.diagram-plain img { inline-size: 100%; block-size: auto; }
 
 /* --------------------------------------------------------------------------
    Ruled lists — the .fit list, extended. A dot marks an item that is a fact
