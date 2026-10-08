@@ -32,6 +32,7 @@ Page-specific components live at the end of `css/components.css`
 ## Pending from the practice
 
 - [ ] URL of the ectropion page (link in the comparison note is `#`).
-- [ ] Upload the four photos to Cloudinary (`dsjbq35es`) and swap the local
-      `images/*.webp` paths, including the hero and `og:image`.
+- [ ] Upload the four section photos to Cloudinary (`dsjbq35es`) and swap the
+      local `images/*.webp` paths, including `og:image`. The hero already
+      comes from Cloudinary (the eye close-up shared with the Ziplyft page).
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` at go-live.

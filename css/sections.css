@@ -22,10 +22,10 @@
   display: flex;
   align-items: center;
   padding-block: var(--s-9);
-  /* The practice's own surgical suite, anchored on the microscope and the
-     light so the room still reads through the scrim as the band widens.
-     Local until the photo is on Cloudinary (see README, Pending). */
-  background: var(--ink-800) url('../images/surgical-suite.webp') 50% 38% / cover no-repeat;
+  /* A close view of an eye and its lower lid — the part of the face the
+     page is about — mirrored on Cloudinary (a_hflip) so the eye sits on the
+     right, clear of the copy, and anchored on it as the band widens. */
+  background: var(--ink-800) url('https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg') 72% 38% / cover no-repeat;
   overflow: hidden;
   isolation: isolate;
 }
@@ -1009,6 +1009,7 @@ strong.hl {
 
 @media (min-width: 120rem) {
   html { font-size: max(100%, 100vw / 120); }
+  .hero { background-image: url('https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,c_limit,w_3600/v1789670206/shutterstock_2587017403_xznaag.jpg'); }
 }
 
 
