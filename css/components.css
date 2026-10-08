@@ -762,6 +762,12 @@
 .fit__list--discs .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
 .fit__list--discs .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
 
+/* The consultation photo: the patient stands right of centre, so the
+   frame is a touch narrower (3:4) and anchored right, which trims the
+   clinician's arm and puts her in the middle. */
+.frame--centred { aspect-ratio: 3 / 4; }
+.frame--centred > img { object-position: 100% 50%; }
+
 /* A note under a photograph runs the photograph's full width. */
 #main .fine--wide { max-width: none; }
 
