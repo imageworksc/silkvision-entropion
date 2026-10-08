@@ -66,15 +66,15 @@
 <link rel="preload" as="image" fetchpriority="high" href="images/surgical-suite.webp">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=3">
-<link rel="stylesheet" href="css/tokens.css?v=3">
-<link rel="stylesheet" href="css/base.css?v=3">
-<link rel="stylesheet" href="css/components.css?v=3">
-<link rel="stylesheet" href="css/sections.css?v=3">
-<link rel="stylesheet" href="css/type.css?v=3">
-<link rel="stylesheet" href="css/motion.css?v=3">
+<link rel="stylesheet" href="css/fonts.css?v=4">
+<link rel="stylesheet" href="css/tokens.css?v=4">
+<link rel="stylesheet" href="css/base.css?v=4">
+<link rel="stylesheet" href="css/components.css?v=4">
+<link rel="stylesheet" href="css/sections.css?v=4">
+<link rel="stylesheet" href="css/type.css?v=4">
+<link rel="stylesheet" href="css/motion.css?v=4">
 
-<script src="js/main.js?v=3" defer></script>
+<script src="js/main.js?v=4" defer></script>
 </head>
 <body>
 
@@ -226,23 +226,26 @@
     </div>
   </section>
 
-  <!-- ===== PROMPT CARE — the page's one plum band ========================== -->
-  <section class="band band--plum band--slim" aria-labelledby="urgent-title">
+  <!-- ===== PROMPT CARE — the Ziplyft caveat band: the mark, the caution,
+       the action, in a row. The page's one plum band. ===================== -->
+  <section class="band band--slim band--plum" aria-labelledby="urgent-title">
     <div class="wrap">
-      <div class="urgent full" data-reveal>
-        <div class="urgent__head">
-          <svg class="ico bare bare--lg" aria-hidden="true"><use href="#i-alert"/></svg>
-          <h2 id="urgent-title">Seek prompt eye care for</h2>
+      <div class="banner full" data-reveal>
+        <svg class="ico bare bare--lg" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div class="stack banner__text">
+          <h3 id="urgent-title">Seek prompt eye care for</h3>
+          <ul class="banner__list">
+            <li>Increasing eye pain</li>
+            <li>Sudden changes in vision</li>
+            <li>Significant redness</li>
+            <li>Severe light sensitivity</li>
+            <li>Pus-like discharge</li>
+            <li>Difficulty keeping the eye open</li>
+          </ul>
+          <p>These symptoms can indicate <strong class="hl">more serious corneal involvement</strong> and should not wait for a routine visit.</p>
         </div>
-        <ul class="urgent__list">
-          <li>Increasing eye pain</li>
-          <li>Sudden changes in vision</li>
-          <li>Significant redness</li>
-          <li>Severe light sensitivity</li>
-          <li>Pus-like discharge</li>
-          <li>Difficulty keeping the eye open</li>
-        </ul>
-        <p class="urgent__foot">These symptoms can indicate <strong class="hl">more serious corneal involvement</strong> and should not wait for a routine visit.</p>
+        <a class="btn btn--solid btn--invert" href="tel:+17038769700">
+          <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span class="lbl-full">Call or text (703)&nbsp;876-9700</span><span class="lbl-short">(703)&nbsp;876-9700</span></a>
       </div>
     </div>
   </section>

@@ -749,26 +749,27 @@
 .band--deep .fit__dot { background: var(--sky-muted); }
 
 /* --------------------------------------------------------------------------
-   Prompt care — the page's one caveat, on the plum band. A heading with its
-   mark, six signs across three columns, and the line that says why.
+   Prompt care — the six signs inside the caveat banner, one row of short
+   items divided by thin rules rather than a second list on its own.
    -------------------------------------------------------------------------- */
 
-.urgent { display: grid; gap: var(--s-5); }
-.urgent__head { display: flex; align-items: center; gap: var(--s-4); }
-.urgent__head h2 { font-size: var(--t-h3); }
-.urgent__list {
-  display: grid;
-  border-block-start: 1px solid var(--hairline);
+/* The rule sits before each item and the list is pulled back by one
+   item's gutter with that strip clipped, so the rule that would open
+   each new line falls outside it — no stray rule at either end of a line. */
+.banner__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) 0;
+  margin-inline-start: calc(-1 * (var(--s-4) + 1px));
+  clip-path: inset(0 0 0 calc(var(--s-4) + 1px));
 }
-.urgent__list li {
-  padding-block: var(--s-3);
-  border-block-end: 1px solid var(--hairline);
+#main .banner__list li {
+  padding-inline-start: var(--s-4);
+  margin-inline-end: var(--s-4);
+  border-inline-start: 1px solid var(--hairline-dark);
   color: var(--white);
+  font-weight: 600;
 }
-@media (min-width: 48rem) {
-  .urgent__list { grid-template-columns: repeat(3, 1fr); column-gap: var(--s-7); }
-}
-.urgent__foot { max-width: 72ch; }
 
 /* --------------------------------------------------------------------------
    Note — an aside that qualifies the list above it. A rule, not a box.
