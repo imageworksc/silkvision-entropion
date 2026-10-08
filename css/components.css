@@ -814,27 +814,19 @@
 .band--plum .banner .btn { white-space: nowrap; }
 
 /* --------------------------------------------------------------------------
-   Note — an aside that qualifies the list above it. A rule, not a box.
+   Note — an aside that qualifies the list above it. Plain text, no rule.
    -------------------------------------------------------------------------- */
 
-.note {
-  padding-inline-start: var(--s-5);
-  border-inline-start: 3px solid var(--plum-500);
-  color: var(--text-soft);
-}
+.note { color: var(--text-soft); }
 
 /* --------------------------------------------------------------------------
    Surgery — the suite shown whole beside the reasons. The photograph is
    portrait, so it takes the portrait frame rather than a wide crop that
    left a wall and a light. The two paragraphs that explain the repair sit
-   under the list, closed off by a plum rule.
+   under the list.
    -------------------------------------------------------------------------- */
 
 .surgery-frame > img { object-position: 50% 45%; }
-.surgery-why {
-  padding-inline-start: var(--s-5);
-  border-inline-start: 3px solid var(--plum-500);
-}
 
 /* --------------------------------------------------------------------------
    At a glance — six numbered statements on the navy band, three across
