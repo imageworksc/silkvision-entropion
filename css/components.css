@@ -710,12 +710,54 @@
 #main .trust__desc { color: var(--on-dark-soft); font-weight: 400; }
 
 /* --------------------------------------------------------------------------
-   The diagram. It is an illustration with white labels drawn into it, so it
-   sits on the frame's own navy and is shown whole rather than cropped.
+   The diagram, on glass
+   On the frame's solid navy the illustration read as a heavy block. It now
+   sits on a frosted card: two flat brand circles behind it, the card's
+   backdrop blur softening them into colour. The diagram's labels were
+   white, drawn into the image, so this page uses a copy recoloured to the
+   brand navy (entropion-diagram-light.webp).
+
+   An exception to the guide's no-glass rule, made at the client's request
+   and kept to this one object.
    -------------------------------------------------------------------------- */
 
-.frame--diagram { background: var(--ink-700); }
-.frame--diagram > img { object-fit: contain; padding: var(--s-4); }
+.glass-stage {
+  position: relative;
+  isolation: isolate;
+  padding: var(--s-5);
+}
+.glass-stage::before,
+.glass-stage::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--r-pill);
+}
+.glass-stage::before {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  inline-size: 55%;
+  aspect-ratio: 1;
+  background: var(--pale-200);
+}
+.glass-stage::after {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inline-size: 40%;
+  aspect-ratio: 1;
+  background: var(--plum-100);
+}
+
+.glass {
+  border-radius: var(--r-lg);
+  padding: var(--s-4);
+  background: rgb(255 255 255 / .55);
+  border: 1px solid rgb(255 255 255 / .8);
+  box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  backdrop-filter: blur(24px) saturate(1.2);
+}
+.glass img { inline-size: 100%; block-size: auto; }
 
 /* --------------------------------------------------------------------------
    Ruled lists — the .fit list, extended. A dot marks an item that is a fact
