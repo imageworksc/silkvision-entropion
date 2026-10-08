@@ -66,15 +66,15 @@
 <link rel="preload" as="image" fetchpriority="high" href="images/surgical-suite.webp">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=1">
-<link rel="stylesheet" href="css/tokens.css?v=1">
-<link rel="stylesheet" href="css/base.css?v=1">
-<link rel="stylesheet" href="css/components.css?v=1">
-<link rel="stylesheet" href="css/sections.css?v=1">
-<link rel="stylesheet" href="css/type.css?v=1">
-<link rel="stylesheet" href="css/motion.css?v=1">
+<link rel="stylesheet" href="css/fonts.css?v=3">
+<link rel="stylesheet" href="css/tokens.css?v=3">
+<link rel="stylesheet" href="css/base.css?v=3">
+<link rel="stylesheet" href="css/components.css?v=3">
+<link rel="stylesheet" href="css/sections.css?v=3">
+<link rel="stylesheet" href="css/type.css?v=3">
+<link rel="stylesheet" href="css/motion.css?v=3">
 
-<script src="js/main.js?v=1" defer></script>
+<script src="js/main.js?v=3" defer></script>
 </head>
 <body>
 
@@ -413,21 +413,33 @@
     </div>
   </section>
 
-  <!-- ===== WHY CHOOSE DR. SILK ============================================= -->
+  <!-- ===== WHY CHOOSE DR. SILK — the Ziplyft physician band: heading and
+       lead, the profile card, then the reasoning and a way to meet him ==== -->
   <section class="band band--deep" aria-labelledby="silk-title">
-    <div class="wrap split split--wide-gutter">
-      <div class="stack" data-reveal>
-        <img class="profile__photo" src="images/dr-silk-400.jpg"
-             srcset="images/dr-silk-200.jpg 200w, images/dr-silk-400.jpg 400w" sizes="10rem"
-             width="400" height="400" loading="lazy" alt="Wesam Silk, M.D.">
-        <div class="stack head">
-          <h2 id="silk-title">Why choose Dr. Silk?</h2>
-        </div>
+    <div class="wrap stack stack--loose">
+      <div class="stack head" data-reveal>
+        <h2 id="silk-title">Why choose Dr. Silk?</h2>
+        <p class="lead lead--wide"><strong class="hl">Dr.&nbsp;Wesam Silk is a board-certified ophthalmologist and fellowship-trained cornea specialist.</strong></p>
       </div>
-      <div class="prose" data-reveal>
-        <p class="first"><strong class="hl">Dr.&nbsp;Wesam Silk is a board-certified ophthalmologist and fellowship-trained cornea specialist.</strong></p>
-        <p>His experience evaluating the cornea and ocular surface is particularly relevant for patients with entropion because treatment must address both the eyelid position and any damage or irritation affecting the eye.</p>
-        <p>At Silk Vision &amp; Surgical Center, your evaluation is based on the cause of the condition, the health of your eye, and the treatment most likely to restore comfort and protect vision.</p>
+
+      <div class="profile full" data-reveal>
+        <img class="profile__photo" src="images/dr-silk-400.jpg" srcset="images/dr-silk-200.jpg 200w, images/dr-silk-400.jpg 400w" sizes="10rem" width="400" height="400" loading="lazy" alt="Wesam Silk, M.D.">
+        <div class="profile__who">
+          <span class="kicker">Your surgeon</span>
+          <h3>Wesam Silk, M.D.</h3>
+          <p>Board-certified ophthalmologist<br>Fellowship-trained cornea specialist</p>
+        </div>
+        <dl class="profile__stats">
+          <div><dd>26,000+</dd><dt>eye surgeries performed</dt></div>
+          <div><dd>20+ years</dd><dt>serving Northern Virginia</dt></div>
+        </dl>
+      </div>
+
+      <div class="stack" data-reveal>
+        <p class="measure">His experience evaluating the cornea and ocular surface is particularly relevant for patients with entropion because treatment must address both the eyelid position and any damage or irritation affecting the eye.</p>
+        <p class="measure">At Silk Vision &amp; Surgical Center, your evaluation is based on the cause of the condition, the health of your eye, and the treatment most likely to restore comfort and protect vision.</p>
+        <a class="btn btn--ghost" href="https://www.silkvision.net/trusted-eye-physicians-and-surgeons-northern-virginia">Meet Dr.&nbsp;Silk
+          <svg class="ico ico--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </section>

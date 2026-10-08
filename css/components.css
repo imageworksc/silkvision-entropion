@@ -809,12 +809,6 @@
 #main .recovery-links__ask { font-weight: 600; color: var(--heading); }
 
 /* --------------------------------------------------------------------------
-   The physician's portrait on its own, without the profile card around it.
-   -------------------------------------------------------------------------- */
-
-.band--deep .stack > .profile__photo { inline-size: 8rem; block-size: 8rem; }
-
-/* --------------------------------------------------------------------------
    Entropion vs. ectropion — the two definitions open the table
    -------------------------------------------------------------------------- */
 
