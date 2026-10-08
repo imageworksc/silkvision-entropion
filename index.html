@@ -68,15 +68,15 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=18">
-<link rel="stylesheet" href="css/tokens.css?v=18">
-<link rel="stylesheet" href="css/base.css?v=18">
-<link rel="stylesheet" href="css/components.css?v=18">
-<link rel="stylesheet" href="css/sections.css?v=18">
-<link rel="stylesheet" href="css/type.css?v=18">
-<link rel="stylesheet" href="css/motion.css?v=18">
+<link rel="stylesheet" href="css/fonts.css?v=19">
+<link rel="stylesheet" href="css/tokens.css?v=19">
+<link rel="stylesheet" href="css/base.css?v=19">
+<link rel="stylesheet" href="css/components.css?v=19">
+<link rel="stylesheet" href="css/sections.css?v=19">
+<link rel="stylesheet" href="css/type.css?v=19">
+<link rel="stylesheet" href="css/motion.css?v=19">
 
-<script src="js/main.js?v=18" defer></script>
+<script src="js/main.js?v=19" defer></script>
 </head>
 <body>
 
@@ -108,6 +108,10 @@
   <symbol id="i-office" viewBox="0 0 24 24"><path d="M5.2 20.6V6.6L12 3.2l6.8 3.4v14"/><path d="M2.8 20.6h18.4"/><path d="M9.3 10.2h1.2M13.5 10.2h1.2M9.3 13.8h1.2M13.5 13.8h1.2"/><path d="M10.4 20.6v-3.4h3.2v3.4"/></symbol>
   <symbol id="i-time" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.8V12l3.4 2"/></symbol>
   <!-- The entropion page's own symbols. -->
+  <symbol id="i-inward" viewBox="0 0 24 24"><path d="M2.6 10S6.6 4.2 12 4.2 21.4 10 21.4 10 17.4 15.8 12 15.8 2.6 10 2.6 10z"/><circle cx="12" cy="10" r="3.4"/><circle cx="12" cy="10" r="1"/><path d="M12 21.6v-3.8M9.6 20.2L12 17.8l2.4 2.4"/></symbol>
+  <symbol id="i-lashes" viewBox="0 0 24 24"><path d="M2.6 10S6.6 4.2 12 4.2 21.4 10 21.4 10 17.4 15.8 12 15.8 2.6 10 2.6 10z"/><circle cx="12" cy="10" r="3.4"/><circle cx="12" cy="10" r="1"/><path d="M6.4 17.8l1-1.9M12 19.4v-2.2M17.6 17.8l-1-1.9"/></symbol>
+  <symbol id="i-lowerlid" viewBox="0 0 24 24"><path d="M2.6 10S6.6 4.2 12 4.2 21.4 10 21.4 10 17.4 15.8 12 15.8 2.6 10 2.6 10z"/><circle cx="12" cy="10" r="3.4"/><circle cx="12" cy="10" r="1"/><path d="M4.2 16.4S7.6 20 12 20s7.8-3.6 7.8-3.6"/></symbol>
+  <symbol id="i-redeye" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M4.8 11.2l1.6.8-1 1 1.4.6M19.2 11.2l-1.6.8 1 1-1.4.6"/></symbol>
   <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.4 4.3L2.9 17.6a1.8 1.8 0 001.6 2.7h15a1.8 1.8 0 001.6-2.7L13.6 4.3a1.8 1.8 0 00-3.2 0z"/><path d="M12 9.4v4.4M12 17.1h.01"/></symbol>
 </defs>
 </svg>
@@ -353,19 +357,38 @@
     </div>
   </section>
 
-  <!-- ===== AT A GLANCE — six statements, numbered, on navy ================ -->
+  <!-- ===== AT A GLANCE — six statements in the Ziplyft "how it works" row:
+       a bare white mark, the number, the line ============================= -->
   <section class="band band--deep band--slim" aria-labelledby="glance-title">
     <div class="wrap stack stack--loose">
       <div class="stack head" data-reveal>
         <h2 id="glance-title">Entropion at a glance</h2>
       </div>
-      <ol class="glance full stagger">
-        <li data-reveal><span class="glance__num" aria-hidden="true">01</span><p>The eyelid turns inward toward the eye.</p></li>
-        <li data-reveal><span class="glance__num" aria-hidden="true">02</span><p>Eyelashes or eyelid tissue may rub against the cornea.</p></li>
-        <li data-reveal><span class="glance__num" aria-hidden="true">03</span><p>The lower eyelid is most commonly affected.</p></li>
-        <li data-reveal><span class="glance__num" aria-hidden="true">04</span><p>Symptoms may include irritation, tearing, redness, pain, or blurred vision.</p></li>
-        <li data-reveal><span class="glance__num" aria-hidden="true">05</span><p>Lubricating drops may provide temporary relief.</p></li>
-        <li data-reveal><span class="glance__num" aria-hidden="true">06</span><p>Entropion repair may be recommended to correct the eyelid position.</p></li>
+      <ol class="steps3 steps3--plain stagger">
+        <li class="feature" data-reveal>
+          <svg class="ico steps3__ico" aria-hidden="true"><use href="#i-inward"/></svg>
+          <div><p>The eyelid turns inward toward the eye.</p></div>
+        </li>
+        <li class="feature" data-reveal>
+          <svg class="ico steps3__ico" aria-hidden="true"><use href="#i-lashes"/></svg>
+          <div><p>Eyelashes or eyelid tissue may rub against the cornea.</p></div>
+        </li>
+        <li class="feature" data-reveal>
+          <svg class="ico steps3__ico" aria-hidden="true"><use href="#i-lowerlid"/></svg>
+          <div><p>The lower eyelid is most commonly affected.</p></div>
+        </li>
+        <li class="feature" data-reveal>
+          <svg class="ico steps3__ico" aria-hidden="true"><use href="#i-redeye"/></svg>
+          <div><p>Symptoms may include irritation, tearing, redness, pain, or blurred vision.</p></div>
+        </li>
+        <li class="feature" data-reveal>
+          <svg class="ico steps3__ico" aria-hidden="true"><use href="#i-drops"/></svg>
+          <div><p>Lubricating drops may provide temporary relief.</p></div>
+        </li>
+        <li class="feature" data-reveal>
+          <svg class="ico steps3__ico" aria-hidden="true"><use href="#i-shield"/></svg>
+          <div><p>Entropion repair may be recommended to correct the eyelid position.</p></div>
+        </li>
       </ol>
     </div>
   </section>

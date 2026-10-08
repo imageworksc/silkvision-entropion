@@ -829,33 +829,18 @@
 .surgery-frame > img { object-position: 50% 45%; }
 
 /* --------------------------------------------------------------------------
-   At a glance — six numbered statements on the navy band, three across
-   from 64rem, each under its own hairline.
+   At a glance — the Ziplyft "how it works" row (.steps3), for statements
+   that have no title of their own: the counter opens the line itself.
+   Plain numbers, never zero-padded. Six items, so two rows of three.
    -------------------------------------------------------------------------- */
 
-.glance {
-  display: grid;
-  gap: var(--s-5) var(--s-7);
-  counter-reset: none;
-}
-@media (min-width: 48rem) { .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 64rem) { .glance { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.glance li {
-  display: grid;
-  gap: var(--s-2);
-  align-content: start;
-  padding-block-start: var(--s-4);
-  border-block-start: 1px solid var(--hairline-dark);
-}
-.glance__num {
+.steps3--plain .feature p::before {
+  content: counter(st) '. ';
   font-family: var(--font);
-  font-size: var(--t-h3);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: var(--ls-tight);
-  color: var(--sky-muted);
+  color: var(--white);
 }
-#main .glance p { color: var(--on-dark-soft); }
+.steps3--plain { row-gap: var(--s-4); }
 
 /* --------------------------------------------------------------------------
    Recovery — the question, then its two answers
