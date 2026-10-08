@@ -677,29 +677,37 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   The surgeon line — a thin plum strip straight under the hero, the draft's
-   trust band kept quiet: small type, slim padding, the credential under
-   the name so the line stays inside 60% of the layout. Not a band (it makes no claim of its own),
-   so it carries no band padding and no heading.
+   The surgeon line — a thin navy strip straight under the hero, the draft's
+   trust band kept quiet: small type, slim padding, name and credential on
+   one line divided by a bar. Not a band (it makes no claim of its own), so
+   it carries no band padding and no heading. Deepest navy, so it reads as
+   the hero's lower edge rather than as another section.
    -------------------------------------------------------------------------- */
 
 .trust-band {
-  background: var(--plum-700);
+  background: var(--ink-900);
   color: var(--on-dark-soft);
 }
 #main .trust {
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--s-3);
   padding-block: var(--s-3);
+  max-width: none;
   font-size: var(--t-sm);
   line-height: 1.45;
 }
+@media (min-width: 48rem) { #main .trust { flex-wrap: nowrap; white-space: nowrap; } }
 .trust__name {
   font-family: var(--font);
   font-weight: 600;
   color: var(--white);
 }
+.trust__sep { color: var(--on-dark-faint); }
+/* Phones: the line has to break, and a bar left at the end of the first
+   line separates nothing — the credential just drops under the name. */
+@media (max-width: 47.99rem) { .trust__sep { display: none; } #main .trust { flex-direction: column; } }
 #main .trust__desc { color: var(--on-dark-soft); font-weight: 400; }
 
 /* --------------------------------------------------------------------------
