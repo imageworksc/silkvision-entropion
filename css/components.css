@@ -677,22 +677,30 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   The surgeon line — opens the first band, where other pages put the facts
-   bar. Name in Poppins, the credential under it: side by side the line ran
-   past 60% of the layout.
+   The surgeon line — a thin plum strip straight under the hero, the draft's
+   trust band kept quiet: small type, slim padding, the credential under
+   the name so the line stays inside 60% of the layout. Not a band (it makes no claim of its own),
+   so it carries no band padding and no heading.
    -------------------------------------------------------------------------- */
 
-.trust {
+.trust-band {
+  background: var(--plum-700);
+  color: var(--on-dark-soft);
+}
+#main .trust {
   display: flex;
   flex-direction: column;
-  gap: var(--s-1);
+  gap: 0;
+  padding-block: var(--s-3);
+  font-size: var(--t-sm);
+  line-height: 1.45;
 }
 .trust__name {
   font-family: var(--font);
   font-weight: 600;
-  color: var(--heading);
+  color: var(--white);
 }
-.trust__desc { color: var(--text-soft); }
+#main .trust__desc { color: var(--on-dark-soft); font-weight: 400; }
 
 /* --------------------------------------------------------------------------
    The diagram. It is an illustration with white labels drawn into it, so it
