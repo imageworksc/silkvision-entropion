@@ -865,5 +865,3 @@
 .compare-note { max-width: none; color: var(--text-soft); }
 .compare-note a { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 
-/* The service area under the closing call: reference, not the call. */
-.closing__area { max-width: 74ch; }
