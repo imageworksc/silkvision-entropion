@@ -855,15 +855,19 @@
 }
 
 /* --------------------------------------------------------------------------
-   Symptoms — the .fit list (two columns of four rows from 48rem, no rules),
+   Symptoms — the .fit list (two columns of four rows from 48rem),
    each sign beside a bare plum mark in place of the tick. Body size as
    everywhere; the band is slim.
    -------------------------------------------------------------------------- */
 
+/* Rules between the signs only: none over the first row, none under the
+   last one in each column. */
 .fit__list.signs { border-block-start: 0; }
-.fit__list.signs li,
+.fit__list.signs li { align-items: center; padding-block: var(--s-3); }
 .fit__list.signs li:nth-child(1),
-.fit__list.signs li:nth-child(5) { align-items: center; padding-block: var(--s-2); border-block: 0; }
+.fit__list.signs li:nth-child(5) { border-block-start: 0; }
+.fit__list.signs li:last-child { border-block-end: 0; }
+@media (min-width: 48rem) { .fit__list.signs li:nth-child(4) { border-block-end: 0; } }
 .signs__ico {
   flex: none;
   inline-size: 1.5rem;
