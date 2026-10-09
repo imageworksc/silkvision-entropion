@@ -840,7 +840,19 @@
   font-weight: 700;
   color: var(--white);
 }
-.steps3--plain { row-gap: var(--s-4); }
+/* Even lines: one step down to the 16-17px small-copy size, balanced
+   wrapping and a tighter gutter, so all six statements set in two lines of
+   about the same length. */
+#main .steps3--plain .feature p { font-size: var(--t-sm); text-wrap: balance; max-width: 21em; }
+.steps3.steps3--plain .feature { margin-inline: 0; padding-inline: 0; gap: var(--s-3); }
+/* No rule over the row: the one hairline runs between the two rows,
+   under 1, 2 and 3. */
+.steps3.steps3--plain { padding-block-start: 0; border-block-start: 0; }
+@media (min-width: 48rem) {
+  .steps3.steps3--plain { column-gap: var(--s-5); row-gap: 0; }
+  .steps3--plain .feature { padding-block: var(--s-5); border-radius: 0; }
+  .steps3--plain .feature:nth-child(-n + 3) { border-block-end: 1px solid var(--hairline); }
+}
 
 /* --------------------------------------------------------------------------
    Recovery — the question, then its two answers
