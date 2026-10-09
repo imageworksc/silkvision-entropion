@@ -16,7 +16,12 @@ fonts/  images/  favicons  .nojekyll
 ```
 
 Page-specific components live at the end of `css/components.css`
-("The entropion set").
+("The entropion set"). No inline styles or scripts in the HTML (the only
+`<script>` blocks are the JSON-LD data and the deferred `js/main.js`).
+`js/main.js` is ES2015+ (`const`/`let`, arrow functions) and carries only
+what this page uses: menu, scroll state, reveals, sticky call bar, FAQ.
+Starter patterns this page does not use (before/after carousel, videos,
+step tabs, cost, yes/no, fork, stages) were removed from CSS and JS.
 
 ## What changed from the draft
 

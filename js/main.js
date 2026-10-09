@@ -123,102 +123,7 @@ const setupReveals = () => {
 };
 
 /* --------------------------------------------------------------------------
-   4 · Before / after
-   The range input is the control; this only mirrors its value into the one
-   custom property the clip and the handle both read. The live text keeps a
-   screen reader told how far the reveal has gone.
-   -------------------------------------------------------------------------- */
-const setupBeforeAfter = () => {
-  document.querySelectorAll('.ba').forEach((stage) => {
-    const range = stage.querySelector('.ba__range');
-    if (!range) return;
-    const paint = () => {
-      stage.style.setProperty('--pos', `${range.value}%`);
-      range.setAttribute('aria-valuetext', `${Math.round(100 - range.value)}% of the after photograph showing`);
-    };
-    range.addEventListener('input', paint);
-    paint();
-  });
-
-  // The cases carousel: one slide at a time, chosen by its dot.
-  const root = document.getElementById('cases');
-  if (!root) return;
-  const slides = [...root.querySelectorAll('.carousel__slide')];
-  const dots = [...root.querySelectorAll('.carousel__dot')];
-  const show = (i) => {
-    slides.forEach((sl, j) => {
-      sl.classList.toggle('is-current', j === i);
-      sl.inert = j !== i;
-    });
-    dots.forEach((d, j) => d.setAttribute('aria-current', String(j === i)));
-  };
-  dots.forEach((d, i) => d.addEventListener('click', () => show(i)));
-  root.dataset.ready = '';
-  show(0);
-};
-
-/* --------------------------------------------------------------------------
-   5 · The mechanism video
-   Silent and looping, so it plays by itself — but only while it is on
-   screen, never under reduced motion, and never again once somebody has
-   pressed pause. The button shows which state it is in.
-   -------------------------------------------------------------------------- */
-const setupLoopVideo = () => {
-  const video = document.getElementById('mechVideo');
-  const btn = document.getElementById('mechToggle');
-  if (!video || !btn) return;
-
-  const label = btn.querySelector('.vid-btn__label');
-  let userPaused = reduced.matches;
-
-  const show = () => {
-    const playing = !video.paused;
-    btn.dataset.state = playing ? 'playing' : 'paused';
-    btn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
-    if (label) label.textContent = playing ? 'Pause' : 'Play';
-  };
-  video.addEventListener('play', show);
-  video.addEventListener('pause', show);
-  show();
-
-  btn.addEventListener('click', () => {
-    if (video.paused) {
-      userPaused = false;
-      video.play().catch(() => {});
-    } else {
-      userPaused = true;
-      video.pause();
-    }
-  });
-
-  if (!('IntersectionObserver' in window)) return;
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting && !userPaused) video.play().catch(() => {});
-    else if (!entry.isIntersecting && !video.paused) video.pause();
-  }, { threshold: .5 }).observe(video);
-};
-
-/* --------------------------------------------------------------------------
-   6 · Dr. Silk's video
-   This one talks, so it waits to be asked. Pressing play starts it with
-   sound and hands over to the browser's own controls.
-   -------------------------------------------------------------------------- */
-const setupTalkVideo = () => {
-  const video = document.getElementById('silkVideo');
-  const btn = document.getElementById('silkPlay');
-  if (!video || !btn) return;
-
-  btn.addEventListener('click', () => {
-    btn.hidden = true;
-    video.controls = true;
-    video.muted = false;
-    video.play().catch(() => { btn.hidden = false; });
-    video.focus();
-  });
-};
-
-/* --------------------------------------------------------------------------
-   7 · The sticky call bar
+   4 · The sticky call bar
    On a phone, once the hero and its two buttons have scrolled away. Hidden
    again at the closing band, which carries the same two actions full size.
    -------------------------------------------------------------------------- */
@@ -246,48 +151,7 @@ const setupStickyCta = () => {
 };
 
 /* --------------------------------------------------------------------------
-   8 · The procedure's step bar
-   The tabs pattern: one tab in the tab order at a time, arrow keys and
-   Home/End move along the row, and the panels the script hides are the only
-   thing it hides — without it all five stay open. On a device that can
-   hover, pointing at a step lights it too, which is what the row invites.
-   -------------------------------------------------------------------------- */
-const setupStepper = () => {
-  const root = document.getElementById('stepper');
-  if (!root) return;
-  const tabs = [...root.querySelectorAll('[role="tab"]')];
-  const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
-
-  const select = (i, focus = false) => {
-    tabs.forEach((t, j) => {
-      const on = i === j;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      panels[j].hidden = !on;
-    });
-    if (focus) tabs[i].focus();
-  };
-
-  tabs.forEach((t, i) => {
-    t.addEventListener('click', () => select(i));
-    t.addEventListener('keydown', (e) => {
-      const last = tabs.length - 1;
-      const next = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: last }[e.key];
-      if (next === undefined) return;
-      e.preventDefault();
-      select((next + tabs.length) % tabs.length, true);
-    });
-  });
-
-  if (window.matchMedia('(hover: hover)').matches) {
-    tabs.forEach((t, i) => t.addEventListener('mouseenter', () => select(i)));
-  }
-
-  select(0);
-};
-
-/* --------------------------------------------------------------------------
-   9 · Accordions — the FAQ and the cost questions open softly
+   5 · Accordions — the FAQ opens softly
    <details> opens in one frame: the answer appears and everything under it
    jumps. Here the row's height eases between closed and open, the answer
    fades in a beat behind it, and the chevron turns as the move starts, not
@@ -358,9 +222,5 @@ const setupAccordions = () => {
 setupMenu();
 setupScroll();
 setupReveals();
-setupBeforeAfter();
-setupLoopVideo();
-setupTalkVideo();
 setupStickyCta();
-setupStepper();
 setupAccordions();

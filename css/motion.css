@@ -100,9 +100,6 @@
 
   [data-anim="on"] [data-reveal] { opacity: 1; transform: none; }
 
-  .stepper__tab::before { transform: none; }
-  .stepper__tab:not([aria-selected="true"])::before { background: transparent; }
-
   .btn:hover { transform: none; }
 
   /* Several hovers move something other than the element under the cursor,
@@ -118,24 +115,4 @@
      scaling from 0 to 1 is how the mark appears at all, and the blanket
      duration override above already makes it instant. Zeroing the transform
      would leave it permanently drawn under every link. */
-}
-
-/* --------------------------------------------------------------------------
-   The ZipLyft set, under the same contract.
-   Each of these moves something other than the hovered element — the
-   arrow inside a text link, the disc inside the play button, the knob
-   inside the slider — so each has to be named or it escapes the blanket
-   rule. The sticky bar's slide is a reveal and its duration is already
-   zeroed; the chevron's turn is the FAQ's state and stays, instant.
-   -------------------------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-  .play:hover .play__disc,
-  .ba:hover .ba__knob,
-  .ba:has(.ba__range:focus-visible) .ba__knob { transform: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .carousel[data-ready] .carousel__slide,
-  .carousel[data-ready] .carousel__slide.is-current { transition: none; transform: none; }
 }

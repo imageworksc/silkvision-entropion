@@ -54,43 +54,6 @@
 .hero-intro { color: var(--on-dark-soft); max-width: 62ch; }
 
 /* --------------------------------------------------------------------------
-   Facts bar — the hero's three facts and the service area, now the line
-   the first section opens on. Same markup as before (.hero-facts), moved
-   onto a light ground, so the colours re-point.
-   -------------------------------------------------------------------------- */
-
-.facts-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-5) var(--s-8);
-  padding-block-end: var(--s-6);
-  border-block-end: 1px solid var(--hairline);
-}
-.hero-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-4) var(--s-6);
-  margin: 0;
-}
-.hero-facts dt { font-size: var(--t-xs); color: var(--text-soft); }
-.hero-facts dd { margin: 0; font-weight: 600; color: var(--heading); }
-@media (min-width: 34rem) {
-  .hero-facts > div + div {
-    border-inline-start: 1px solid var(--hairline);
-    padding-inline-start: var(--s-6);
-  }
-}
-#main .facts-bar__area { max-width: 52ch; color: var(--text-soft); }
-
-/* The first band after a slim hero starts closer to it. */
-.band--open { padding-block-start: var(--s-8); }
-/* Under the facts line, the two columns sit centred in what is left of the
-   band: as much air above them as the band leaves below. */
-.band--open .split { margin-block-start: calc(var(--band-y) - var(--s-7)); }
-
-/* --------------------------------------------------------------------------
    Section heads — a heading and the paragraph under it
    -------------------------------------------------------------------------- */
 
@@ -126,34 +89,6 @@
 .steps3__ico { flex: none; inline-size: 1.75rem; block-size: 1.75rem; color: var(--white); stroke-width: 1.6; }
 
 /* --------------------------------------------------------------------------
-   Cost — the price the practice has yet to
-   approve, left as a visible gap so it cannot ship blank by accident.
-   -------------------------------------------------------------------------- */
-
-.price-slot {
-  flex: 1 1 22rem;
-  max-width: 40rem;
-  padding: var(--s-4) var(--s-5);
-  border: 2px dashed var(--grey-300);
-  border-radius: var(--r-md);
-  font-weight: 600;
-  color: var(--text-faint);
-}
-
-/* --------------------------------------------------------------------------
-   Video — the physician explains it himself
-   -------------------------------------------------------------------------- */
-
-.video-media { inline-size: 100%; max-inline-size: 26rem; }
-/* The video column is exactly the video's width and starts at the shell's
-   left edge; the copy takes the rest. As an even split the video sat at the
-   right of a half-width column, which left a gap on the left that no other
-   section has. */
-@media (min-width: 60rem) {
-  .video-split { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); }
-}
-
-/* --------------------------------------------------------------------------
    FAQ — the heading holds still while the questions scroll past it
    -------------------------------------------------------------------------- */
 
@@ -172,6 +107,7 @@
    and stays inside the 75-character measure. Phones wrap them further, as
    they must. */
 .closing .lead { max-width: 74ch; }
+.closing .cluster { justify-content: center; }
 
 /* --------------------------------------------------------------------------
    Footer
@@ -331,13 +267,7 @@
 .band--deep p { color: var(--on-dark-soft); }
 
 /* ==========================================================================
-   The horizontal sections
-   Seven sections that used to sit in two columns — copy on one side, a list
-   or a panel on the other — now read across the page instead: the heading
-   and its description on top, and under them one horizontal object built
-   from the section's own content. None of them is decoration: each row is
-   the thing the section is about, laid out in the order it happens or the
-   order it matters.
+   Shared helpers — the measure, the tracked label
    ========================================================================== */
 
 .measure { max-width: var(--measure); }
@@ -355,70 +285,10 @@
 .band--deep .kicker { color: var(--cyan-300); }
 
 /* --------------------------------------------------------------------------
-   Benefits — what it does / what it leaves out
-   --------------------------------------------------------------------------
-   One white frame, two columns, the comparison table's header colours.
-   Both columns stretch to the frame's height (grid does that), and the
-   shorter list's rows grow to share it (1fr rows), so the two columns
-   close on the same line however many items each has.
+   Tint band — the pale blue ground
    -------------------------------------------------------------------------- */
 
 .band--tint { background: var(--pale-100); }
-
-.yesno {
-  display: grid;
-  border-radius: var(--r-lg);
-  background: var(--white);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-@media (min-width: 48rem) { .yesno { grid-template-columns: 1fr 1fr; } }
-
-.yesno__col { display: flex; flex-direction: column; }
-.yesno__col + .yesno__col { border-block-start: 1px solid var(--hairline); }
-@media (min-width: 48rem) {
-  .yesno__col + .yesno__col { border-block-start: 0; border-inline-start: 1px solid var(--hairline); }
-}
-
-.yesno h3 {
-  padding: var(--s-4) var(--s-5);
-  font-size: var(--t-body);
-  color: var(--white);
-}
-.yesno__col--yes h3 { background: var(--fill-action); }
-.yesno__col--no h3 { background: var(--ink-600); }
-
-.yesno ul {
-  flex: 1;
-  display: grid;
-  grid-auto-rows: 1fr;
-}
-.yesno li {
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-  padding: var(--s-3) var(--s-5);
-  color: var(--text);
-}
-.yesno li + li { border-block-start: 1px solid var(--hairline); }
-.yesno__col--yes li { background: rgb(166 38 166 / .04); }
-.yesno .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
-.yesno .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
-/* No: a cross in a plain ring, in the navy of its column. */
-.yesno .tick--no {
-  background: var(--white);
-  color: var(--ink-600);
-  box-shadow: inset 0 0 0 1.5px var(--ink-600);
-}
-/* Phones: the columns stack, so there is nothing to match heights with.
-   Rows take their own height, a little tighter, with smaller marks. */
-@media (max-width: 47.99rem) {
-  .yesno ul { grid-auto-rows: auto; }
-  .yesno li { gap: var(--s-3); padding: var(--s-3) var(--s-4); align-items: flex-start; line-height: 1.45; }
-  .yesno h3 { padding: var(--s-3) var(--s-4); }
-  .yesno .tick { inline-size: 1.375rem; block-size: 1.375rem; margin-block-start: .1rem; }
-  .yesno .tick .ico { inline-size: .875rem; block-size: .875rem; }
-}
 
 /* --------------------------------------------------------------------------
    Physician — a profile card
@@ -507,32 +377,13 @@
 }
 
 /* --------------------------------------------------------------------------
-   Longevity — three statements across one rule
+   Muted accent on navy
+   The page's light blue with most of its saturation taken out — the accent
+   on the navy bands (≈ 7:1 on the navy), shared by the at-a-glance numbers
+   and the ruled lists' dots.
    -------------------------------------------------------------------------- */
 
-/* The page's light blue with most of its saturation taken out — the
-   accent on the navy bands (≈ 7:1 on the navy), shared with the steps. */
 :root { --sky-muted: #93b6cf; }
-.band--deep .over-time .kicker { color: var(--sky-muted); }
-
-.over-time { display: grid; gap: var(--s-5); }
-.over-time li {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--s-4);
-}
-.over-time li > div { display: grid; gap: var(--s-1); }
-/* A step down from the section's h3: three short statements in a row,
-   not three headlines. */
-.over-time h3 { font-size: var(--t-body); font-weight: 500; line-height: 1.35; }
-@media (min-width: 48rem) {
-  .over-time { grid-template-columns: repeat(3, 1fr); gap: 0; }
-  .over-time li { padding-inline: var(--s-6); }
-  .over-time li:first-child { padding-inline-start: 0; }
-  .over-time li + li { border-inline-start: 1px solid var(--hairline); }
-}
-
-.closing .cluster { justify-content: center; }
 
 /* --------------------------------------------------------------------------
    Comparison — the table, simplified
@@ -569,36 +420,6 @@
 }
 
 /* --------------------------------------------------------------------------
-   Which lift — two paths and the answer
-   --------------------------------------------------------------------------
-   Kept to type and hairlines: no icons, no frames. One rule over both
-   paths, a rule between them, and a rule over the answer beneath.
-   -------------------------------------------------------------------------- */
-
-.fork { display: grid; gap: var(--s-5); border-block-start: 1px solid var(--hairline); padding-block-start: var(--s-5); }
-.fork__path { display: grid; align-content: start; gap: var(--s-2); }
-.fork__path h3 { font-size: var(--t-body); line-height: 1.35; }
-.fork__path p { max-width: 46ch; }
-.fork__path--alt { padding-block-start: var(--s-5); border-block-start: 1px solid var(--hairline); }
-
-.fork__verdict {
-  display: grid;
-  justify-items: start;
-  gap: var(--s-4);
-  padding-block-start: var(--s-5);
-  border-block-start: 1px solid var(--hairline);
-}
-.fork__say { display: grid; gap: var(--s-1); }
-.fork__say h3 { font-size: var(--t-body); line-height: 1.35; color: var(--plum-600); }
-.fork__say p { max-width: 60ch; }
-
-@media (min-width: 48rem) {
-  .fork { grid-template-columns: 1fr 1fr; gap: 0; }
-  .fork__path { padding-inline-end: var(--s-7); }
-  .fork__path--alt { padding: 0 0 0 var(--s-7); border-block-start: 0; border-inline-start: 1px solid var(--hairline); }
-}
-
-/* --------------------------------------------------------------------------
    Candidacy — seven reasons on hairlines
    --------------------------------------------------------------------------
    Was a white panel holding tick badges: a box inside the band, a circle
@@ -618,14 +439,7 @@
   border-block-end: 1px solid var(--hairline);
   color: var(--text-soft);   /* the lead paragraph's colour */
 }
-.fit__tick {
-  flex: none;
-  inline-size: 1.25rem;
-  block-size: 1.25rem;
-  color: var(--plum-600);
-  stroke-width: 2.2;
-  transform: translateY(.2em);
-}
+
 @media (min-width: 48rem) {
   .fit__list {
     grid-template-rows: repeat(4, auto);
@@ -726,191 +540,6 @@ strong.hl {
 }
 .band--plum .banner__text p { color: var(--on-dark-soft); }
 
-/* Longevity on plum: the row's hairlines take the band's light rule. */
-.band--plum .over-time li + li { border-inline-start-color: var(--hairline-dark); }
-
-/* --------------------------------------------------------------------------
-   The procedure — a step bar on the navy band
-   --------------------------------------------------------------------------
-   Five tabs on one rule, then one panel. The lit tab's rule turns a muted
-   light blue, well over the 3:1 a graphic needs on the navy, where plum
-   would be 1.35:1 and disappear. Titles are Inter at the copy size; the
-   step numbers are the table's tracked label.
-   -------------------------------------------------------------------------- */
-
-.stepper { display: grid; gap: var(--s-6); }
-
-.stepper__tabs {
-  display: grid;
-  border-block-start: 1px solid var(--hairline-dark);
-}
-@media (min-width: 48rem) {
-  .stepper__tabs { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-}
-/* Desktop: each title on one line, and the five spaced by their own
-   width — equal gaps between them rather than equal columns, which left
-   "Compress, remove & seal" 16px from step 4. */
-@media (min-width: 80rem) {
-  .stepper__tabs { display: flex; justify-content: space-between; gap: var(--s-6); }
-  .stepper__tab { padding-inline-end: 0; }
-  .stepper__tab::before { inset-inline-end: 0; }
-}
-
-.stepper__tab {
-  position: relative;
-  display: grid;
-  gap: var(--s-1);
-  align-content: start;
-  min-block-size: var(--tap);
-  padding: var(--s-4) var(--s-4) var(--s-4) 0;
-  border: 0;
-  background: none;
-  color: var(--on-dark-faint);
-  font: inherit;
-  text-align: start;
-  cursor: pointer;
-  transition: color var(--t-fast) var(--ease);
-}
-/* The rule segment over each tab; the lit one fills with cyan. */
-.stepper__tab::before {
-  content: '';
-  position: absolute;
-  inset-block-start: -1px;
-  inset-inline: 0 var(--s-3);
-  block-size: 3px;
-  border-radius: var(--r-pill);
-  background: transparent;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--t-mid) var(--ease), background-color var(--t-fast) var(--ease);
-}
-/* A greyed, quieter cyan for the numbers and the lit rule: the page's
-   light blue with most of its saturation taken out (≈ 7:1 on the navy). */
-.stepper { --step-accent: var(--sky-muted); }
-.stepper__num {
-  font-family: var(--font);
-  font-size: var(--t-xs);
-  font-weight: 700;
-  letter-spacing: var(--ls-wide);
-  color: var(--step-accent);
-}
-/* Inter at medium weight, one line each on a desktop row of five. */
-.stepper__title {
-  font-family: var(--font-body);
-  font-size: var(--t-copy);
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: var(--ls-copy);
-}
-@media (min-width: 80rem) { .stepper__title { white-space: nowrap; } }
-.stepper__tab:hover { color: var(--on-dark-soft); }
-.stepper__tab[aria-selected="true"] { color: var(--white); }
-.stepper__tab[aria-selected="true"]::before { background: var(--step-accent); transform: none; }
-.stepper__tab:active { opacity: .62; }
-
-.stepper__panel {
-  display: flex;
-  align-items: center;
-  min-block-size: 4.5rem;   /* two lines; the band does not jump between steps */
-}
-.stepper__panel p { max-width: 70ch; color: var(--on-dark-soft); }
-/* Script marks the inactive panels hidden; without it every panel shows. */
-.stepper__panel[hidden] { display: none; }
-[data-anim="on"] .stepper__panel:not([hidden]) { animation: rise var(--t-mid) var(--ease); }
-
-/* On a phone the tabs stack; each is still a tab, the panel follows. */
-@media (max-width: 47.99rem) {
-  .stepper__tab { padding-inline-start: var(--s-4); border-block-end: 1px solid var(--hairline-dark); }
-  .stepper__tab::before { inset: 0 auto 0 0; inline-size: 3px; block-size: auto; transform: scaleY(0); transform-origin: top; }
-  .stepper__tab[aria-selected="true"]::before { transform: none; }
-}
-
-/* --------------------------------------------------------------------------
-   Recovery — four stages across one rule
-   --------------------------------------------------------------------------
-   Below 64rem: a numbered list down the page. From 64rem: five columns, the
-   numbers sitting on one horizontal hairline that runs behind them, the
-   title and the line under each. No photograph, no cards.
-   -------------------------------------------------------------------------- */
-
-.stages { display: grid; gap: var(--s-5); counter-reset: none; }
-.stages li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 2.5rem 1fr;
-  column-gap: var(--s-4);
-  align-items: start;
-  align-content: start;
-}
-.stages li > div { display: grid; gap: var(--s-1); align-content: start; }
-.stages__num {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
-  border-radius: var(--r-pill);
-  box-shadow: inset 0 0 0 1.5px var(--hairline);
-  background: var(--white);
-  font-family: var(--font);
-  font-size: var(--t-sm);
-  font-weight: 700;
-  color: var(--heading);
-  transition: background-color var(--t-mid) var(--ease), color var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease);
-}
-/* Stage titles set like the comparison's group titles ("Closing the
-   eyelid"): the small tracked capitals, the brand blue at 60%. */
-.stages h3 {
-  font-size: var(--t-xs);
-  font-weight: 800;
-  line-height: 1.4;
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: rgb(0 88 148 / .6);
-  margin-block-start: .7rem;
-}
-.stages p { color: var(--text-soft); }
-
-/* The stage being read: the first until the pointer or keyboard arrives. */
-.stages:not(:hover):not(:focus-within) li:first-child .stages__num,
-.stages li:is(:hover, :focus) .stages__num {
-  background: var(--plum-600);
-  box-shadow: none;
-  color: var(--white);
-}
-.stages li:focus { outline: none; }
-.stages li:focus-visible { outline: 3px solid var(--cyan-400); outline-offset: 6px; border-radius: var(--r-sm); }
-
-@media (min-width: 64rem) {
-  .stages { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-6); }
-  .stages li { grid-template-columns: none; row-gap: var(--s-3); }
-  .stages h3 { margin-block-start: 0; }
-  /* The rule the numbers sit on: from each number's centre to the next. */
-  .stages li + li::before {
-    content: '';
-    position: absolute;
-    inset-block-start: 1.25rem;
-    /* From the previous number's right edge to this one's left edge. */
-    inset-inline-start: calc(2.5rem - 100% - var(--s-6));
-    inline-size: calc(100% + var(--s-6) - 2.5rem);
-    block-size: 1px;
-    background: var(--hairline);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Cost — an answer sheet
-   -------------------------------------------------------------------------- */
-
-.price-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-4) var(--s-6);
-}
-
 /* --------------------------------------------------------------------------
    Section titles — two lines when long
    --------------------------------------------------------------------------
@@ -926,60 +555,6 @@ strong.hl {
     text-wrap: balance;
   }
 }
-
-/* Phones: the four facts all stack, label over value. Side by side, the
-   two longer pairs wrapped and the two shorter did not, so the list
-   changed shape halfway down. */
-@media (max-width: 47.99rem) {
-  .facts > div { flex-direction: column; align-items: start; gap: var(--s-1); padding-block: var(--s-3); }
-}
-
-/* --------------------------------------------------------------------------
-   Before & after — four cases, one at a time
-   -------------------------------------------------------------------------- */
-
-.carousel { display: grid; gap: var(--s-5); }
-/* Without script every slide shows, stacked. With it, the four share one
-   grid cell and crossfade: nothing leaves the layout, so nothing jumps. */
-.carousel__track { display: grid; gap: var(--s-4); }
-.carousel[data-ready] .carousel__track { gap: 0; }
-.carousel[data-ready] .carousel__slide {
-  grid-area: 1 / 1;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(.985);
-  transition: opacity .6s var(--ease-soft), transform .6s var(--ease-soft), visibility 0s linear .6s;
-}
-.carousel[data-ready] .carousel__slide.is-current {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition: opacity .6s var(--ease-soft), transform .6s var(--ease-soft), visibility 0s;
-}
-
-.carousel__nav { display: flex; align-items: center; justify-content: center; gap: var(--s-1); }
-/* Each dot is a 44px target holding a small mark; the current one widens. */
-.carousel__dot {
-  display: grid;
-  place-items: center;
-  inline-size: 1.75rem;
-  block-size: var(--tap);
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-.carousel__dot::before {
-  content: '';
-  inline-size: .5rem;
-  block-size: .5rem;
-  border-radius: var(--r-pill);
-  background: rgb(1 53 89 / .2);
-  transition: inline-size var(--t-mid) var(--ease), background-color var(--t-mid) var(--ease);
-}
-.carousel__dot:hover::before { background: rgb(106 0 106 / .4); }
-.carousel__dot[aria-current="true"]::before { inline-size: 1.5rem; background: var(--plum-600); }
-.carousel:not([data-ready]) .carousel__nav { display: none; }
 
 /* --------------------------------------------------------------------------
    Phones — full-width buttons keep their label on one line
@@ -1011,7 +586,6 @@ strong.hl {
   html { font-size: max(100%, 100vw / 120); }
   .hero { background-image: url('https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,c_limit,w_3600/v1789670206/shutterstock_2587017403_xznaag.jpg'); }
 }
-
 
 /* --------------------------------------------------------------------------
    Text width — no line of reading text wider than 60% of the layout

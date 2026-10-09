@@ -30,9 +30,7 @@ body { font-family: var(--font-body); }
 /* Titles and controls stay Poppins. */
 h1, h2, h3, h4,
 .btn, .nav a, .nav-toggle, .topbar a, .skip-link,
-.faq summary, .compare thead th,
-.vid-btn, .play, .ba__tag, .sticky-cta a,
-.stepper__tab, .diagram__num, .d-pin text,
+.faq summary, .compare thead th, .sticky-cta a,
 .profile__stats dd, .kicker {
   font-family: var(--font);
 }
@@ -54,27 +52,6 @@ h1, h2, h3, h4,
   letter-spacing: var(--ls-tight);
 }
 
-/* A subhead that only qualifies the title above it: set in the reading
-   face, one step up from body copy, in the title's blue but at regular
-   weight — so it reads
-   as the question the section answers, not as a second headline. */
-.head .subhead {
-  font-family: var(--font-body);
-  font-size: var(--t-lead);
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: var(--ls-copy);
-  color: var(--heading);
-}
-
-/* The video section's four facts: label and value at one size, halfway
-   between the label's old 13–14px and the value's 17–19px — 16 → 16.5px,
-   on the 16px floor. Weight and colour still tell them apart. */
-#main .facts :is(dt, dd) {
-  font-size: clamp(1rem, .15vw + .95rem, 1.03125rem);
-  line-height: 1.5;
-}
-
 /* ==========================================================================
    Weights — three, by role, and nothing in between
    ==========================================================================
@@ -88,15 +65,13 @@ h1, h2, h3, h4,
 :is(#_, h1, h2) { font-weight: 700; }
 
 :is(#_, h3, h4, .kicker, .faq summary, .compare thead th, .btn, .nav a,
-    .nav-toggle, .topbar a, .sticky-cta a, .ba__tag, .vid-btn, .play,
-    .stepper__num, .stages__num, .diagram__num, .profile__stats dd,
+    .nav-toggle, .topbar a, .sticky-cta a, .profile__stats dd,
     .fit__lead) { font-weight: 600; }
 
-#main :is(p, li, dt, dd, td, tbody th, figcaption, .subhead, .stepper__title):not(.profile__stats dd) {
+#main :is(p, li, dt, dd, td, tbody th, figcaption):not(.profile__stats dd) {
   font-weight: 400;
 }
 /* What reading text highlights: the marker phrases, and the values the
    page sets apart in colour — Ziplyft's column, the facts' answers. */
 #main :is(strong, b, .hl),
-#main .compare tbody td:nth-of-type(1),
-#main :is(.facts, .hero-facts) dd { font-weight: 600; }
+#main .compare tbody td:nth-of-type(1) { font-weight: 600; }
