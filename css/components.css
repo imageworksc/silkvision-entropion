@@ -771,6 +771,16 @@
 /* A note under a photograph runs the photograph's full width. */
 #main .fine--wide { max-width: none; }
 
+/* Open ends: rules between the items only — none over the first row,
+   none under the last one in each column (three rows of two from 48rem). */
+.fit__list.fit__list--open { border-block-start: 0; }
+.fit__list.fit__list--open li:last-child { border-block-end: 0; }
+@media (min-width: 48rem) {
+  .fit__list.fit__list--rows3.fit__list--open li:nth-child(1),
+  .fit__list.fit__list--rows3.fit__list--open li:nth-child(4) { border-block-start: 0; }
+  .fit__list.fit__list--rows3.fit__list--open li:nth-child(3) { border-block-end: 0; }
+}
+
 /* On navy, plum is 1.35:1 and disappears: the marks take the band's cyan. */
 .band--deep .fit__list li { color: var(--on-dark-soft); }
 .band--deep .fit__tick { color: var(--cyan-300); }
