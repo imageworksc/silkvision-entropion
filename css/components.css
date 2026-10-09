@@ -830,23 +830,26 @@
 .note { color: var(--text-soft); }
 
 /* --------------------------------------------------------------------------
-   Treatment options — slim. The five measures as tags (--r-md, the pale
-   tint, a plum mark), wrapping as the column allows; the caveat as one
-   line under them, led by its mark.
+   Treatment options — slim. The five measures in one row on the white band,
+   no frame: each under its mark in a soft plum disc. Two across on phones,
+   three on tablets, five from 64rem. The caveat follows as one line, led by
+   its mark.
    -------------------------------------------------------------------------- */
 
-.tags { display: flex; flex-wrap: wrap; gap: var(--s-2); }
-#main .tags li {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  padding: var(--s-2) var(--s-4);
-  border-radius: var(--r-md);
-  background: var(--pale-100);
-  color: var(--ink-700);
-  line-height: 1.4;
+.measures { display: grid; gap: var(--s-5) var(--s-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 48rem) { .measures { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .measures { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.measures li { display: grid; gap: var(--s-3); align-content: start; color: var(--text); text-wrap: balance; }
+.measures__ico {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: var(--r-pill);
+  background: var(--plum-100);
+  color: var(--plum-600);
 }
-.tags .ico { inline-size: 1.25rem; block-size: 1.25rem; color: var(--plum-600); }
+.measures__ico .ico { inline-size: 1.5rem; block-size: 1.5rem; }
 
 .caveat { display: flex; align-items: flex-start; gap: var(--s-3); color: var(--text-soft); }
 .caveat .ico { flex: none; inline-size: 1.25rem; block-size: 1.25rem; margin-block-start: .2em; color: var(--ink-600); }
