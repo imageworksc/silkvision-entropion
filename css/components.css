@@ -830,55 +830,26 @@
 .note { color: var(--text-soft); }
 
 /* --------------------------------------------------------------------------
-   Treatment options — one frame, the yes/no frame's construction: a plum
-   header bar, the five measures across (each under its mark, hairlines
-   between), and the caveat as the frame's foot on the navy tint the
-   comparison uses for "the other side".
+   Treatment options — slim. The five measures as tags (--r-md, the pale
+   tint, a plum mark), wrapping as the column allows; the caveat as one
+   line under them, led by its mark.
    -------------------------------------------------------------------------- */
 
-.relief {
-  overflow: hidden;
-  border-radius: var(--r-lg);
-  background: var(--white);
-  border: 1px solid var(--hairline);
-  box-shadow: var(--shadow-md);
-}
-#main .relief__head {
-  padding: var(--s-4) var(--s-5);
-  background: var(--fill-action);
-  color: var(--white);
-  font-size: var(--t-body);
-}
-.relief__list { display: grid; }
-.relief__list li {
-  display: flex;
+.tags { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+#main .tags li {
+  display: inline-flex;
   align-items: center;
-  gap: var(--s-4);
-  padding: var(--s-4) var(--s-5);
-  color: var(--text);
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--pale-100);
+  color: var(--ink-700);
+  line-height: 1.4;
 }
-.relief__list li + li { border-block-start: 1px solid var(--hairline); }
-.relief__ico { flex: none; inline-size: 2rem; block-size: 2rem; color: var(--plum-600); stroke-width: 1.6; }
-@media (min-width: 64rem) {
-  .relief__list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .relief__list li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--s-3);
-    padding: var(--s-6) var(--s-5);
-  }
-  .relief__list li + li { border-block-start: 0; border-inline-start: 1px solid var(--hairline); }
-}
-.relief__foot {
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-  padding: var(--s-5);
-  border-block-start: 1px solid var(--hairline);
-  background: rgb(0 73 123 / .05);
-}
-.relief__alert { flex: none; inline-size: 1.75rem; block-size: 1.75rem; color: var(--ink-600); }
-#main .relief__foot p { max-width: none; color: var(--ink-700); }
+.tags .ico { inline-size: 1.25rem; block-size: 1.25rem; color: var(--plum-600); }
+
+.caveat { display: flex; align-items: flex-start; gap: var(--s-3); color: var(--text-soft); }
+.caveat .ico { flex: none; inline-size: 1.25rem; block-size: 1.25rem; margin-block-start: .2em; color: var(--ink-600); }
 
 /* --------------------------------------------------------------------------
    Surgery — the suite shown whole beside the reasons. The photograph is
