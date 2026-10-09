@@ -855,6 +855,50 @@
 }
 
 /* --------------------------------------------------------------------------
+   Symptoms — eight signs in two rows of four (two across below 64rem), each
+   under its mark in a plum-tint disc, one hairline between the rows. The
+   disc is the tick's shape from the Ziplyft lists, in the soft plum.
+   -------------------------------------------------------------------------- */
+
+.signs { display: grid; gap: var(--s-5) var(--s-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.signs li { display: grid; gap: var(--s-3); align-content: start; }
+.signs__ico {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: var(--r-pill);
+  background: var(--plum-100);
+  color: var(--plum-600);
+}
+.signs__ico .ico { inline-size: 1.5rem; block-size: 1.5rem; }
+#main .signs p { color: var(--text); font-size: var(--t-sm); text-wrap: balance; }
+@media (min-width: 64rem) {
+  .signs { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 0; column-gap: var(--s-6); }
+  .signs li { padding-block: var(--s-5); }
+  .signs li:nth-child(-n + 4) { border-block-end: 1px solid var(--hairline); }
+}
+
+/* --------------------------------------------------------------------------
+   Why it matters — one navy card on the white band: the mark and the
+   question on one side, the three paragraphs on the other. It joins the
+   dark-ground contract in base.css, so its type re-points like a navy band.
+   -------------------------------------------------------------------------- */
+
+.card-deep {
+  display: grid;
+  gap: var(--s-6);
+  padding: var(--s-7) var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--fill-deep);
+  box-shadow: var(--shadow-lg);
+}
+@media (min-width: 60rem) {
+  .card-deep { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--s-9); padding: var(--s-9); }
+}
+.card-deep h2 { font-size: var(--t-h2); }
+
+/* --------------------------------------------------------------------------
    Recovery — the question, then its two answers
    -------------------------------------------------------------------------- */
 

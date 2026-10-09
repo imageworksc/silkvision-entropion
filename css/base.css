@@ -75,7 +75,8 @@ strong, b { font-weight: 700; }
    This list is the contract. Anything that puts content on a dark ground
    joins it rather than restating the five declarations. */
 .band--deep,
-.hero {
+.hero,
+.card-deep {
   color: var(--on-dark-soft);
   --text: var(--on-dark-soft);
   --text-soft: var(--on-dark-faint);
@@ -85,7 +86,8 @@ strong, b { font-weight: 700; }
 .band--deep { background: var(--fill-deep); }
 
 .band--deep :is(h1, h2, h3),
-.hero :is(h1, h2, h3) { color: var(--white); }
+.hero :is(h1, h2, h3),
+.card-deep :is(h1, h2, h3) { color: var(--white); }
 
 .stack { display: flex; flex-direction: column; gap: var(--s-5); align-items: flex-start; }
 .stack--loose { gap: var(--s-7); }
@@ -147,7 +149,8 @@ strong, b { font-weight: 700; }
   border-radius: var(--r-sm);
 }
 .band--deep :where(a, button, [tabindex]):focus-visible,
-.hero :where(a, button, [tabindex]):focus-visible { outline-color: var(--white); }
+.hero :where(a, button, [tabindex]):focus-visible,
+.card-deep :where(a, button, [tabindex]):focus-visible { outline-color: var(--white); }
 
 /* Pressed. Hover does not exist on a touch screen, so every link answers a
    finger: anything that lifts on hover seats back down, anything that only

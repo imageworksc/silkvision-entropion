@@ -68,15 +68,15 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=21">
-<link rel="stylesheet" href="css/tokens.css?v=21">
-<link rel="stylesheet" href="css/base.css?v=21">
-<link rel="stylesheet" href="css/components.css?v=21">
-<link rel="stylesheet" href="css/sections.css?v=21">
-<link rel="stylesheet" href="css/type.css?v=21">
-<link rel="stylesheet" href="css/motion.css?v=21">
+<link rel="stylesheet" href="css/fonts.css?v=22">
+<link rel="stylesheet" href="css/tokens.css?v=22">
+<link rel="stylesheet" href="css/base.css?v=22">
+<link rel="stylesheet" href="css/components.css?v=22">
+<link rel="stylesheet" href="css/sections.css?v=22">
+<link rel="stylesheet" href="css/type.css?v=22">
+<link rel="stylesheet" href="css/motion.css?v=22">
 
-<script src="js/main.js?v=21" defer></script>
+<script src="js/main.js?v=22" defer></script>
 </head>
 <body>
 
@@ -112,6 +112,11 @@
   <symbol id="i-lashes" viewBox="0 0 24 24"><path d="M2.6 10S6.6 4.2 12 4.2 21.4 10 21.4 10 17.4 15.8 12 15.8 2.6 10 2.6 10z"/><circle cx="12" cy="10" r="3.4"/><circle cx="12" cy="10" r="1"/><path d="M6.4 17.8l1-1.9M12 19.4v-2.2M17.6 17.8l-1-1.9"/></symbol>
   <symbol id="i-lowerlid" viewBox="0 0 24 24"><path d="M2.6 10S6.6 4.2 12 4.2 21.4 10 21.4 10 17.4 15.8 12 15.8 2.6 10 2.6 10z"/><circle cx="12" cy="10" r="3.4"/><circle cx="12" cy="10" r="1"/><path d="M4.2 16.4S7.6 20 12 20s7.8-3.6 7.8-3.6"/></symbol>
   <symbol id="i-tearing" viewBox="0 0 24 24"><path d="M2.6 9.4S6.6 3.6 12 3.6 21.4 9.4 21.4 9.4 17.4 15.2 12 15.2 2.6 9.4 2.6 9.4z"/><circle cx="12" cy="9.4" r="3.4"/><circle cx="12" cy="9.4" r="1"/><path d="M8.2 16.4c1.3 1.7 2 2.8 2 3.6a2 2 0 01-4 0c0-.8.7-1.9 2-3.6z"/></symbol>
+  <symbol id="i-grit" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M4 3.6l1.8 1.8M8.6 2.6l.5 2.2M19.6 3.8l-1.7 1.6"/></symbol>
+  <symbol id="i-red" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M4.8 11.2l1.6.8-1 1 1.4.6M19.2 11.2l-1.6.8 1 1-1.4.6"/></symbol>
+  <symbol id="i-pain" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/><path d="M18.6 1.8l-1.9 3h2.8l-1.9 3"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M5.4 18.6l1.5-1.5M17.1 6.9l1.5-1.5"/></symbol>
+  <symbol id="i-blur" viewBox="0 0 24 24"><path d="M2.6 12S6.6 5.8 12 5.8 21.4 12 21.4 12 17.4 18.2 12 18.2 2.6 12 2.6 12z" stroke-dasharray="2.6 2.4"/><circle cx="12" cy="12" r="3.4"/><circle cx="12" cy="12" r="1"/></symbol>
   <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.4 4.3L2.9 17.6a1.8 1.8 0 001.6 2.7h15a1.8 1.8 0 001.6-2.7L13.6 4.3a1.8 1.8 0 00-3.2 0z"/><path d="M12 9.4v4.4M12 17.1h.01"/></symbol>
 </defs>
 </svg>
@@ -196,39 +201,40 @@
     </div>
   </section>
 
-  <!-- ===== SYMPTOMS ======================================================== -->
+  <!-- ===== SYMPTOMS — eight signs, each under its mark, two rows of four == -->
   <section class="band band--paper" aria-labelledby="symptoms-title">
     <div class="wrap stack stack--loose">
       <div class="stack head" data-reveal>
         <h2 id="symptoms-title">Common symptoms</h2>
+        <h3 class="subhead">Eyelashes rubbing against the eye</h3>
         <p class="lead lead--wide">Symptoms may worsen when blinking, squeezing the eyelids, or spending time in wind or dry conditions.</p>
       </div>
-      <div class="fit full" data-reveal>
-        <h3 class="fit__lead">Eyelashes rubbing against the eye</h3>
-        <ul class="fit__list">
-          <li><span class="fit__dot" aria-hidden="true"></span><span>A scratching or gritty sensation</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Redness and irritation</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Excessive tearing</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Eye pain or soreness</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Light sensitivity</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Mucus or discharge</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Blurred vision caused by tearing or inflammation</span></li>
-          <li><span class="fit__dot" aria-hidden="true"></span><span>Recurrent corneal irritation</span></li>
-        </ul>
-      </div>
+      <ul class="signs full stagger">
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-grit"/></svg></span><p>A scratching or gritty sensation</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-red"/></svg></span><p>Redness and irritation</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-tearing"/></svg></span><p>Excessive tearing</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-pain"/></svg></span><p>Eye pain or soreness</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><p>Light sensitivity</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-drops"/></svg></span><p>Mucus or discharge</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-blur"/></svg></span><p>Blurred vision caused by tearing or inflammation</p></li>
+        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></span><p>Recurrent corneal irritation</p></li>
+      </ul>
     </div>
   </section>
 
-  <!-- ===== WHY IT MATTERS ================================================== -->
-  <section class="band band--deep" aria-labelledby="matters-title">
-    <div class="wrap split split--wide-gutter">
-      <div class="stack head" data-reveal>
-        <h2 id="matters-title">Why entropion should not be ignored</h2>
-      </div>
-      <div class="prose" data-reveal>
-        <p class="first">The cornea is the clear front surface of the eye and plays an essential role in focusing vision.</p>
-        <p>When eyelashes repeatedly rub against the cornea, they can cause abrasions, inflammation, infection, and in advanced cases, corneal ulceration or vision damage.</p>
-        <p>An evaluation can determine whether the cornea is already irritated and whether temporary protection or <strong class="hl">entropion surgery</strong> is appropriate.</p>
+  <!-- ===== WHY IT MATTERS — one navy card on the white band =============== -->
+  <section class="band" aria-labelledby="matters-title">
+    <div class="wrap">
+      <div class="card-deep full" data-reveal>
+        <div class="stack head">
+          <svg class="ico bare bare--lg" aria-hidden="true"><use href="#i-eye"/></svg>
+          <h2 id="matters-title">Why entropion should not be ignored</h2>
+        </div>
+        <div class="prose">
+          <p class="first">The cornea is the clear front surface of the eye and plays an essential role in focusing vision.</p>
+          <p>When eyelashes repeatedly rub against the cornea, they can cause abrasions, inflammation, infection, and in advanced cases, corneal ulceration or vision damage.</p>
+          <p>An evaluation can determine whether the cornea is already irritated and whether temporary protection or <strong class="hl">entropion surgery</strong> is appropriate.</p>
+        </div>
       </div>
     </div>
   </section>

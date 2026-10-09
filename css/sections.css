@@ -326,8 +326,8 @@
    --text-soft re-points to 62% white there, which is right for a label and
    too faint for a paragraph somebody past sixty has to read. */
 .band--deep .lead { color: var(--pale-200); }
-.band--deep .prose p { color: var(--on-dark-soft); }
-.band--deep .prose .first { color: var(--white); }
+:is(.band--deep, .card-deep) .prose p { color: var(--on-dark-soft); }
+:is(.band--deep, .card-deep) .prose .first { color: var(--white); }
 .band--deep p { color: var(--on-dark-soft); }
 
 /* ==========================================================================
@@ -652,7 +652,7 @@
   stroke-width: 1.6;
 }
 .bare--lg { inline-size: 3rem; block-size: 3rem; stroke-width: 1.4; }
-.band--deep .bare { color: var(--cyan-300); }
+:is(.band--deep, .card-deep) .bare { color: var(--cyan-300); }
 
 /* ==========================================================================
    Highlight — the marker stroke from the entropion page
@@ -684,7 +684,7 @@ strong.hl {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-:is(.band--deep, .hero, .band--plum) strong.hl {
+:is(.band--deep, .hero, .band--plum, .card-deep) strong.hl {
   color: var(--white);
   background-image: linear-gradient(var(--hl-mark-dark), var(--hl-mark-dark));
 }
