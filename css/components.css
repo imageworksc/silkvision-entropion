@@ -577,15 +577,20 @@
 
 /* --------------------------------------------------------------------------
    Treatment options — slim. The five measures in one row on the white band,
-   no frame: each under its mark in a soft plum disc. Two across on phones,
-   three on tablets, five from 64rem. The caveat follows as one line, led by
+   no frame: each under its mark in a soft plum disc. A list on phones (mark
+   beside the text), three across on tablets, five from 64rem. The caveat follows as one line, led by
    its mark.
    -------------------------------------------------------------------------- */
 
-.measures { display: grid; gap: var(--s-5) var(--s-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (min-width: 48rem) { .measures { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.measures { display: grid; gap: var(--s-4); }
+@media (min-width: 48rem) { .measures { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); } }
 @media (min-width: 64rem) { .measures { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 .measures li { display: grid; gap: var(--s-3); align-content: start; color: var(--text); text-wrap: balance; }
+/* Phones: one list, each measure beside its mark, so no label is squeezed
+   into a half-width column. */
+@media (max-width: 47.99rem) {
+  .measures li { grid-template-columns: auto 1fr; align-items: center; gap: var(--s-4); }
+}
 .measures__ico {
   display: grid;
   place-items: center;
