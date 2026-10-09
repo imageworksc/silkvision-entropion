@@ -68,15 +68,15 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=22">
-<link rel="stylesheet" href="css/tokens.css?v=22">
-<link rel="stylesheet" href="css/base.css?v=22">
-<link rel="stylesheet" href="css/components.css?v=22">
-<link rel="stylesheet" href="css/sections.css?v=22">
-<link rel="stylesheet" href="css/type.css?v=22">
-<link rel="stylesheet" href="css/motion.css?v=22">
+<link rel="stylesheet" href="css/fonts.css?v=23">
+<link rel="stylesheet" href="css/tokens.css?v=23">
+<link rel="stylesheet" href="css/base.css?v=23">
+<link rel="stylesheet" href="css/components.css?v=23">
+<link rel="stylesheet" href="css/sections.css?v=23">
+<link rel="stylesheet" href="css/type.css?v=23">
+<link rel="stylesheet" href="css/motion.css?v=23">
 
-<script src="js/main.js?v=22" defer></script>
+<script src="js/main.js?v=23" defer></script>
 </head>
 <body>
 
@@ -201,24 +201,28 @@
     </div>
   </section>
 
-  <!-- ===== SYMPTOMS — eight signs, each under its mark, two rows of four == -->
-  <section class="band band--paper" aria-labelledby="symptoms-title">
-    <div class="wrap stack stack--loose">
+  <!-- ===== SYMPTOMS — the draft's order: heading, when it worsens, the one
+       line that sums it up, then the signs in two columns, each beside its
+       mark. A slim band. ================================================= -->
+  <section class="band band--paper band--slim" aria-labelledby="symptoms-title">
+    <div class="wrap stack">
       <div class="stack head" data-reveal>
         <h2 id="symptoms-title">Common symptoms</h2>
-        <h3 class="subhead">Eyelashes rubbing against the eye</h3>
         <p class="lead lead--wide">Symptoms may worsen when blinking, squeezing the eyelids, or spending time in wind or dry conditions.</p>
       </div>
-      <ul class="signs full stagger">
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-grit"/></svg></span><p>A scratching or gritty sensation</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-red"/></svg></span><p>Redness and irritation</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-tearing"/></svg></span><p>Excessive tearing</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-pain"/></svg></span><p>Eye pain or soreness</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></span><p>Light sensitivity</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-drops"/></svg></span><p>Mucus or discharge</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-blur"/></svg></span><p>Blurred vision caused by tearing or inflammation</p></li>
-        <li data-reveal><span class="signs__ico"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></span><p>Recurrent corneal irritation</p></li>
-      </ul>
+      <div class="fit full" data-reveal>
+        <h3 class="fit__lead">Eyelashes rubbing against the eye</h3>
+        <ul class="fit__list signs">
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-grit"/></svg><span>A scratching or gritty sensation</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-red"/></svg><span>Redness and irritation</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-tearing"/></svg><span>Excessive tearing</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-pain"/></svg><span>Eye pain or soreness</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-sun"/></svg><span>Light sensitivity</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-drops"/></svg><span>Mucus or discharge</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-blur"/></svg><span>Blurred vision caused by tearing or inflammation</span></li>
+          <li><svg class="ico signs__ico" aria-hidden="true"><use href="#i-eye"/></svg><span>Recurrent corneal irritation</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 

@@ -855,28 +855,18 @@
 }
 
 /* --------------------------------------------------------------------------
-   Symptoms — eight signs in two rows of four (two across below 64rem), each
-   under its mark in a plum-tint disc, one hairline between the rows. The
-   disc is the tick's shape from the Ziplyft lists, in the soft plum.
+   Symptoms — the .fit list (two columns of four ruled rows from 48rem),
+   each sign beside a bare plum mark in place of the tick. Body size as
+   everywhere; the band is slim.
    -------------------------------------------------------------------------- */
 
-.signs { display: grid; gap: var(--s-5) var(--s-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.signs li { display: grid; gap: var(--s-3); align-content: start; }
+.fit__list.signs li { align-items: center; padding-block: var(--s-3); }
 .signs__ico {
-  display: grid;
-  place-items: center;
-  inline-size: 3rem;
-  block-size: 3rem;
-  border-radius: var(--r-pill);
-  background: var(--plum-100);
+  flex: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   color: var(--plum-600);
-}
-.signs__ico .ico { inline-size: 1.5rem; block-size: 1.5rem; }
-#main .signs p { color: var(--text); font-size: var(--t-sm); text-wrap: balance; }
-@media (min-width: 64rem) {
-  .signs { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 0; column-gap: var(--s-6); }
-  .signs li { padding-block: var(--s-5); }
-  .signs li:nth-child(-n + 4) { border-block-end: 1px solid var(--hairline); }
+  stroke-width: 1.7;
 }
 
 /* --------------------------------------------------------------------------
