@@ -351,32 +351,6 @@
 }
 
 /* --------------------------------------------------------------------------
-   Candidacy — the caution as a banner across the band
-   -------------------------------------------------------------------------- */
-
-.banner {
-  display: grid;
-  gap: var(--s-5);
-  justify-items: start;
-  padding: var(--s-6) var(--s-5);
-  border-radius: var(--r-lg);
-  background: var(--white);
-  border: 1px solid var(--hairline);
-  box-shadow: var(--shadow-sm);
-}
-.banner__text { gap: var(--s-3); }
-.banner__text h3 { font-size: var(--t-h3); }
-.banner__text p { max-width: 72ch; color: var(--text-soft); }
-@media (min-width: 64rem) {
-  .banner {
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    column-gap: var(--s-7);
-    padding: var(--s-7);
-  }
-}
-
-/* --------------------------------------------------------------------------
    Muted accent on navy
    The page's light blue with most of its saturation taken out — the accent
    on the navy bands (≈ 7:1 on the navy), shared by the at-a-glance numbers
@@ -530,15 +504,6 @@ strong.hl {
 /* The solid button would be plum on plum. Inverted: white, plum label. */
 .btn--invert { background: var(--white); color: var(--plum-700); }
 .btn--invert:hover { background: var(--plum-100); }
-
-/* The caveat, on the band itself rather than on a white panel inside it. */
-.band--plum .banner {
-  padding: 0;
-  background: none;
-  border: 0;
-  box-shadow: none;
-}
-.band--plum .banner__text p { color: var(--on-dark-soft); }
 
 /* --------------------------------------------------------------------------
    Section titles — two lines when long

@@ -544,41 +544,35 @@
 .band--deep .fit__dot { background: var(--sky-muted); }
 
 /* --------------------------------------------------------------------------
-   Prompt care — the six signs inside the caveat banner, one row of short
-   items divided by thin rules rather than a second list on its own.
+   Prompt care — the plum band, slim. One row carries the mark, the caution
+   and the call; the six signs follow as outlined tags (--r-md like every
+   rectangle here), three rows of two from 48rem and two of three from
+   80rem, and the line that says
+   why closes the band. On phones the call comes last.
    -------------------------------------------------------------------------- */
 
-/* Even rows, each sign on one line, a hairline between the columns: two
-   columns from 48rem, three from 80rem (two rows of three); on phones a
-   plain column. Short labels, not reading text, so the list may run wider
-   than a paragraph would. */
-.banner__list {
-  display: grid;
-  gap: var(--s-2) var(--s-5);
+.urgent { display: grid; gap: var(--s-5); justify-items: start; }
+.urgent__top { display: flex; align-items: center; gap: var(--s-4); }
+#main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
+.urgent__call { white-space: nowrap; }
+/* From 48rem the call rides at the end of the title's row; on phones it
+   comes last, after the line that says why. */
+@media (min-width: 48rem) {
+  .urgent { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--s-6); }
+  .urgent > :not(.urgent__call) { grid-column: 1; }
+  .urgent__call { grid-column: 2; grid-row: 1; align-self: center; }
 }
-#main .banner__list li {
+.urgent__signs { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); }
+/* Two even rows of three where the band is wide enough. */
+@media (min-width: 48rem) { .urgent__signs { display: grid; grid-template-columns: repeat(2, max-content); } }
+@media (min-width: 80rem) { .urgent__signs { display: grid; grid-template-columns: repeat(3, max-content); } }
+#main .urgent__signs li {
+  padding: var(--s-2) var(--s-4);
+  border: 1px solid rgb(255 255 255 / .45);
+  border-radius: var(--r-md);
   color: var(--white);
-  font-weight: 600;
-  white-space: nowrap;
+  line-height: 1.4;
 }
-@media (min-width: 48rem) and (max-width: 79.99rem) {
-  .banner__list { grid-template-columns: repeat(2, max-content); }
-  #main .banner__list li:nth-child(2n) {
-    padding-inline-start: var(--s-5);
-    border-inline-start: 1px solid var(--hairline-dark);
-  }
-}
-@media (min-width: 80rem) {
-  .banner__list { grid-template-columns: repeat(3, max-content); }
-  #main .banner__list li:not(:nth-child(3n + 1)) {
-    padding-inline-start: var(--s-5);
-    border-inline-start: 1px solid var(--hairline-dark);
-  }
-}
-/* The banner's middle column may shrink; the button keeps its number on
-   one line. */
-@media (min-width: 64rem) { .band--plum .banner { grid-template-columns: auto minmax(0, 1fr) auto; } }
-.band--plum .banner .btn { white-space: nowrap; }
 
 /* --------------------------------------------------------------------------
    Treatment options — slim. The five measures in one row on the white band,
