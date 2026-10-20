@@ -546,10 +546,12 @@
 /* --------------------------------------------------------------------------
    Prompt care — the plum band, slim. The mark and the caution in one row;
    the six signs follow as a plain dotted list in columns, then the line
-   that says why, and the call last, on the left.
+   that says why, and the call last. Everything centred on the band; the
+   signs keep their dots aligned, centred as a block.
    -------------------------------------------------------------------------- */
 
-.urgent { display: grid; gap: var(--s-5); justify-items: start; }
+.urgent { display: grid; gap: var(--s-5); justify-items: center; text-align: center; }
+#main .urgent > p { margin-inline: auto; }
 .urgent__top { display: flex; align-items: center; gap: var(--s-4); }
 #main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
 .urgent__call { white-space: nowrap; }
@@ -557,8 +559,11 @@
    One column on phones, two from 48rem, three from 64rem. */
 .urgent__signs {
   display: grid;
+  grid-template-columns: max-content;
+  justify-content: center;
   gap: var(--s-2) var(--s-7);
   inline-size: 100%;
+  text-align: start;
 }
 @media (min-width: 48rem) { .urgent__signs { grid-template-columns: repeat(2, max-content); } }
 @media (min-width: 64rem) { .urgent__signs { grid-template-columns: repeat(3, max-content); } }
