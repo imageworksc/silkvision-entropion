@@ -545,25 +545,37 @@
 
 /* --------------------------------------------------------------------------
    Prompt care — the plum band, slim. The mark and the caution in one row;
-   the six signs follow as outlined tags (--r-md like every
-   rectangle here), three rows of two from 48rem and two of three from
-   80rem, then the line that says why, and the call last, on the left.
+   the six signs follow as a plain dotted list in columns, then the line
+   that says why, and the call last, on the left.
    -------------------------------------------------------------------------- */
 
 .urgent { display: grid; gap: var(--s-5); justify-items: start; }
 .urgent__top { display: flex; align-items: center; gap: var(--s-4); }
 #main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
 .urgent__call { white-space: nowrap; }
-.urgent__signs { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); }
-/* Two even rows of three where the band is wide enough. */
-@media (min-width: 48rem) { .urgent__signs { display: grid; grid-template-columns: repeat(2, max-content); } }
-@media (min-width: 80rem) { .urgent__signs { display: grid; grid-template-columns: repeat(3, max-content); } }
+/* The six signs as a plain list: a small dot and the words, no boxes.
+   One column on phones, two from 48rem, three from 64rem. */
+.urgent__signs {
+  display: grid;
+  gap: var(--s-2) var(--s-7);
+  inline-size: 100%;
+}
+@media (min-width: 48rem) { .urgent__signs { grid-template-columns: repeat(2, max-content); } }
+@media (min-width: 64rem) { .urgent__signs { grid-template-columns: repeat(3, max-content); } }
 #main .urgent__signs li {
-  padding: var(--s-2) var(--s-4);
-  border: 1px solid rgb(255 255 255 / .45);
-  border-radius: var(--r-md);
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
   color: var(--white);
-  line-height: 1.4;
+}
+.urgent__signs li::before {
+  content: '';
+  flex: none;
+  inline-size: .375rem;
+  block-size: .375rem;
+  border-radius: var(--r-pill);
+  background: var(--plum-100);
+  transform: translateY(-.2em);
 }
 
 /* --------------------------------------------------------------------------
