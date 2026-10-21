@@ -641,6 +641,10 @@
    about the same length. */
 #main .steps3--plain .feature p { font-size: var(--t-sm); text-wrap: balance; max-width: 21em; }
 .steps3.steps3--plain .feature { margin-inline: 0; padding-inline: 0; gap: var(--s-3); }
+/* The two shortest statements are held to two balanced lines, so all
+   six set at the same height. */
+#main .steps3--plain .feature p.glance__short { max-width: 13em; }
+
 /* No rule over the row: the one hairline runs between the two rows,
    under 1, 2 and 3. */
 .steps3.steps3--plain { padding-block-start: 0; border-block-start: 0; }
