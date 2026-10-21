@@ -745,15 +745,34 @@
 #main .recovery-links__ask { font-weight: 600; color: var(--heading); }
 
 /* --------------------------------------------------------------------------
-   Entropion vs. ectropion — the two definitions open the table
+   Entropion vs. ectropion — the filled comparison table
    -------------------------------------------------------------------------- */
 
-#main .compare__title {
-  font-family: var(--font);
-  font-weight: 600;
-  color: var(--heading);
+/* The filled comparison: the base .compare's header bars and tinted
+   columns (plum for entropion, navy for ectropion), framed as one card. Below 48rem each row stacks: its label across the top,
+   the two answers side by side under their colours. */
+.compare-wrap:has(.compare--filled) {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
 }
-#compare .compare tbody td:nth-of-type(1).compare__title { color: var(--plum-600); }
-#compare .compare tbody td:nth-of-type(2).compare__title { color: var(--ink-700); }
+.compare--filled thead th { font-size: var(--t-body); }
+.compare--filled thead th:first-child { background: var(--white); }
+.compare--filled tbody th { padding-inline-start: var(--s-5); color: var(--heading); }
+.compare--filled tbody tr:last-child :is(th, td) { border-block-end: 0; }
+@media (max-width: 47.99rem) {
+  .compare--filled, .compare--filled thead, .compare--filled tbody { display: block; }
+  .compare--filled tr { display: grid; grid-template-columns: 1fr 1fr; }
+  .compare--filled thead th:first-child { display: none; }
+  .compare--filled tbody th[scope="row"] {
+    grid-column: 1 / -1;
+    padding: var(--s-3) var(--s-4) var(--s-2);
+    border-block-end: 0;
+    background: var(--paper);
+  }
+  .compare--filled :is(thead th, tbody td) { padding: var(--s-3) var(--s-4); text-align: start; }
+}
+
 .compare-note { max-width: none; color: var(--text-soft); }
 .compare-note a { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }

@@ -68,15 +68,15 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=54">
-<link rel="stylesheet" href="css/tokens.css?v=54">
-<link rel="stylesheet" href="css/base.css?v=54">
-<link rel="stylesheet" href="css/components.css?v=54">
-<link rel="stylesheet" href="css/sections.css?v=54">
-<link rel="stylesheet" href="css/type.css?v=54">
-<link rel="stylesheet" href="css/motion.css?v=54">
+<link rel="stylesheet" href="css/fonts.css?v=55">
+<link rel="stylesheet" href="css/tokens.css?v=55">
+<link rel="stylesheet" href="css/base.css?v=55">
+<link rel="stylesheet" href="css/components.css?v=55">
+<link rel="stylesheet" href="css/sections.css?v=55">
+<link rel="stylesheet" href="css/type.css?v=55">
+<link rel="stylesheet" href="css/motion.css?v=55">
 
-<script src="js/main.js?v=54" defer></script>
+<script src="js/main.js?v=55" defer></script>
 </head>
 <body>
 
@@ -485,15 +485,17 @@
     </div>
   </section>
 
-  <!-- ===== ENTROPION VS. ECTROPION ========================================= -->
-  <section class="band band--slim" id="compare" aria-labelledby="compare-title">
+  <!-- ===== ENTROPION VS. ECTROPION — the comparison table with its filled
+       header bars and tinted columns: plum for entropion, navy for the
+       other condition ===================================================== -->
+  <section class="band band--slim" id="versus" aria-labelledby="compare-title">
     <div class="wrap stack stack--loose">
       <div class="stack head" data-reveal>
         <h2 id="compare-title">Entropion vs. ectropion</h2>
         <p class="lead lead--wide">Entropion and ectropion are opposite eyelid-position problems.</p>
       </div>
       <div class="compare-wrap full" data-reveal>
-        <table class="compare">
+        <table class="compare compare--filled">
           <caption class="sr-only">Entropion compared with ectropion.</caption>
           <thead><tr>
             <th scope="col"><span class="sr-only">Compare</span></th>
@@ -501,9 +503,9 @@
             <th scope="col">Ectropion</th>
           </tr></thead>
           <tbody>
-            <tr><th scope="row"><span class="sr-only">Eyelid position</span></th>
-              <td class="compare__title">The eyelid turns inward</td>
-              <td class="compare__title">The lower eyelid turns outward</td></tr>
+            <tr><th scope="row">Eyelid position</th>
+              <td>The eyelid turns inward</td>
+              <td>The lower eyelid turns outward</td></tr>
             <tr><th scope="row">Common symptoms</th>
               <td>Scratching, redness, tearing, pain</td>
               <td>Watery eyes, dryness, exposure, irritation</td></tr>
