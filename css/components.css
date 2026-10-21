@@ -540,12 +540,13 @@
 
 /* A list title set exactly like the paragraph under the section's title
    (which #main's body rule sets at the copy size): the reading face, the
-   copy size and leading, the soft colour, regular weight. It stays an h3
-   for structure. */
+   copy size and leading, the soft colour — one weight up (Inter 600, the
+   system's emphasis weight) so it reads as the list's lead-in. It stays
+   an h3 for structure. */
 #main .fit__lead.fit__lead--as-lead {
   font-family: var(--font-body);
   font-size: var(--t-copy);
-  font-weight: 400;
+  font-weight: 600;
   line-height: var(--lh-copy);
   letter-spacing: var(--ls-copy);
   color: var(--text-soft);
