@@ -716,7 +716,7 @@
 @media (min-width: 60rem) {
   .card-deep { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--s-9); padding: var(--s-9); }
 }
-.card-deep h2 { font-size: var(--t-h2); }
+.card-deep h2 { font-size: var(--t-h2-sm); }
 /* One hairline between the title and the paragraphs: under the title
    while they stack, between the two columns once they sit side by side. */
 .card-deep .prose { padding-block-start: var(--s-6); border-block-start: 1px solid var(--hairline-dark); }
