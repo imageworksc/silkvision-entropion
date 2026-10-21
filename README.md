@@ -37,10 +37,8 @@ step tabs, cost, yes/no, fork, stages) were removed from CSS and JS.
 ## Pending from the practice
 
 - [ ] URL of the ectropion page (link in the comparison note is `#`).
-- [ ] A larger copy (≥1800px wide) of the eye-drop close-up used behind
-      "Entropion at a glance" (`images/eye-drops-closeup.jpg`, from
-      silkvision.net's services page, is only 250×250 px).
-- [ ] Upload the four section photos to Cloudinary (`dsjbq35es`) and swap the
+- [ ] Upload the five section photos (including `images/eye-drops.jpg`,
+      from silkvision.net's refractive lens surgery page) to Cloudinary (`dsjbq35es`) and swap the
       local `images/*.webp` paths, including `og:image`. The hero already
       comes from Cloudinary (the eye close-up shared with the Ziplyft page).
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` at go-live.
