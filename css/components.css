@@ -620,15 +620,21 @@
 
 /* --------------------------------------------------------------------------
    At a glance — the Ziplyft "how it works" row (.steps3), for statements
-   that have no title of their own: the counter opens the line itself.
-   Plain numbers, never zero-padded. Six items, so two rows of three.
+   that have no title of their own: each led by a bullet, no marks. Six
+   items, so two rows of three.
    -------------------------------------------------------------------------- */
 
-.steps3--plain .feature p::before {
-  content: counter(st) '. ';
-  font-family: var(--font);
-  font-weight: 700;
-  color: var(--white);
+/* A bullet in place of the number: a small dot in the navy bands' muted
+   accent, centred on the first line. */
+.steps3--plain .feature { align-items: baseline; }
+.steps3--plain .feature::before {
+  content: '';
+  flex: none;
+  inline-size: .45rem;
+  block-size: .45rem;
+  border-radius: var(--r-pill);
+  background: var(--sky-muted);
+  transform: translateY(-.2em);
 }
 /* Even lines: one step down to the 16-17px small-copy size, balanced
    wrapping and a tighter gutter, so all six statements set in two lines of
