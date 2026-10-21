@@ -27,7 +27,7 @@ step tabs, cost, yes/no, fork, stages) were removed from CSS and JS.
 
 - Shared shell added: topbar, sticky header, footer, phone sticky call bar.
 - Sections mapped to the system's patterns, alternating grounds; the
-  "Seek prompt eye care" panel is the page's one plum band.
+  "When to Seek Immediate Eye Care" panel is the page's one plum band.
 - Entropion vs. ectropion is now the `#compare` table.
 - FAQ uses `<details name="faq">` and is mirrored in FAQPage JSON-LD.
 - FAQ moved before the closing call (the closing band ends the page).
