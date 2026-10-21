@@ -746,6 +746,11 @@
 /* Centred: each paragraph centred under the title, the rule held to the
    copy's width, the two buttons centred under the question. */
 .recovery .prose p { margin-inline: auto; }
+/* The long paragraph set in two balanced lines, at the client's request:
+   an exception to the 60% text width, from 80rem where two lines fit. */
+@media (min-width: 80rem) {
+  #main .recovery .prose p.recovery__wide { max-width: 58em; text-wrap: balance; }
+}
 .recovery .recovery-links { inline-size: 100%; justify-items: center; text-align: center; }
 /* From 48rem the rule is drawn at the copy's width, and the buttons get the
    whole row so the two sit side by side. */
