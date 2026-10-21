@@ -655,28 +655,6 @@
 }
 
 /* --------------------------------------------------------------------------
-   Navy band over a photograph — the at-a-glance band. A patient putting in
-   lubricating drops (the photograph from silkvision.net's "Preparing for
-   Refractive Lens Surgery" band), anchored on the subject at the right,
-   under the band's own navy at 86%, so it reads as texture and the copy
-   keeps the navy band's contrast.
-   [PENDING: move to Cloudinary with the other photos.]
-   -------------------------------------------------------------------------- */
-
-.band--photo {
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--fill-deep) url('../images/eye-drops-lens-prep.jpg') 85% 30% / cover no-repeat;
-}
-.band--photo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: rgb(1 53 89 / .86);
-}
-
-/* --------------------------------------------------------------------------
    Symptoms — the .fit list (two columns of four rows from 48rem),
    each sign beside a bare plum mark in place of the tick. Body size as
    everywhere; the band is slim.
