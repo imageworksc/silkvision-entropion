@@ -585,12 +585,17 @@
 
 /* --------------------------------------------------------------------------
    Treatment options — slim, two columns: the heading with the caveat under
-   it, beside the five measures as a ticked list (.fit__list--discs). The
-   caveat is one line of soft text led by its mark.
+   it, beside the five measures, each beside its plum mark (the .fit list
+   with the symptoms' bare icons in place of ticks). The caveat is soft
+   text with its mark centred beside it.
    -------------------------------------------------------------------------- */
 
-.caveat { display: flex; align-items: flex-start; gap: var(--s-3); color: var(--text-soft); }
-.caveat .ico { flex: none; inline-size: 1.25rem; block-size: 1.25rem; margin-block-start: .2em; color: var(--ink-600); }
+/* Each measure's mark centred against its line(s). */
+.fit__list.fit__list--icons li { align-items: center; }
+
+.caveat { display: flex; align-items: center; gap: var(--s-4); color: var(--text-soft); }
+/* The mark sits centred against the whole caveat, not on its first line. */
+.caveat .ico { flex: none; inline-size: 1.5rem; block-size: 1.5rem; color: var(--ink-600); }
 
 /* --------------------------------------------------------------------------
    Surgery — the suite shown whole beside the reasons. The photograph is
