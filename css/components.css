@@ -760,8 +760,10 @@
 .compare--filled thead th { font-size: var(--t-body); }
 .compare--filled thead th:first-child { background: var(--white); }
 .compare--filled tbody th { padding-inline-start: var(--s-5); color: var(--heading); }
-/* The row labels one weight up, the system's emphasis weight. */
-#main .compare--filled tbody th { font-weight: 600; }
+/* The row labels one weight up, the system's emphasis weight. type.css
+   (loaded later) sets every #main tbody th to 400 through an :is() list,
+   so this carries the extra [scope] to outrank it. */
+#main .compare--filled tbody th[scope="row"] { font-weight: 600; }
 .compare--filled tbody tr:last-child :is(th, td) { border-block-end: 0; }
 @media (max-width: 47.99rem) {
   .compare--filled, .compare--filled thead, .compare--filled tbody { display: block; }
