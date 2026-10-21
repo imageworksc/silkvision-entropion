@@ -82,11 +82,8 @@
 @media (min-width: 48rem) { .steps3 { grid-template-columns: repeat(3, 1fr); } }
 .steps3 .feature { counter-increment: st; }
 .steps3 .feature + .feature { margin-block-start: 0; }
-.steps3 .feature h3::before { content: counter(st) '. '; font-weight: 800; }
 
 .band--deep .feature p { color: var(--on-dark-soft); }
-/* The three marks drawn bare in white: no well behind them. */
-.steps3__ico { flex: none; inline-size: 1.75rem; block-size: 1.75rem; color: var(--white); stroke-width: 1.6; }
 
 /* --------------------------------------------------------------------------
    FAQ — the heading holds still while the questions scroll past it
@@ -405,7 +402,6 @@
   color: var(--plum-600);
   stroke-width: 1.6;
 }
-.bare--lg { inline-size: 3rem; block-size: 3rem; stroke-width: 1.4; }
 :is(.band--deep, .card-deep) .bare { color: var(--cyan-300); }
 
 /* ==========================================================================
