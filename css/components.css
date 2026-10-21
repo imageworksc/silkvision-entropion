@@ -655,17 +655,18 @@
 }
 
 /* --------------------------------------------------------------------------
-   Navy band over a photograph — the at-a-glance band. A patient putting in
-   lubricating drops (the photograph from silkvision.net's dry-eye page),
-   anchored on the subject at the left, under the band's own navy at 86%,
-   so it reads as texture and the copy keeps the navy band's contrast.
-   [PENDING: move to Cloudinary with the other photos.]
+   Navy band over a photograph — the at-a-glance band. A close view of a
+   drop falling into an open eye (silkvision.net's "Procedures and
+   Services" photo), under the band's own navy at 86%, so it reads as
+   texture and the copy keeps the navy band's contrast.
+   [PENDING: the source is only 250px; replace with a larger copy of the
+   same photo on Cloudinary.]
    -------------------------------------------------------------------------- */
 
 .band--photo {
   isolation: isolate;
   overflow: hidden;
-  background: var(--fill-deep) url('../images/eye-drops.jpg') 20% 30% / cover no-repeat;
+  background: var(--fill-deep) url('../images/eye-drops-closeup.jpg') 60% 40% / cover no-repeat;
 }
 .band--photo::before {
   content: '';
