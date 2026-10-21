@@ -37,7 +37,7 @@ step tabs, cost, yes/no, fork, stages) were removed from CSS and JS.
 ## Pending from the practice
 
 - [ ] URL of the ectropion page (link in the comparison note is `#`).
-- [ ] Upload the five section photos (including `images/eye-drops.jpg`,
+- [ ] Upload the five section photos (including `images/eye-drops-lens-prep.jpg`,
       from silkvision.net's refractive lens surgery page) to Cloudinary (`dsjbq35es`) and swap the
       local `images/*.webp` paths, including `og:image`. The hero already
       comes from Cloudinary (the eye close-up shared with the Ziplyft page).

@@ -666,7 +666,7 @@
 .band--photo {
   isolation: isolate;
   overflow: hidden;
-  background: var(--fill-deep) url('../images/eye-drops.jpg') 85% 30% / cover no-repeat;
+  background: var(--fill-deep) url('../images/eye-drops-lens-prep.jpg') 85% 30% / cover no-repeat;
 }
 .band--photo::before {
   content: '';
