@@ -733,38 +733,19 @@
 }
 
 /* --------------------------------------------------------------------------
-   Recovery — the question, then its two answers
+   Recovery — centred copy, then its two buttons
    -------------------------------------------------------------------------- */
 
-.recovery-links {
-  display: grid;
-  gap: var(--s-4);
-  padding-block-start: var(--s-5);
-  border-block-start: 1px solid var(--hairline);
-}
-#main .recovery-links__ask { font-weight: 600; color: var(--heading); }
-/* Centred: each paragraph centred under the title, the rule held to the
-   copy's width, the two buttons centred under the question. */
+.recovery-links { display: grid; padding-block-start: var(--s-3); }
+/* Centred: each paragraph centred under the title, the two buttons centred
+   under the copy, side by side where they fit. */
 .recovery .prose p { margin-inline: auto; }
 /* The long paragraph set in two balanced lines, at the client's request:
    an exception to the 60% text width, from 80rem where two lines fit. */
 @media (min-width: 80rem) {
   #main .recovery .prose p.recovery__wide { max-width: 58em; text-wrap: balance; }
 }
-.recovery .recovery-links { inline-size: 100%; justify-items: center; text-align: center; }
-/* From 48rem the rule is drawn at the copy's width, and the buttons get the
-   whole row so the two sit side by side. */
-@media (min-width: 48rem) {
-  .recovery .recovery-links { border-block-start: 0; padding-block-start: 0; }
-  .recovery .recovery-links::before {
-    content: '';
-    inline-size: min(var(--measure), var(--text-max));
-    block-size: 1px;
-    margin-block-end: var(--s-4);
-    background: var(--hairline);
-  }
-}
-#main .recovery .recovery-links__ask { margin-inline: auto; }
+.recovery .recovery-links { inline-size: 100%; justify-items: center; }
 .recovery .recovery-links .cluster { inline-size: 100%; justify-content: center; }
 
 /* --------------------------------------------------------------------------
