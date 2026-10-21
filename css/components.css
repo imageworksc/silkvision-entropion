@@ -558,29 +558,21 @@
 .band--deep .fit__dot { background: var(--sky-muted); }
 
 /* --------------------------------------------------------------------------
-   Prompt care — the plum band, slim. The mark and the caution in one row;
-   the six signs follow as a plain dotted list in columns, then the line
-   that says why, and the call last. Everything centred on the band; the
-   signs keep their dots aligned, centred as a block.
+   Prompt care — the plum band, slim, ranged left. From 64rem two columns:
+   the mark and title, the line that says why and the call on the left;
+   the six signs in two columns on the right, centred against them. On
+   phones everything stacks in reading order, the call last.
    -------------------------------------------------------------------------- */
 
-.urgent { display: grid; gap: var(--s-5); justify-items: center; text-align: center; }
-#main .urgent > p { margin-inline: auto; }
+.urgent { display: grid; gap: var(--s-5); justify-items: start; }
 .urgent__top { display: flex; align-items: center; gap: var(--s-4); }
 #main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
 .urgent__call { white-space: nowrap; }
-/* The six signs as a plain list: a small dot and the words, no boxes.
-   One column on phones, two from 48rem, three from 64rem. */
-.urgent__signs {
-  display: grid;
-  grid-template-columns: max-content;
-  justify-content: center;
-  gap: var(--s-2) var(--s-7);
-  inline-size: 100%;
-  text-align: start;
-}
-@media (min-width: 48rem) { .urgent__signs { grid-template-columns: repeat(2, max-content); } }
-@media (min-width: 64rem) { .urgent__signs { grid-template-columns: repeat(3, max-content); } }
+#main .urgent > p { max-width: 46ch; }
+
+/* The six signs as a plain list: a small dot and the words, no boxes. */
+.urgent__signs { display: grid; gap: var(--s-3) var(--s-7); }
+@media (min-width: 34rem) { .urgent__signs { grid-template-columns: repeat(2, max-content); } }
 #main .urgent__signs li {
   display: flex;
   align-items: baseline;
@@ -595,6 +587,23 @@
   border-radius: var(--r-pill);
   background: var(--plum-100);
   transform: translateY(-.2em);
+}
+
+@media (min-width: 64rem) {
+  .urgent {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "top signs" "why signs" "call signs";
+    column-gap: var(--s-10);
+    align-items: center;
+  }
+  .urgent__top { grid-area: top; }
+  .urgent > p { grid-area: why; }
+  .urgent__call { grid-area: call; }
+  .urgent__signs {
+    grid-area: signs;
+    padding-inline-start: var(--s-8);
+    border-inline-start: 1px solid var(--hairline-dark);
+  }
 }
 
 /* --------------------------------------------------------------------------
