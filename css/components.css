@@ -635,6 +635,10 @@
 @media (min-width: 48rem) and (max-width: 63.99rem) {
   .glance-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* Two statements break where the client chose, on desktop only; on
+   narrower screens they wrap naturally. */
+.br-wide { display: none; }
+@media (min-width: 80rem) { .br-wide { display: inline; } }
 #main .glance-list li {
   display: flex;
   align-items: baseline;
