@@ -648,13 +648,17 @@
 /* Even lines: one step down to the 16-17px small-copy size, balanced
    wrapping and a tighter gutter, so all six statements set in two lines of
    about the same length. */
-#main .steps3--plain .feature p { font-size: var(--t-sm); text-wrap: balance; max-width: 21em; }
+#main .steps3--plain .feature p { font-size: var(--t-sm); }
 .steps3.steps3--plain .feature { margin-inline: 0; padding-inline: 0; gap: var(--s-3); }
-/* The two shortest statements are held to two balanced lines, so all
-   six set at the same height. */
-#main .steps3--plain .feature p.glance__short { max-width: 13em; }
+/* From 48rem, where the six sit in columns: balanced lines, and the two
+   shortest statements held to two lines, so all six set at one height.
+   On phones each statement simply runs the width of the screen. */
+@media (min-width: 48rem) {
+  #main .steps3--plain .feature p { text-wrap: balance; max-width: 21em; }
+  #main .steps3--plain .feature p.glance__short { max-width: 13em; }
+}
 
-/* No rules: the row stands on the photograph alone. */
+/* No rules between the rows. */
 .steps3.steps3--plain { padding-block-start: 0; border-block-start: 0; row-gap: 0; }
 /* Phones: the rows close up too. */
 .steps3--plain .feature { padding-block: var(--s-2); }
@@ -771,3 +775,49 @@
 
 .compare-note { max-width: none; color: var(--text-soft); }
 .compare-note a { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+/* ==========================================================================
+   Phones — the mobile audit's adjustments
+   ==========================================================================
+   Everything below applies under 60rem (the split's breakpoint) or under
+   48rem (the phone line), and only reorders, crops or respaces: no colour,
+   size or copy changes.
+   ========================================================================== */
+
+@media (max-width: 59.99rem) {
+  /* Treatment options: the caveat qualifies the list, so on phones it
+     follows it. The intro column dissolves into the grid so its two
+     children can be ordered independently. */
+  .treat__intro { display: contents; }
+  .treat__intro .caveat { order: 1; }
+
+  /* The three portrait photographs go landscape, so each takes about
+     half the height while still showing its subject. */
+  .frame--phone-wide { aspect-ratio: 4 / 3; }
+  .frame--centred.frame--phone-wide > img { object-position: 75% 25%; }
+}
+
+/* When surgery may be recommended: the photo is second in the markup so
+   phones read the title first; from 60rem it goes back to the left. */
+@media (min-width: 60rem) {
+  .surgery-frame { order: -1; }
+}
+
+@media (max-width: 47.99rem) {
+  /* The diagram's own canvas carries a wide white margin; trim it. */
+  .diagram-plain { overflow: hidden; }
+  .diagram-plain img { margin-block: -8%; }
+
+  /* What causes entropion: closer steps between the lead, the list and
+     the closing line. */
+  .causes .stack--loose { gap: var(--s-5); }
+
+  /* Recovery: long centred paragraphs are hard to follow on a phone, so
+     the copy ranges left under the centred title. */
+  .recovery .prose { text-align: start; }
+  .recovery .prose p { margin-inline: 0; }
+
+  /* Paired calls stack at one width, full width, an easy thumb target. */
+  :is(.hero, .recovery, .closing) .cluster { flex-direction: column; align-items: stretch; inline-size: 100%; }
+  :is(.hero, .recovery, .closing) .cluster .btn { inline-size: 100%; }
+}
