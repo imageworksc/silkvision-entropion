@@ -624,12 +624,16 @@
 .glance-list { display: grid; gap: var(--s-4) var(--s-9); }
 @media (min-width: 48rem) {
   .glance-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: fit-content(30em) minmax(0, 1fr);
     grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
     gap: var(--s-5) var(--s-9);
-    max-inline-size: 60rem;
   }
+}
+/* From 64rem the first column is sized to its content up to 30em, wide
+   enough for the eyelash line on one row; the second takes the rest. */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .glance-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 #main .glance-list li {
   display: flex;
