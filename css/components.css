@@ -88,22 +88,6 @@
 .btn:hover .ico--arrow { transform: translateX(.3rem); }
 
 /* --------------------------------------------------------------------------
-   Feature rows — an icon, a claim, a hairline
-   -------------------------------------------------------------------------- */
-
-.feature {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--s-4);
-  padding: var(--s-4);
-  margin-inline: calc(var(--s-4) * -1);
-  border-radius: var(--r-md);
-}
-.feature + .feature { margin-block-start: var(--s-2); }
-.feature p { font-size: var(--t-sm); color: var(--text-soft); margin-block-start: var(--s-1); }
-.feature h3 { font-size: var(--t-body); color: var(--heading); }
-
-/* --------------------------------------------------------------------------
    Header and navigation
    -------------------------------------------------------------------------- */
 
@@ -628,43 +612,39 @@
 .surgery-frame > img { object-position: 50% 45%; }
 
 /* --------------------------------------------------------------------------
-   At a glance — the Ziplyft "how it works" row (.steps3), for statements
-   that have no title of their own: each led by a bullet, no marks. Six
-   items, so two rows of three.
+   At a glance — one pale card on the white band: the title, then the six
+   statements in two columns (first three left, last three right from
+   48rem), each led by a small plum dot. One column on phones.
    -------------------------------------------------------------------------- */
 
-/* A bullet in place of the number: a small dot in the navy bands' muted
-   accent, centred on the first line. */
-.steps3--plain .feature { align-items: baseline; }
-.steps3--plain .feature::before {
+.glance-card {
+  display: grid;
+  gap: var(--s-6);
+  padding: var(--s-7) var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--pale-100);
+}
+@media (min-width: 48rem) { .glance-card { padding: var(--s-8) var(--s-9); } }
+#main .glance-card h2 { font-size: var(--t-h2-sm); }
+
+.glance-list { display: grid; gap: var(--s-4) var(--s-9); }
+@media (min-width: 48rem) {
+  .glance-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; }
+}
+#main .glance-list li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  color: var(--text);
+}
+.glance-list li::before {
   content: '';
   flex: none;
   inline-size: .45rem;
   block-size: .45rem;
   border-radius: var(--r-pill);
-  background: var(--sky-muted);
+  background: var(--plum-600);
   transform: translateY(-.2em);
-}
-/* Even lines: one step down to the 16-17px small-copy size, balanced
-   wrapping and a tighter gutter, so all six statements set in two lines of
-   about the same length. */
-#main .steps3--plain .feature p { font-size: var(--t-sm); }
-.steps3.steps3--plain .feature { margin-inline: 0; padding-inline: 0; gap: var(--s-3); }
-/* From 48rem, where the six sit in columns: balanced lines, and the two
-   shortest statements held to two lines, so all six set at one height.
-   On phones each statement simply runs the width of the screen. */
-@media (min-width: 48rem) {
-  #main .steps3--plain .feature p { text-wrap: balance; max-width: 21em; }
-  #main .steps3--plain .feature p.glance__short { max-width: 13em; }
-}
-
-/* No rules between the rows. */
-.steps3.steps3--plain { padding-block-start: 0; border-block-start: 0; row-gap: 0; }
-/* Phones: the rows close up too. */
-.steps3--plain .feature { padding-block: var(--s-2); }
-@media (min-width: 48rem) {
-  .steps3.steps3--plain { column-gap: var(--s-5); row-gap: 0; }
-  .steps3--plain .feature { padding-block: var(--s-3); border-radius: 0; }
 }
 
 /* --------------------------------------------------------------------------

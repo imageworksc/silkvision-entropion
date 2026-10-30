@@ -68,24 +68,6 @@
 .prose .first { font-size: var(--t-lead); line-height: 1.5; color: var(--text-soft); }
 
 /* --------------------------------------------------------------------------
-   How it works — the three steps under the video
-   -------------------------------------------------------------------------- */
-
-.steps3 {
-  display: grid;
-  gap: var(--s-2) var(--s-6);
-  counter-reset: st;
-  inline-size: 100%;
-  padding-block-start: var(--s-6);
-  border-block-start: 1px solid var(--hairline);
-}
-@media (min-width: 48rem) { .steps3 { grid-template-columns: repeat(3, 1fr); } }
-.steps3 .feature { counter-increment: st; }
-.steps3 .feature + .feature { margin-block-start: 0; }
-
-.band--deep .feature p { color: var(--on-dark-soft); }
-
-/* --------------------------------------------------------------------------
    FAQ — the heading holds still while the questions scroll past it
    -------------------------------------------------------------------------- */
 
