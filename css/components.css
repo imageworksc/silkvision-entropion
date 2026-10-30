@@ -622,7 +622,7 @@
 .glance { display: grid; gap: var(--s-6); }
 #main .glance h2 { font-size: var(--t-h2-sm); }
 
-.glance-list { display: grid; column-gap: var(--s-9); }
+.glance-list { display: grid; column-gap: var(--s-10); }
 @media (min-width: 48rem) {
   .glance-list {
     grid-template-columns: fit-content(30em) minmax(0, 1fr);
