@@ -720,20 +720,15 @@
 }
 
 /* --------------------------------------------------------------------------
-   Recovery — centred copy, then its two buttons
+   Recovery — the copy ranged left, then its two buttons
    -------------------------------------------------------------------------- */
 
-.recovery-links { display: grid; padding-block-start: var(--s-3); }
-/* Centred: each paragraph centred under the title, the two buttons centred
-   under the copy, side by side where they fit. */
-.recovery .prose p { margin-inline: auto; }
+.recovery-links { display: grid; inline-size: 100%; padding-block-start: var(--s-3); }
 /* The long paragraph set in two balanced lines, at the client's request:
    an exception to the 60% text width, from 80rem where two lines fit. */
 @media (min-width: 80rem) {
   #main .recovery .prose p.recovery__wide { max-width: 58em; text-wrap: balance; }
 }
-.recovery .recovery-links { inline-size: 100%; justify-items: center; }
-.recovery .recovery-links .cluster { inline-size: 100%; justify-content: center; }
 
 /* --------------------------------------------------------------------------
    Entropion vs. ectropion — the filled comparison table
@@ -810,11 +805,6 @@
   /* What causes entropion: closer steps between the lead, the list and
      the closing line. */
   .causes .stack--loose { gap: var(--s-5); }
-
-  /* Recovery: long centred paragraphs are hard to follow on a phone, so
-     the copy ranges left under the centred title. */
-  .recovery .prose { text-align: start; }
-  .recovery .prose p { margin-inline: 0; }
 
   /* Paired calls stack at one width, full width, an easy thumb target. */
   :is(.hero, .recovery, .closing) .cluster { flex-direction: column; align-items: stretch; inline-size: 100%; }
