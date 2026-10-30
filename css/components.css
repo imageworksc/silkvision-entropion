@@ -724,33 +724,6 @@
    -------------------------------------------------------------------------- */
 
 .recovery-links { display: grid; inline-size: 100%; padding-block-start: var(--s-3); }
-/* A photograph behind the copy: a patient with eyes closed while gloved
-   hands check the eyelid area (silkvision.net's own photo). Mirrored, sized
-   to the band's height and pushed right so the face sits clear of the copy;
-   the band takes the photo's own pale sky, so there is no seam. The copy
-   keeps the 60% width. Below 90rem, where face and copy would meet, a flat
-   paper wash covers the photo.
-   [PENDING: move to Cloudinary with the other photos.] */
-.recovery { isolation: isolate; overflow: hidden; background: var(--photo-sky); }
-.recovery::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: url('../images/recovery-care.jpg') no-repeat;
-  background-size: auto 100%;
-  background-position: -29rem 0;
-  transform: scaleX(-1);
-}
-@media (max-width: 89.99rem) {
-  .recovery::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: rgb(245 248 251 / .86);
-  }
-}
 
 /* --------------------------------------------------------------------------
    Entropion vs. ectropion — the filled comparison table

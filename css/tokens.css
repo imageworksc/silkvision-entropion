@@ -56,9 +56,6 @@
      how it looks over the dark half: at .78, white on the photograph's very
      brightest pixel still measures 8.1:1, and the 80%-white body copy 5.9:1.
      Anything heavier buries the operating room behind it. */
-  /* The flat pale sky of the recovery photograph, sampled, so the band
-     behind the photo continues it without a seam. */
-  --photo-sky: #cfe0ea;
   --fill-scrim: rgb(1 34 58 / .78); /* over the hero photograph            */
 
   /* ---------- Depth ---------- */
