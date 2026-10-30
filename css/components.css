@@ -612,22 +612,22 @@
 .surgery-frame > img { object-position: 50% 45%; }
 
 /* --------------------------------------------------------------------------
-   At a glance — a slim tint band, no card and no rules: the title, then
+   At a glance — a slim tint band, no card: the title, then
    the six statements in two columns (first three left, last three right
    from 48rem), each led by a plum dot. The two columns share their rows,
-   so each pair of statements starts on the same line.
+   so each pair of statements starts on the same line; hairlines between
+   the statements, as in the ticked lists.
    -------------------------------------------------------------------------- */
 
 .glance { display: grid; gap: var(--s-6); }
 #main .glance h2 { font-size: var(--t-h2-sm); }
 
-.glance-list { display: grid; gap: var(--s-4) var(--s-9); }
+.glance-list { display: grid; column-gap: var(--s-9); }
 @media (min-width: 48rem) {
   .glance-list {
     grid-template-columns: fit-content(30em) minmax(0, 1fr);
     grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
-    gap: var(--s-5) var(--s-9);
   }
 }
 /* From 64rem the first column is sized to its content up to 30em, wide
@@ -639,11 +639,19 @@
    narrower screens they wrap naturally. */
 .br-wide { display: none; }
 @media (min-width: 80rem) { .br-wide { display: inline; } }
+/* The ticked lists' hairlines: one rule between statements, none over
+   the first or under the last of each column. */
 #main .glance-list li {
   display: flex;
   align-items: baseline;
   gap: var(--s-3);
+  padding-block: var(--s-4);
+  border-block-start: 1px solid var(--hairline);
   color: var(--text);
+}
+#main .glance-list li:first-child { border-block-start: 0; }
+@media (min-width: 48rem) {
+  #main .glance-list li:nth-child(4) { border-block-start: 0; }
 }
 .glance-list li::before {
   content: '';
