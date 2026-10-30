@@ -612,35 +612,31 @@
 .surgery-frame > img { object-position: 50% 45%; }
 
 /* --------------------------------------------------------------------------
-   At a glance — one pale card on the white band: the title, then the six
-   statements on hairlines, each led by a plum dot.
+   At a glance — a slim tint band, no card and no rules: the title, then
+   the six statements in two columns (first three left, last three right
+   from 48rem), each led by a plum dot. The two columns share their rows,
+   so each pair of statements starts on the same line.
    -------------------------------------------------------------------------- */
 
-.glance-card {
-  display: grid;
-  gap: var(--s-6);
-  padding: var(--s-6) var(--s-5);
-  border-radius: var(--r-lg);
-  background: var(--pale-100);
-  border: 1px solid var(--hairline);
-}
-@media (min-width: 48rem) { .glance-card { padding: var(--s-8); } }
-#main .glance-card h2 { font-size: var(--t-h2-sm); }
+.glance { display: grid; gap: var(--s-6); }
+#main .glance h2 { font-size: var(--t-h2-sm); }
 
-/* The six statements on hairlines, no boxes: one column on phones, two
-   from 48rem (first three left, last three right), three from 64rem in two
-   even rows. Rules between rows only — none over the first row, none under
-   the last. */
-.glance-list { display: grid; column-gap: var(--s-8); }
+.glance-list { display: grid; gap: var(--s-4) var(--s-9); }
+@media (min-width: 48rem) {
+  .glance-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: var(--s-5) var(--s-9);
+    max-inline-size: 60rem;
+  }
+}
 #main .glance-list li {
   display: flex;
   align-items: baseline;
   gap: var(--s-3);
-  padding-block: var(--s-4);
-  border-block-start: 1px solid var(--hairline);
   color: var(--text);
 }
-#main .glance-list li:first-child { border-block-start: 0; padding-block-start: 0; }
 .glance-list li::before {
   content: '';
   flex: none;
@@ -649,18 +645,6 @@
   border-radius: var(--r-pill);
   background: var(--plum-600);
   transform: translateY(-.2em);
-}
-@media (min-width: 48rem) {
-  .glance-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, auto); grid-auto-flow: column; }
-  #main .glance-list li:nth-child(4) { border-block-start: 0; padding-block-start: 0; }
-  #main .glance-list li:is(:nth-child(3), :nth-child(6)) { padding-block-end: 0; }
-}
-@media (min-width: 64rem) {
-  .glance-list { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); grid-auto-flow: row; }
-  /* Same specificity as the 48rem rules above, so these reset them. */
-  #main .glance-list li:nth-child(n) { border-block-start: 0; padding-block: var(--s-4); }
-  #main .glance-list li:nth-child(-n + 3) { border-block-end: 1px solid var(--hairline); padding-block-start: 0; }
-  #main .glance-list li:nth-child(n + 4) { padding-block-end: 0; }
 }
 
 /* --------------------------------------------------------------------------
