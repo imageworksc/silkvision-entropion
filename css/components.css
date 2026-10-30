@@ -794,7 +794,10 @@
   /* The three portrait photographs go landscape, so each takes about
      half the height while still showing its subject. */
   .frame--phone-wide { aspect-ratio: 4 / 3; }
-  .frame--centred.frame--phone-wide > img { object-position: 75% 25%; }
+  /* Each crop anchored on the person: Dr. Silk's head and the handshake,
+     the patient's face and shoulders. */
+  .frame--doctor.frame--phone-wide > img { object-position: 40% 8%; }
+  .frame--centred.frame--phone-wide > img { object-position: 62% 18%; }
 }
 
 /* When surgery may be recommended: the photo is second in the markup so
