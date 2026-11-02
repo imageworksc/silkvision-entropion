@@ -551,6 +551,8 @@
 .urgent { display: grid; gap: var(--s-5); justify-items: start; }
 .urgent__top { display: flex; align-items: center; gap: var(--s-4); }
 #main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
+/* Phones: the band's title a step up, so it reads as a section title. */
+@media (max-width: 47.99rem) { #main .urgent__top h2 { font-size: var(--t-h2-sm); } }
 .urgent__call { white-space: nowrap; }
 #main .urgent > p { max-width: 46ch; }
 

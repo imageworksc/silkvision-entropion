@@ -47,7 +47,7 @@
   /* Two lines: capped in em so the break follows the size, and h1's
      text-wrap: balance splits it evenly. */
   max-width: 14em;
-  font-size: clamp(1.625rem, 2.4vw + .75rem, 2.75rem);   /* 26 → 44 */
+  font-size: clamp(2.125rem, 2.4vw + 1.25rem, 2.75rem);  /* 34 → 44: phones read it first */
   font-weight: 700;
 }
 .hero .lead { color: var(--pale-200); max-width: none; }
