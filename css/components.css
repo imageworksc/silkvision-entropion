@@ -37,7 +37,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--s-3);
-  min-block-size: 3.5rem;
+  min-block-size: 5.6rem;
   min-inline-size: var(--tap);
   padding-inline: var(--s-7);
   border: 2px solid transparent;
@@ -60,7 +60,7 @@
               border-color var(--t-fast) var(--ease),
               color var(--t-fast) var(--ease);
 }
-.btn--lg { min-block-size: 4rem; padding-inline: var(--s-8); font-size: var(--t-body); }
+.btn--lg { min-block-size: 6.4rem; padding-inline: var(--s-8); font-size: var(--t-body); }
 
 .btn:hover { transform: translateY(-3px); }
 .btn:active { transform: translateY(-1px); }
@@ -85,7 +85,7 @@
 
 /* The arrow slides on hover — the one micro-interaction every CTA shares. */
 .btn .ico--arrow { transition: transform var(--t-mid) var(--ease-spring); }
-.btn:hover .ico--arrow { transform: translateX(.3rem); }
+.btn:hover .ico--arrow { transform: translateX(.48rem); }
 
 /* --------------------------------------------------------------------------
    Header and navigation
@@ -133,7 +133,7 @@
   align-items: center;
   min-block-size: var(--tap);
 }
-.brand img { inline-size: 11.5rem; block-size: auto; transition: transform var(--t-mid) var(--ease); }
+.brand img { inline-size: 18.4rem; block-size: auto; transition: transform var(--t-mid) var(--ease); }
 .brand:hover img { transform: scale(1.03); }
 
 .nav { display: flex; align-items: center; gap: var(--s-5); }
@@ -150,7 +150,7 @@
 .nav a:not(.btn)::after {
   content: '';
   position: absolute;
-  inset-block-end: .75rem;
+  inset-block-end: 1.2rem;
   inset-inline: 0;
   block-size: 2px;
   border-radius: var(--r-pill);
@@ -207,7 +207,7 @@
   }
   .nav[data-open="true"] { display: flex; animation: drop var(--t-mid) var(--ease); }
   .nav a:not(.btn) { border-block-end: 1px solid var(--hairline); }
-  .nav a:not(.btn)::after { inset-block-end: .5rem; }
+  .nav a:not(.btn)::after { inset-block-end: .8rem; }
   .nav .btn { margin-block-start: var(--s-4); }
 }
 
@@ -281,8 +281,8 @@
 .tick {
   display: inline-grid;
   place-items: center;
-  inline-size: 1.925rem;
-  block-size: 1.925rem;
+  inline-size: 3.08rem;
+  block-size: 3.08rem;
   border-radius: var(--r-pill);
   background: var(--fill-action);
   color: var(--white);
@@ -384,7 +384,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--s-2);
-  min-block-size: 3.5rem;
+  min-block-size: 5.6rem;
   padding-inline: var(--s-3);
   font-size: var(--t-sm);
   font-weight: 700;
@@ -394,11 +394,11 @@
 .sticky-cta a:active { opacity: .8; }
 .sticky-cta__book { background: var(--fill-action); }
 .sticky-cta__call { background: var(--ink-900); }
-.sticky-cta .ico { inline-size: 1.125rem; block-size: 1.125rem; }
+.sticky-cta .ico { inline-size: 1.8rem; block-size: 1.8rem; }
 
 @media (max-width: 47.99rem) {
   .sticky-cta { display: grid; }
-  body { padding-block-end: 3.5rem; }
+  body { padding-block-end: 5.6rem; }
 }
 
 /* Off screen it is also out of the tab order: visibility waits for the
@@ -423,7 +423,7 @@
   background: var(--fill-deep);
   color: var(--on-dark-soft);
 }
-#main .trust {
+#sv-main .trust {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -433,7 +433,7 @@
   font-size: var(--t-sm);
   line-height: 1.45;
 }
-@media (min-width: 48rem) { #main .trust { flex-wrap: nowrap; white-space: nowrap; } }
+@media (min-width: 48rem) { #sv-main .trust { flex-wrap: nowrap; white-space: nowrap; } }
 .trust__name {
   font-family: var(--font);
   font-weight: 600;
@@ -442,8 +442,8 @@
 .trust__sep { color: var(--on-dark-faint); }
 /* Phones: the line has to break, and a bar left at the end of the first
    line separates nothing — the credential just drops under the name. */
-@media (max-width: 47.99rem) { .trust__sep { display: none; } #main .trust { flex-direction: column; } }
-#main .trust__desc { color: var(--on-dark-soft); font-weight: 400; }
+@media (max-width: 47.99rem) { .trust__sep { display: none; } #sv-main .trust { flex-direction: column; } }
+#sv-main .trust__desc { color: var(--on-dark-soft); font-weight: 400; }
 
 /* --------------------------------------------------------------------------
    The diagram, on the page itself
@@ -462,8 +462,8 @@
 
 .fit__dot {
   flex: none;
-  inline-size: .5rem;
-  block-size: .5rem;
+  inline-size: .8rem;
+  block-size: .8rem;
   border-radius: var(--r-pill);
   background: var(--plum-600);
   transform: translateY(-.15em);
@@ -500,8 +500,8 @@
 .fit__list.fit__list--single.fit__list--discs,
 .fit__list.fit__list--discs li:nth-child(1) { border-block-start: 0; }
 .fit__list.fit__list--discs li:last-child { border-block-end: 0; }
-.fit__list--discs .tick { flex: none; inline-size: 1.75rem; block-size: 1.75rem; }
-.fit__list--discs .tick .ico { inline-size: 1.1rem; block-size: 1.1rem; stroke-width: 2.4; }
+.fit__list--discs .tick { flex: none; inline-size: 2.8rem; block-size: 2.8rem; }
+.fit__list--discs .tick .ico { inline-size: 1.76rem; block-size: 1.76rem; stroke-width: 2.4; }
 
 /* The consultation photo: the patient stands right of centre, so the
    frame is a touch narrower (3:4) and anchored right, which trims the
@@ -510,7 +510,7 @@
 .frame--centred > img { object-position: 100% 50%; }
 
 /* A note under a photograph runs the photograph's full width. */
-#main .fine--wide { max-width: none; }
+#sv-main .fine--wide { max-width: none; }
 
 /* Open ends: rules between the items only — none over the first row,
    none under the last one in each column (three rows of two from 48rem). */
@@ -523,11 +523,11 @@
 }
 
 /* A list title set exactly like the paragraph under the section's title
-   (which #main's body rule sets at the copy size): the reading face, the
+   (which #sv-main's body rule sets at the copy size): the reading face, the
    copy size and leading, the soft colour — one weight up (Inter 600, the
    system's emphasis weight) so it reads as the list's lead-in. It stays
    an h3 for structure. */
-#main .fit__lead.fit__lead--as-lead {
+#sv-main .fit__lead.fit__lead--as-lead {
   font-family: var(--font-body);
   font-size: var(--t-copy);
   font-weight: 600;
@@ -550,16 +550,16 @@
 
 .urgent { display: grid; gap: var(--s-5); justify-items: start; }
 .urgent__top { display: flex; align-items: center; gap: var(--s-4); }
-#main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
+#sv-main .urgent__top h2 { font-size: var(--t-h3); max-inline-size: none; }
 /* Phones: the band's title a step up, so it reads as a section title. */
-@media (max-width: 47.99rem) { #main .urgent__top h2 { font-size: var(--t-h2-sm); } }
+@media (max-width: 47.99rem) { #sv-main .urgent__top h2 { font-size: var(--t-h2-sm); } }
 .urgent__call { white-space: nowrap; }
-#main .urgent > p { max-width: 46ch; }
+#sv-main .urgent > p { max-width: 46ch; }
 
 /* The six signs as a plain list: a small dot and the words, no boxes. */
 .urgent__signs { display: grid; gap: var(--s-3) var(--s-7); }
 @media (min-width: 34rem) { .urgent__signs { grid-template-columns: repeat(2, max-content); } }
-#main .urgent__signs li {
+#sv-main .urgent__signs li {
   display: flex;
   align-items: baseline;
   gap: var(--s-3);
@@ -568,8 +568,8 @@
 .urgent__signs li::before {
   content: '';
   flex: none;
-  inline-size: .375rem;
-  block-size: .375rem;
+  inline-size: .6rem;
+  block-size: .6rem;
   border-radius: var(--r-pill);
   background: var(--plum-100);
   transform: translateY(-.2em);
@@ -622,7 +622,7 @@
    -------------------------------------------------------------------------- */
 
 .glance { display: grid; gap: var(--s-6); }
-#main .glance h2 { font-size: var(--t-h2-sm); }
+#sv-main .glance h2 { font-size: var(--t-h2-sm); }
 
 .glance-list { display: grid; column-gap: var(--s-10); }
 @media (min-width: 48rem) {
@@ -643,7 +643,7 @@
 @media (min-width: 80rem) { .br-wide { display: inline; } }
 /* The ticked lists' hairlines: one rule between statements, none over
    the first or under the last of each column. */
-#main .glance-list li {
+#sv-main .glance-list li {
   display: flex;
   align-items: baseline;
   gap: var(--s-3);
@@ -651,15 +651,15 @@
   border-block-start: 1px solid var(--hairline);
   color: var(--text);
 }
-#main .glance-list li:first-child { border-block-start: 0; }
+#sv-main .glance-list li:first-child { border-block-start: 0; }
 @media (min-width: 48rem) {
-  #main .glance-list li:nth-child(4) { border-block-start: 0; }
+  #sv-main .glance-list li:nth-child(4) { border-block-start: 0; }
 }
 .glance-list li::before {
   content: '';
   flex: none;
-  inline-size: .45rem;
-  block-size: .45rem;
+  inline-size: .72rem;
+  block-size: .72rem;
   border-radius: var(--r-pill);
   background: var(--plum-600);
   transform: translateY(-.2em);
@@ -681,8 +681,8 @@
 @media (min-width: 48rem) { .fit__list.signs li:nth-child(4) { border-block-end: 0; } }
 .signs__ico {
   flex: none;
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
   color: var(--plum-600);
   stroke-width: 1.7;
 }
@@ -744,9 +744,9 @@
 .compare--filled thead th:first-child { background: var(--white); }
 .compare--filled tbody th { padding-inline-start: var(--s-5); color: var(--heading); }
 /* The row labels one weight up, the system's emphasis weight. type.css
-   (loaded later) sets every #main tbody th to 400 through an :is() list,
+   (loaded later) sets every #sv-main tbody th to 400 through an :is() list,
    so this carries the extra [scope] to outrank it. */
-#main .compare--filled tbody th[scope="row"] { font-weight: 600; }
+#sv-main .compare--filled tbody th[scope="row"] { font-weight: 600; }
 .compare--filled tbody tr:last-child :is(th, td) { border-block-end: 0; }
 @media (max-width: 47.99rem) {
   .compare--filled, .compare--filled thead, .compare--filled tbody { display: block; }

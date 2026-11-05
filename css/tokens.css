@@ -81,18 +81,18 @@
      is 17px, not 16, and the ladder is generous the whole way up. */
   /* --t-xs is for labels only — the hero's fact labels, the scroll cue,
      the table's group rows. Never for a sentence. */
-  --t-xs:    clamp(.8125rem, .1vw + .79rem, .875rem);    /* 13 → 14 */
+  --t-xs:    clamp(1.3rem, .1vw + 1.264rem, 1.4rem);    /* 13 → 14 */
   /* --t-sm carries real copy (card text, table cells, nav), so its floor is
      16px, not 15. */
-  --t-sm:    clamp(1rem, .15vw + .96rem, 1.0625rem);     /* 16 → 17 */
-  --t-body:  clamp(1.0625rem, .22vw + 1.01rem, 1.1875rem); /* 17 → 19 */
-  --t-lead:  clamp(1.0625rem, .5vw + .9625rem, 1.3125rem); /* 17 → 21 */
-  --t-h3:    clamp(1.3125rem, .7vw + 1.15rem, 1.625rem);  /* 21 → 26 */
-  --t-h2:    clamp(1.875rem, 2.4vw + 1.05rem, 2.625rem);  /* 30 → 42 */
+  --t-sm:    clamp(1.6rem, .15vw + 1.536rem, 1.7rem);     /* 16 → 17 */
+  --t-body:  clamp(1.7rem, .22vw + 1.616rem, 1.9rem); /* 17 → 19 */
+  --t-lead:  clamp(1.7rem, .5vw + 1.54rem, 2.1rem); /* 17 → 21 */
+  --t-h3:    clamp(2.1rem, .7vw + 1.84rem, 2.6rem);  /* 21 → 26 */
+  --t-h2:    clamp(3rem, 2.4vw + 1.68rem, 4.2rem);  /* 30 → 42 */
   /* One step down from --t-h2, for a section title set inside a card,
      where the full size crowded the card's column. */
-  --t-h2-sm: clamp(1.75rem, 1.6vw + 1.05rem, 2.125rem);   /* 28 → 34 */
-  --t-h1:    clamp(2rem, 3.8vw + .9rem, 3.875rem);        /* 32 → 62 */
+  --t-h2-sm: clamp(2.8rem, 1.6vw + 1.68rem, 3.4rem);   /* 28 → 34 */
+  --t-h1:    clamp(3.2rem, 3.8vw + 1.44rem, 6.2rem);        /* 32 → 62 */
 
   --lh-tight: 1.06;
   --lh-head: 1.16;
@@ -101,13 +101,13 @@
   --ls-wide: .14em;
 
   /* ---------- Space ---------- */
-  --s-1: .25rem;  --s-2: .5rem;   --s-3: .75rem;  --s-4: 1rem;
-  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 2.5rem;  --s-8: 3rem;
-  --s-9: 4rem;    --s-10: 5rem;   --s-11: 7rem;
+  --s-1: .4rem;  --s-2: .8rem;   --s-3: 1.2rem;  --s-4: 1.6rem;
+  --s-5: 2.4rem;  --s-6: 3.2rem;    --s-7: 4rem;  --s-8: 4.8rem;
+  --s-9: 6.4rem;    --s-10: 8rem;   --s-11: 11.2rem;
 
-  --gutter: clamp(1.25rem, 4vw, 2.75rem);
-  --band-y: clamp(3.5rem, 8vw, 7rem);
-  --shell: 78rem;
+  --gutter: clamp(2rem, 4vw, 4.4rem);
+  --band-y: clamp(5.6rem, 8vw, 11.2rem);
+  --shell: 124.8rem;
   --measure: 62ch;
 
   /* ---------- Shape ----------
@@ -117,9 +117,9 @@
      focus ring together and they stay in proportion to each other.
 
      --r-xl was on the ladder and nothing used it. */
-  --r-sm: .375rem;   /*  6px — small wells, the focus ring, the skip link */
-  --r-md: .625rem;   /* 10px — buttons, icon wells, feature rows          */
-  --r-lg: .875rem;   /* 14px — cards, the comparison table's frame        */
+  --r-sm: .6rem;   /*  6px — small wells, the focus ring, the skip link */
+  --r-md: 1rem;   /* 10px — buttons, icon wells, feature rows          */
+  --r-lg: 1.4rem;   /* 14px — cards, the comparison table's frame        */
   --r-pill: 999px;   /*        circles only: the tick, the seal, the rule */
 
   /* ---------- Motion ---------- */

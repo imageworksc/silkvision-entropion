@@ -184,7 +184,7 @@ const setupAccordions = () => {
     d._anim = anim;
     if (open) {
       [...d.children].filter((el) => el !== summary).forEach((el) => el.animate(
-        [{ opacity: 0, transform: 'translateY(-.5rem)' }, { opacity: 1, transform: 'none' }],
+        [{ opacity: 0, transform: 'translateY(-.8rem)' }, { opacity: 1, transform: 'none' }],
         { duration: OPEN_MS - 80, delay: 80, easing: EASE, fill: 'backwards' }
       ));
     }

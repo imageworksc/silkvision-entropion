@@ -14,18 +14,18 @@
    the blurred state, so the finished frame is the element's normal one and
    the text can never be left soft. */
 @keyframes resolve {
-  from { opacity: 0; filter: blur(1.25rem); }
+  from { opacity: 0; filter: blur(2rem); }
   to   { opacity: 1; filter: blur(0); }
 }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(1.25rem); }
+  from { opacity: 0; transform: translateY(2rem); }
   to   { opacity: 1; transform: none; }
 }
 
 @keyframes nudge {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(.3rem); }
+  50%      { transform: translateY(.48rem); }
 }
 
 @keyframes drop {
@@ -65,7 +65,7 @@
 
 [data-anim="on"] [data-reveal] {
   opacity: 0;
-  transform: translateY(1.5rem);
+  transform: translateY(2.4rem);
   transition: opacity var(--t-slow) var(--ease),
               transform var(--t-slow) var(--ease);
   transition-delay: var(--d, 0ms);

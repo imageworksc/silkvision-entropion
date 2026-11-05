@@ -8,10 +8,20 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: var(--s-9);
+  /* Matches the Silk Vision site theme, which sets the same value, so the
+     page measures the same on staging and in Drupal: 1rem = 10px. Sizes in
+     this project are written on that base. Media queries ignore this and
+     stay on the browser's 16px, so they keep their usual values. */
+  font-size: 62.5%;
 }
 
-body {
-  margin: 0;
+body { margin: 0; }
+
+/* Drupal renders the page inside .field-html-code, and index.html carries
+   the same wrapper. Everything element-level is scoped to it so these rules
+   never reach the site's own header and footer. :where() adds no
+   specificity, so component classes still win without !important. */
+.field-html-code {
   background: var(--white);
   color: var(--text);
   font-family: var(--font);
@@ -25,7 +35,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4 {
+:where(.field-html-code) :is(h1, h2, h3, h4) {
   margin: 0;
   color: var(--heading);
   font-weight: 700;
@@ -34,18 +44,31 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-h1 { font-size: var(--t-h1); line-height: var(--lh-tight); font-weight: 800; }
-h2 { font-size: var(--t-h2); }
-h3 { font-size: var(--t-h3); }
+:where(.field-html-code) h1 { font-size: var(--t-h1); line-height: var(--lh-tight); font-weight: 800; }
+:where(.field-html-code) h2 { font-size: var(--t-h2); }
+:where(.field-html-code) h3 { font-size: var(--t-h3); }
 
-p { margin: 0; max-width: var(--measure); text-wrap: pretty; }
-ul, ol { margin: 0; padding: 0; list-style: none; }
-figure, blockquote { margin: 0; }
-img, svg, video { display: block; max-width: 100%; }
-a { color: var(--blue-500); text-decoration: none; }
-strong, b { font-weight: 700; }
+:where(.field-html-code) p { margin: 0; max-width: var(--measure); text-wrap: pretty; }
+:where(.field-html-code) :is(ul, ol) { margin: 0; padding: 0; list-style: none; }
+:where(.field-html-code) :is(figure, blockquote) { margin: 0; }
+:where(.field-html-code) :is(img, svg, video) { display: block; max-width: 100%; }
+:where(.field-html-code) a { color: var(--blue-500); text-decoration: none; }
+:where(.field-html-code) :is(strong, b) { font-weight: 700; }
 
 ::selection { background: var(--plum-400); color: var(--white); }
+
+/* The page wrapper. In Drupal the theme's floated main menu hangs 4px below
+   the header; without clear, .hero (overflow: hidden) narrows to dodge it.
+   Never name this id "main": the theme caps #main at 1000px. */
+#sv-main { clear: both; width: 100%; }
+
+/* The rest of the theme's reach, measured against staging. Its 1023px
+   breakpoint forces img { height: auto !important }, which undoes the
+   frames' crop, and its 767px one spaces every list item 20px apart. Its
+   Classy base pads summary on both sides. */
+#sv-main .frame > img { height: 100% !important; }
+#sv-main.html-wrapper ul li { margin-bottom: 0; }
+#sv-main summary { padding-inline: 0; }
 
 /* The symbol sheet is referenced, never rendered. Out of flow so it cannot
    contribute a stray line box at the top of the document. */
@@ -65,7 +88,7 @@ strong, b { font-weight: 700; }
 .band { padding-block: var(--band-y); position: relative; }
 .band--paper { background: var(--paper); }
 /* A band that backs up a claim rather than making one: about half the air. */
-.band--slim { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.band--slim { padding-block: clamp(4rem, 5vw, 6.4rem); }
 
 /* Dark context re-points the semantic colours and every child follows. The
    hero is on this list even though it brings its own background: without it

@@ -34,6 +34,29 @@ step tabs, cost, yes/no, fork, stages) were removed from CSS and JS.
 - Base64 images extracted to `images/`.
 - No gradients, no inline CSS.
 
+## Running inside Drupal
+
+The live page sits in a field of the silkvision.net theme, not on its own.
+These rules keep it measuring the same in both places:
+
+- `1rem = 10px`. The theme sets `html { font-size: 62.5% }`, and `base.css`
+  sets the same value, so staging matches. Media queries stay on the
+  browser's 16px, so `48rem` in a query still means 768px.
+- The page wrapper is `#sv-main`. Never use `id="main"` or the class
+  `section`: the theme caps both at 1000px.
+- `#sv-main` clears floats. The theme's main menu hangs 4px below the header
+  and would otherwise narrow the hero.
+- Anything the page adds to the field needs the `html-wrapper` class, or the
+  theme recolours its links. `main` and `.sticky-cta` both carry it.
+- Element-level rules are scoped with `:where(.field-html-code)`, so they
+  don't reach the site's header and footer. `index.html` has the same
+  wrapper. Keep it inside `:where()` so no `!important` is needed.
+- No inline width patches in the field. If one seems needed, the fix belongs
+  in these files.
+
+Before handing off a page, test it inside a copy of the live page, at
+390, 768, 1440, 1920 and 2560 wide. Staging alone won't show these conflicts.
+
 ## Pending from the practice
 
 - [ ] URL of the ectropion page (link in the comparison note is `#`).

@@ -13,7 +13,7 @@
    measurements do not.
 
    Loaded after sections.css and before motion.css. The body rule is scoped
-   to #main so the footer keeps its own smaller reference scale.
+   to #sv-main so the footer keeps its own smaller reference scale.
    ========================================================================== */
 
 :root {
@@ -25,7 +25,7 @@
   --ls-copy: -.01em;
 }
 
-body { font-family: var(--font-body); }
+.field-html-code { font-family: var(--font-body); }
 
 /* Titles and controls stay Poppins. */
 h1, h2, h3, h4,
@@ -39,14 +39,14 @@ h1, h2, h3, h4,
    The id in the selector is deliberate: component rules such as
    `.card p` and `.compare td` each set their own size, and this has to
    outrank all of them from one place rather than be restated in each. */
-#main :is(p, li, dd, td, tbody th, figcaption) {
+#sv-main :is(p, li, dd, td, tbody th, figcaption) {
   font-size: var(--t-copy);
   line-height: var(--lh-copy);
   letter-spacing: var(--ls-copy);
 }
 
 /* The profile card's two figures are display type, not copy. */
-#main .profile__stats dd {
+#sv-main .profile__stats dd {
   font-size: var(--t-h3);
   line-height: 1.1;
   letter-spacing: var(--ls-tight);
@@ -59,7 +59,7 @@ h1, h2, h3, h4,
    Subtitles, small
    titles and controls:   Poppins 600
    Reading text:          Inter 400, and Inter 600 for what it highlights
-   The selector lists carry an id (#main, or #_ which matches nothing) so
+   The selector lists carry an id (#sv-main, or #_ which matches nothing) so
    they outrank every component rule that set its own weight. */
 
 :is(#_, h1, h2) { font-weight: 700; }
@@ -68,10 +68,10 @@ h1, h2, h3, h4,
     .nav-toggle, .topbar a, .sticky-cta a, .profile__stats dd,
     .fit__lead) { font-weight: 600; }
 
-#main :is(p, li, dt, dd, td, tbody th, figcaption):not(.profile__stats dd) {
+#sv-main :is(p, li, dt, dd, td, tbody th, figcaption):not(.profile__stats dd) {
   font-weight: 400;
 }
 /* What reading text highlights: the marker phrases, and the values the
    page sets apart in colour — Ziplyft's column, the facts' answers. */
-#main :is(strong, b, .hl),
-#main .compare tbody td:nth-of-type(1) { font-weight: 600; }
+#sv-main :is(strong, b, .hl),
+#sv-main .compare tbody td:nth-of-type(1) { font-weight: 600; }

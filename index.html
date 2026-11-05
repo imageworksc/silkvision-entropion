@@ -68,19 +68,21 @@
       href="https://res.cloudinary.com/dsjbq35es/image/upload/a_hflip,f_auto,q_auto,w_1800/v1789670206/shutterstock_2587017403_xznaag.jpg">
 <!-- Order matters: motion.css last so it can switch everything off.
      Bump ?v= on every deploy that touches CSS or JS. -->
-<link rel="stylesheet" href="css/fonts.css?v=80">
-<link rel="stylesheet" href="css/tokens.css?v=80">
-<link rel="stylesheet" href="css/base.css?v=80">
-<link rel="stylesheet" href="css/components.css?v=80">
-<link rel="stylesheet" href="css/sections.css?v=80">
-<link rel="stylesheet" href="css/type.css?v=80">
-<link rel="stylesheet" href="css/motion.css?v=80">
+<link rel="stylesheet" href="css/fonts.css?v=81">
+<link rel="stylesheet" href="css/tokens.css?v=81">
+<link rel="stylesheet" href="css/base.css?v=81">
+<link rel="stylesheet" href="css/components.css?v=81">
+<link rel="stylesheet" href="css/sections.css?v=81">
+<link rel="stylesheet" href="css/type.css?v=81">
+<link rel="stylesheet" href="css/motion.css?v=81">
 
-<script src="js/main.js?v=80" defer></script>
+<script src="js/main.js?v=81" defer></script>
 </head>
 <body>
+<!-- Stands in for the Drupal field the page is rendered in. See README. -->
+<div class="field-html-code">
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#sv-main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- ==========================================================================
@@ -156,7 +158,7 @@
   </div>
 </header>
 
-<main id="main">
+<main id="sv-main" class="html-wrapper">
 
   <!-- ===== HERO — photograph under one flat navy scrim, copy on top ====== -->
   <section class="hero" aria-labelledby="hero-title">
@@ -622,10 +624,11 @@
 </footer>
 
 <!-- Phones only: the hero's two actions, once it has scrolled away. -->
-<div class="sticky-cta" id="stickyCta" data-shown="false">
+<div class="sticky-cta html-wrapper" id="stickyCta" data-shown="false">
   <a class="sticky-cta__book" href="https://www.mypatientvisit.com/onlinescheduling/#/scheduler/schedule?practiceid=b46123f5-99ee-4f66-969c-fe650949c344">Book consultation</a>
   <a class="sticky-cta__call" href="tel:+17038769700"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Call now</a>
 </div>
 
+</div>
 </body>
 </html>
